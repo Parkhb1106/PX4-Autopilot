@@ -122,9 +122,6 @@ MulticopterRateControl::Run()
 	vehicle_angular_velocity_s angular_velocity;
 
 	if (_vehicle_angular_velocity_sub.update(&angular_velocity)) {
-	
-		matrix::Vector3f angular_velocity_vec{angular_velocity.xyz};
-		// Now you can use angular_velocity_vec in your math
 
 		const hrt_abstime now = angular_velocity.timestamp_sample;
 
