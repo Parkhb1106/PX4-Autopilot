@@ -123,6 +123,15 @@ MulticopterRateControl::Run()
 
 	if (_vehicle_angular_velocity_sub.update(&angular_velocity)) {
 
+		PX4_INFO("Angular velocity: timestamp=%llu p=%.3f q=%.3f r=%.3f",
+	        (unsigned long long)angular_velocity.timestamp,
+	        (double)angular_velocity.xyz[0],
+	        (double)angular_velocity.xyz[1],
+	        (double)angular_velocity.xyz[2]);
+	
+		matrix::Vector3f angular_velocity_vec{angular_velocity.xyz};
+		// Now you can use angular_velocity_vec in your math
+
 		const hrt_abstime now = angular_velocity.timestamp_sample;
 
 		// Guard against too small (< 0.125ms) and too large (> 20ms) dt's.
