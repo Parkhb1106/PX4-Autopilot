@@ -165,18 +165,6 @@ void LoggedTopics::add_default_topics()
 	}
 
 #ifdef CONFIG_ARCH_BOARD_PX4_SITL
-	add_topic("fw_virtual_attitude_setpoint");
-	add_topic("mc_virtual_attitude_setpoint");
-	add_optional_topic("vehicle_torque_setpoint_virtual_mc");
-	add_optional_topic("vehicle_torque_setpoint_virtual_fw");
-	add_optional_topic("vehicle_thrust_setpoint_virtual_mc");
-	add_optional_topic("vehicle_thrust_setpoint_virtual_fw");
-	add_topic("time_offset");
-	add_topic("vehicle_angular_velocity", 10);
-	add_topic("vehicle_angular_velocity_groundtruth", 10);
-	add_topic("vehicle_attitude_groundtruth", 10);
-	add_topic("vehicle_global_position_groundtruth", 100);
-	add_topic("vehicle_local_position_groundtruth", 20);
 
 	// EKF replay
 	add_topic("estimator_baro_bias");
