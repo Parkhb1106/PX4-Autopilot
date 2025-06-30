@@ -240,6 +240,19 @@ void LoggedTopics::add_default_topics()
 	add_topic("vehicle_global_position_groundtruth", 100);
 	add_topic("vehicle_local_position_groundtruth", 20);
 
+	//added
+	add_optional_topic("sensor_accel_fifo", 100);
+	add_optional_topic("sensor_accel", 100);
+	add_optional_topic("sensor_airflow", 100);
+	add_optional_topic("sensor_baro", 100);
+	add_optional_topic("sensor_combined", 100);
+	add_optional_topic("sensor_correction", 100);
+	add_optional_topic("sensor_gnss_relative", 100);
+	add_optional_topic("sensor_gps", 100);
+	add_optional_topic("sensor_gyro_fft", 100);
+	add_optional_topic("sensor_gyro_fifo", 100);
+	add_optional_topic("sensor_gyro", 100);
+
 	// EKF replay
 	{
 		// optionally log all estimator* topics at minimal rate
