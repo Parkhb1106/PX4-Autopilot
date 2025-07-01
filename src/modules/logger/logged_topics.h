@@ -75,7 +75,7 @@ inline bool operator&(SDLogProfileMask a, SDLogProfileMask b)
 class LoggedTopics
 {
 public:
-	static constexpr int MAX_TOPICS_NUM = 1023; /**< Maximum number of logged topics */
+	static constexpr int MAX_TOPICS_NUM = 4095; /**< Maximum number of logged topics */
 
 	static constexpr int MAX_EXCLUDED_OPTIONAL_TOPICS_NUM = 40;
 
