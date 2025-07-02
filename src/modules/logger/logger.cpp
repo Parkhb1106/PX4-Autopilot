@@ -771,7 +771,7 @@ void Logger::run()
 
 					// Check first_write_done flag
 					if (!sub.first_write_done) {
-						PX4_INFO("topic: %s, size = %zu, out_size = %zu", sub.get_topic()->o_name, sub.get_topic()->o_size, msg_size);
+						PX4_INFO("topic: %s, size = %zu, out_size = %hu", sub.get_topic()->o_name, sub.get_topic()->o_size, msg_size);
 						sub.first_write_done = true; // Mark as done
 					}
 						
