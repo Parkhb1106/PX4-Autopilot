@@ -769,8 +769,12 @@ void Logger::run()
 					_msg_buffer[3] = (uint8_t)write_msg_id;
 					_msg_buffer[4] = (uint8_t)(write_msg_id >> 8);
 
-					// PX4_INFO("topic: %s, size = %zu, out_size = %zu", sub.get_topic()->o_name, sub.get_topic()->o_size, msg_size);
-
+					// Check first_write_done flag
+					if (!sub.first_write_done) {
+						PX4_INFO("topic: %s, size = %zu, out_size = %zu", sub.get_topic()->o_name, sub.get_topic()->o_size, msg_size);
+						sub.first_write_done = true; // Mark as done
+					}
+						
 					// full log
 					if (write_message(LogType::Full, _msg_buffer, msg_size)) {
 
