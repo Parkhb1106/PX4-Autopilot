@@ -79,6 +79,7 @@ struct LoggerSubscription : public uORB::SubscriptionInterval {
 	{}
 
 	uint8_t msg_id{MSG_ID_INVALID};
+	bool first_write_done = false;
 };
 
 class Logger : public ModuleBase<Logger>, public ModuleParams
