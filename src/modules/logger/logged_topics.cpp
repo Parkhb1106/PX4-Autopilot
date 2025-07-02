@@ -505,6 +505,7 @@ bool LoggedTopics::add_topic(const orb_metadata *topic, uint16_t interval_ms, ui
 		PX4_INFO("%s is not published at runtime", topic->o_name);
 		
 		if (optional) {
+			PX4_INFO("%s, optional", topic->o_name);
 			PX4_DEBUG("Not adding non-existing optional topic %s %i", topic->o_name, instance);
 	
 			if (instance == 0 && _subscriptions.num_excluded_optional_topic_ids < MAX_EXCLUDED_OPTIONAL_TOPICS_NUM) {
@@ -518,6 +519,7 @@ bool LoggedTopics::add_topic(const orb_metadata *topic, uint16_t interval_ms, ui
 		PX4_INFO("%s is published at runtime", topic->o_name);
 	}
 
+	PX4_INFO("%s is subscribed", topic->o_name);
 	RequestedSubscription &sub = _subscriptions.sub[_subscriptions.count++];
 	sub.interval_ms = interval_ms;
 	sub.instance = instance;
@@ -555,6 +557,7 @@ bool LoggedTopics::add_topic(const char *name, uint16_t interval_ms, uint8_t ins
 				success = add_topic(topics[i], interval_ms, instance, optional);
 
 				if (success) {
+					PX4_INFO("logging topic: %s(%" PRIu8 "), interval: %" PRIu16, topics[i]->o_name, instance, interval_ms);
 					PX4_DEBUG("logging topic: %s(%" PRIu8 "), interval: %" PRIu16, topics[i]->o_name, instance, interval_ms);
 				}
 
