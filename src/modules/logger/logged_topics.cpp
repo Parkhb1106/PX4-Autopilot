@@ -462,6 +462,7 @@ int LoggedTopics::add_topics_from_file(const char *fname)
 			if ((nfields > 2 && add_topic(topic_name, interval_ms, instance))
 			    || add_topic_multi(topic_name, interval_ms)) {
 				ntopics++;
+				PX4_INFO("%s exists in build", topic_name);
 
 			} else {
 				PX4_ERR("Failed to add topic %s", topic_name);
@@ -500,14 +501,21 @@ bool LoggedTopics::add_topic(const orb_metadata *topic, uint16_t interval_ms, ui
 		return false;
 	}
 
-	if (optional && orb_exists(topic, instance) != 0) {
-		PX4_DEBUG("Not adding non-existing optional topic %s %i", topic->o_name, instance);
-
-		if (instance == 0 && _subscriptions.num_excluded_optional_topic_ids < MAX_EXCLUDED_OPTIONAL_TOPICS_NUM) {
-			_subscriptions.excluded_optional_topic_ids[_subscriptions.num_excluded_optional_topic_ids++] = topic->o_id;
+	if (orb_exists(topic, instance) != 0){ // Typically, PX4_OK = 0, PX4_ERROR = -1
+		PX4_INFO("%s is not published at runtime", topic->o_name);
+		
+		if (optional) {
+			PX4_DEBUG("Not adding non-existing optional topic %s %i", topic->o_name, instance);
+	
+			if (instance == 0 && _subscriptions.num_excluded_optional_topic_ids < MAX_EXCLUDED_OPTIONAL_TOPICS_NUM) {
+				_subscriptions.excluded_optional_topic_ids[_subscriptions.num_excluded_optional_topic_ids++] = topic->o_id;
+			}
+	
+			return false;
 		}
-
-		return false;
+	}
+	else{
+		PX4_INFO("%s is published at runtime", topic->o_name);
 	}
 
 	RequestedSubscription &sub = _subscriptions.sub[_subscriptions.count++];
