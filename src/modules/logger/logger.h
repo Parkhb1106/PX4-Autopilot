@@ -80,7 +80,6 @@ struct LoggerSubscription : public uORB::SubscriptionInterval {
 
 	uint8_t msg_id{MSG_ID_INVALID};
 	bool first_write_done = false; // for checking first publishment during logging
-	uint64_t total_dropout_us = 0; // cumulative dropout time in microseconds
 };
 
 class Logger : public ModuleBase<Logger>, public ModuleParams
