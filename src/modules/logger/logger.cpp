@@ -942,11 +942,16 @@ void Logger::run()
 		LoggerSubscription &sub = _subscriptions[i];
 	
 		// Finalize ongoing dropout
-		if (sub.dropout_start_time != 0) {
-			unsigned missed_msgs += (now - sub.dropout_start_time) / sub.get_interval_us();
-			sub.total_dropout_us += missed_msgs;
-			sub.dropout_start_time = 0;
-		}
+		uint64_t expected_interval = sub.get_interval_us();
+	        if (expected_interval > 0 && sub.prev_msg_timestamp != 0) {
+	            uint64_t interval_since_last = now - sub.prev_msg_timestamp;
+	            if (interval_since_last > expected_interval) {
+	                // Calculate missed message count (dropout)
+	                unsigned missed_msgs = interval_since_last / expected_interval;
+	                // Accumulate total dropout in 'interval units'
+	                sub.total_dropout_us += missed_msgsl;
+	            }
+	        }
 	
 		PX4_INFO("Topic: %s | Total dropout time: %llu us",
 		         sub.get_topic()->o_name,
