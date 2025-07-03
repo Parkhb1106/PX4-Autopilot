@@ -456,10 +456,6 @@ bool Logger::copy_if_updated(int sub_idx, void *buffer, bool try_to_subscribe)
 			if (updated && (sub.get_last_generation() != last_generation + 1)) {
 				// error, missed a message
 				_message_gaps++;
-
-				// for calculating total dropout per topic (unit: interval defined for each topic)
-				unsigned missed_msgs = sub.get_last_generation() - last_generation - 1;
-				sub.total_dropout_us += missed_msgs;
 			}
 
 		} else {
@@ -934,28 +930,6 @@ void Logger::run()
 			 */
 			while (px4_sem_wait(&_timer_callback_data.semaphore) != 0) {}
 		}
-	}
-
-	// total dropout per topic (unit: interval defined for each topic)
-	hrt_abstime now = hrt_absolute_time();
-	for (int i = 0; i < _num_subscriptions; ++i) {
-		LoggerSubscription &sub = _subscriptions[i];
-	
-		// Finalize ongoing dropout
-		uint64_t expected_interval = sub.get_interval_us();
-	        if (expected_interval > 0 && sub.prev_msg_timestamp != 0) {
-	            uint64_t interval_since_last = now - sub.prev_msg_timestamp;
-	            if (interval_since_last > expected_interval) {
-	                // Calculate missed message count (dropout)
-	                unsigned missed_msgs = interval_since_last / expected_interval;
-	                // Accumulate total dropout in 'interval units'
-	                sub.total_dropout_us += missed_msgsl;
-	            }
-	        }
-	
-		PX4_INFO("Topic: %s | Total dropout time: %llu us",
-		         sub.get_topic()->o_name,
-		         (unsigned long long)sub.total_dropout_us);
 	}
 
 	px4_lockstep_unregister_component(_lockstep_component);
