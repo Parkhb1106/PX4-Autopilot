@@ -777,7 +777,7 @@ void Logger::run()
 					}
 
 					if(strcmp(sub.get_topic()->o_name, "logger_status") == 0){
-						print_status()
+						print_status();
 					}
 						
 					// full log
