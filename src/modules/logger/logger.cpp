@@ -30,6 +30,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  ****************************************************************************/
+#include <cstring>
 
 #include <px4_platform_common/px4_config.h>
 #include <px4_platform_common/console_buffer.h>
@@ -775,7 +776,7 @@ void Logger::run()
 						sub.first_write_done = true; // Mark as done
 					}
 
-					if(sub.get_topic()->o_name == "logger_status"){
+					if(strcmp(sub.get_topic()->o_name, "logger_status") == 0){
 						print_status()
 					}
 						
