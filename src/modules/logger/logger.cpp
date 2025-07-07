@@ -774,6 +774,10 @@ void Logger::run()
 						PX4_INFO("topic: %s, size = %hu, out_size = %zu", sub.get_topic()->o_name, sub.get_topic()->o_size, msg_size);
 						sub.first_write_done = true; // Mark as done
 					}
+
+					if(sub.get_topic()->o_name == "logger_status"){
+						print_status()
+					}
 						
 					// full log
 					if (write_message(LogType::Full, _msg_buffer, msg_size)) {
