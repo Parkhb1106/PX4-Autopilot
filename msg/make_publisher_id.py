@@ -1,6 +1,5 @@
 import os
 
-# 현재 Python 파일과 같은 디렉토리 경로
 msg_dir = os.path.dirname(os.path.abspath(__file__))
 field = 'uint16_t publisher_id'
 
@@ -15,7 +14,6 @@ for filename in os.listdir(msg_dir):
             print(f'{field} already exists in {filename}')
             continue
 
-        # 삽입 위치 찾기: 첫 번째 빈 줄 전
         insert_index = 0
         for i, line in enumerate(lines):
             if line.strip() == '':
