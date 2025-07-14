@@ -1,5 +1,4 @@
 # This message is used to notify the system about one or more parameter changes
-uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

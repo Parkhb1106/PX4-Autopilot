@@ -1,5 +1,4 @@
 uint64 timestamp						# time since system start (microseconds)
-uint8 publisher_id
 
 uint8 FUNCTION_THROTTLE      = 0
 uint8 FUNCTION_ROLL          = 1

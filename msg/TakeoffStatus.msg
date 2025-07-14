@@ -1,5 +1,4 @@
 # Status of the takeoff state machine currently just available for multicopters
-uint8 publisher_id
 
 uint64 timestamp # time since system start (microseconds)
 

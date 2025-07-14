@@ -1,5 +1,4 @@
 # DISTANCE_SENSOR message data
-uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

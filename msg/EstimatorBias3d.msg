@@ -1,6 +1,5 @@
 uint64 timestamp                # time since system start (microseconds)
 uint64 timestamp_sample         # the timestamp of the raw data (microseconds)
-uint8 publisher_id
 
 uint32 device_id                # unique device ID for the sensor that does not change between power cycles
 

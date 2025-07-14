@@ -1,6 +1,5 @@
 # Request to register an external component
 uint64 timestamp # time since system start (microseconds)
-uint8 publisher_id
 
 uint64 request_id                  # ID, set this to a random value
 char[25] name                      # either the requested mode name, or component name

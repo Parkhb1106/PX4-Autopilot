@@ -1,7 +1,6 @@
 # Vehicle odometry data. Fits ROS REP 147 for aerial vehicles
 uint64 timestamp		# time since system start (microseconds)
 uint64 timestamp_sample
-uint8 publisher_id
 
 uint8 POSE_FRAME_UNKNOWN = 0
 uint8 POSE_FRAME_NED     = 1 # NED earth-fixed frame

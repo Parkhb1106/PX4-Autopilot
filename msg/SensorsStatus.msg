@@ -2,7 +2,6 @@
 # Sensor check metrics. This will be zero for a sensor that's primary or unpopulated.
 #
 uint64 timestamp # time since system start (microseconds)
-uint8 publisher_id
 
 uint32 device_id_primary       # current primary device id for reference
 

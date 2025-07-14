@@ -119,7 +119,6 @@ void ADS1115::RunImpl()
 
 		if (_channel_cycle_count == 4) { // ADS1115 has 4 channels
 			_channel_cycle_count = 0;
-			_adc_report..publisher_id = ADS1115;
 			_to_adc_report.publish(_adc_report);
 		}
 

@@ -1,5 +1,4 @@
 # stack information for a single running process
-uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

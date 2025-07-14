@@ -1,6 +1,5 @@
 uint64 timestamp          # time since system start (microseconds)
 uint64 timestamp_sample
-uint8 publisher_id
 
 uint8 MAX_MAGS = 4
 

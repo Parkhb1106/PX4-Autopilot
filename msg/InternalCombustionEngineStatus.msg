@@ -1,5 +1,4 @@
 uint64 timestamp					# time since system start (microseconds)
-uint8 publisher_id
 
 uint8 STATE_STOPPED = 0					# The engine is not running. This is the default state.
 uint8 STATE_STARTING = 1				# The engine is starting. This is a transient state.

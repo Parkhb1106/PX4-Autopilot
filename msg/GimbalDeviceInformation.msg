@@ -1,5 +1,4 @@
 uint64 timestamp						# time since system start (microseconds)
-uint8 publisher_id
 
 uint8[32] vendor_name
 uint8[32] model_name

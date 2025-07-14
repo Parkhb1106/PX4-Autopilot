@@ -1,5 +1,4 @@
 uint64 timestamp						# time since system start (microseconds)
-uint8 publisher_id
 
 uint32 cap_flags
 

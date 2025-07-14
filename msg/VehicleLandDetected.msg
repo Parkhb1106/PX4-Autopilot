@@ -1,5 +1,4 @@
 uint64 timestamp	# time since system start (microseconds)
-uint8 publisher_id
 
 bool freefall		# true if vehicle is currently in free-fall
 bool ground_contact	# true if vehicle has ground contact but is not landed (1. stage)

@@ -1,5 +1,4 @@
 # IMU readings in SI-unit form.
-uint8 publisher_id
 
 uint64 timestamp          # time since system start (microseconds)
 uint64 timestamp_sample

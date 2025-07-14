@@ -1,6 +1,5 @@
 uint64 timestamp                 # time since system start (microseconds)
 uint64 timestamp_sample
-uint8 publisher_id
 
 float32 indicated_airspeed_m_s   # indicated airspeed in m/s
 

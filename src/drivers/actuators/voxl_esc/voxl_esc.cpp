@@ -1277,12 +1277,10 @@ bool VoxlEsc::updateOutputs(bool stop_motors, uint16_t outputs[MAX_ACTUATORS],
 
 		actuator_outputs.timestamp = hrt_absolute_time();
 
-		actuator_outputs.publisher_id = VOXL_ESC;
 		_outputs_debug_pub.publish(actuator_outputs);
 
 	}
 
-	_esc_status.publisher_id = VOXL_ESC;
 	_esc_status_pub.publish(_esc_status);
 
 	// If any extra external modal io data has been received then
@@ -1426,7 +1424,6 @@ void VoxlEsc::Run()
 
 					if (_current_cmd.response) {
 						if (read_response(&_current_cmd) == 0) {
-							_esc_status.publisher_id = VOXL_ESC;
 							_esc_status_pub.publish(_esc_status);
 						}
 					}

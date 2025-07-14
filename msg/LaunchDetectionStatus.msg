@@ -1,5 +1,4 @@
 # Status of the launch detection state machine (fixed-wing only)
-uint8 publisher_id
 
 uint64 timestamp # time since system start (microseconds)
 

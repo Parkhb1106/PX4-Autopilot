@@ -1,5 +1,4 @@
 uint64 timestamp				# time since system start (microseconds)
-uint8 publisher_id
 
 # Topic to test individual actuator output functions
 

@@ -1,5 +1,4 @@
 uint64 timestamp		# time since system start (microseconds)
-uint8 publisher_id
 
 float32 altitude_sp			# Altitude setpoint AMSL [m]
 float32 altitude_reference		# Altitude setpoint reference AMSL [m]

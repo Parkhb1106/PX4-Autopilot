@@ -1,5 +1,4 @@
 uint64 timestamp	# time since system start (microseconds)
-uint8 publisher_id
 
 # body angular rates in NED frame
 float32 roll		# [rad/s] roll rate setpoint

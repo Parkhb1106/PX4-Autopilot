@@ -1,5 +1,4 @@
 # Velocity and yaw rate limits for a multicopter position slow mode only
-uint8 publisher_id
 
 uint64 timestamp # time since system start (microseconds)
 

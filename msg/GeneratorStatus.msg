@@ -1,5 +1,4 @@
 uint64 timestamp			# time since system start (microseconds)
-uint8 publisher_id
 
 
 uint64 STATUS_FLAG_OFF                              = 1       # Generator is off.

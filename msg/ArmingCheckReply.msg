@@ -1,5 +1,4 @@
 uint64 timestamp # time since system start (microseconds)
-uint8 publisher_id
 
 uint8 request_id
 uint8 registration_id
