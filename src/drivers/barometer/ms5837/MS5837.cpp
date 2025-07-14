@@ -343,6 +343,7 @@ int MS5837::_collect()
 		sensor_baro.temperature = _last_temperature;
 		sensor_baro.error_count = perf_event_count(_comms_errors);
 		sensor_baro.timestamp = hrt_absolute_time();
+		sensor_baro.publisher_id = MS5837;
 		_sensor_baro_pub.publish(sensor_baro);
 	}
 

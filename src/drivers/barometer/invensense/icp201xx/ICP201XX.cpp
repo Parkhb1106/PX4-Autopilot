@@ -311,6 +311,7 @@ ICP201XX::RunImpl()
 				sensor_baro.temperature = temperature;
 				sensor_baro.error_count = perf_event_count(_bad_transfer_perf);
 				sensor_baro.timestamp = hrt_absolute_time();
+				sensor_baro.publisher_id = ICP201XX;
 				_sensor_baro_pub.publish(sensor_baro);
 
 				success = true;
