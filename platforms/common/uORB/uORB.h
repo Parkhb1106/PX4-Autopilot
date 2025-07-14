@@ -68,12 +68,6 @@ typedef const struct orb_metadata *orb_id_t;
 # define ORB_MULTI_MAX_INSTANCES 10
 #endif
 
-/*** For logging publisher, define publisher id ***/
-#define PUBLISHER_ID(_name) __id_##_name
-
-#define PUBLISHER_DEFINE(_name, _val) \
-    constexpr int __id_##_name = _val;
-
 /**
  * Generates a pointer to the uORB metadata structure for
  * a given topic.
