@@ -1,5 +1,6 @@
 # Configurable overrides by (external) modes or mode executors
 uint64 timestamp		# time since system start (microseconds)
+uint8 publisher_id
 
 bool disable_auto_disarm         # Prevent the drone from automatically disarming after landing (if configured)
 

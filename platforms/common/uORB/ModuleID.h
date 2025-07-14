@@ -156,8 +156,8 @@ SDP3X,
 SPA06,
 SPL06,
 AUAV,
-EKF2,
-GPS,
+EKF2_,
+GPS_,
 BST
 
 };

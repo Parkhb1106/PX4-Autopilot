@@ -1,4 +1,5 @@
 uint64 timestamp                      # time since system start (microseconds)
+uint8 publisher_id
 
 uint32 safe_points_id 		      # unique ID of active set of safe_point_items
 bool is_evaluation_pending 	      # flag if the RTL point needs reevaluation (e.g. new safe points available, but need loading).

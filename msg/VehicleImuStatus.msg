@@ -1,4 +1,5 @@
 uint64 timestamp                # time since system start (microseconds)
+uint8 publisher_id
 
 uint32 accel_device_id          # unique device ID for the sensor that does not change between power cycles
 uint32 gyro_device_id           # unique device ID for the sensor that does not change between power cycles

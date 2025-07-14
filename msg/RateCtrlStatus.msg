@@ -1,4 +1,5 @@
 uint64 timestamp		# time since system start (microseconds)
+uint8 publisher_id
 
 # rate controller integrator status
 float32 rollspeed_integ

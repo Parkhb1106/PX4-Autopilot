@@ -1,4 +1,5 @@
 # Optical flow in XYZ body frame in SI units.
+uint8 publisher_id
 
 uint64 timestamp               # time since system start (microseconds)
 uint64 timestamp_sample

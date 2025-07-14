@@ -1,5 +1,6 @@
 uint64 timestamp		# time since system start (microseconds)
 bool flag_armed			# synonym for actuator_armed.armed
+uint8 publisher_id
 
 bool flag_multicopter_position_control_enabled
 

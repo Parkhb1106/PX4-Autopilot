@@ -2,6 +2,7 @@
 #
 # Flags must be named such that false == no failure (e.g. _invalid, _unhealthy, _lost)
 # The flag comments are used as label for the failsafe state machine simulation
+uint8 publisher_id
 
 uint64 timestamp				# time since system start (microseconds)
 

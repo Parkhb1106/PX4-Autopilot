@@ -1,4 +1,5 @@
 # This message is used to dump the raw gps communication to the log.
+uint8 publisher_id
 
 uint64 timestamp # time since system start (microseconds)
 
