@@ -1,4 +1,5 @@
 uint64 timestamp # time since system start (microseconds)
+uint8 publisher_id
 
 # Request to PX4 to get the hash of a message, to check for message compatibility
 

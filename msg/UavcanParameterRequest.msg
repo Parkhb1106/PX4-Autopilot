@@ -1,5 +1,6 @@
 # UAVCAN-MAVLink parameter bridge request type
 uint64 timestamp		# time since system start (microseconds)
+uint8 publisher_id
 
 uint8 MESSAGE_TYPE_PARAM_REQUEST_READ = 20	# MAVLINK_MSG_ID_PARAM_REQUEST_READ
 uint8 MESSAGE_TYPE_PARAM_REQUEST_LIST = 21	# MAVLINK_MSG_ID_PARAM_REQUEST_LIST

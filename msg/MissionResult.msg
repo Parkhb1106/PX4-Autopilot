@@ -1,4 +1,5 @@
 uint64 timestamp		# time since system start (microseconds)
+uint8 publisher_id
 
 uint32 mission_id   		# Id for the mission for which the result was generated
 uint32 geofence_id  		# Id for the corresponding geofence for which the result was generated (used for mission feasibility)

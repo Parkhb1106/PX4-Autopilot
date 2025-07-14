@@ -1,5 +1,6 @@
 uint64 timestamp                     # time since system start (microseconds)
 uint64 last_filter_reset_timestamp   # time of last filter reset (microseconds)
+uint8 publisher_id
 
 bool valid              # True if estimator states are okay to be used
 bool stale              # True if estimator stopped receiving follow_target messages for some time. The estimate can still be valid, though it might be inaccurate.

@@ -1,4 +1,5 @@
 uint64 timestamp                 # time since system start (microseconds)
+uint8 publisher_id
 
 uint32 instance_count            # Instance count of this mission. Increments monotonically whenever the mission is modified
 

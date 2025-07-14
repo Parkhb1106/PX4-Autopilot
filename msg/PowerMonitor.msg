@@ -1,4 +1,5 @@
 # power monitor message
+uint8 publisher_id
 
 uint64 timestamp			# Time since system start (microseconds)
 

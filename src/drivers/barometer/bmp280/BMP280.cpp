@@ -179,6 +179,7 @@ BMP280::collect()
 	sensor_baro.temperature = T;
 	sensor_baro.error_count = perf_event_count(_comms_errors);
 	sensor_baro.timestamp = hrt_absolute_time();
+	sensor_baro.publisher_id = BMP280;
 	_sensor_baro_pub.publish(sensor_baro);
 
 	perf_end(_sample_perf);

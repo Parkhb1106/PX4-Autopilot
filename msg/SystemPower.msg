@@ -12,6 +12,7 @@ uint8 hipower_5v_oc		# high power peripheral overcurrent when 1
 uint8 comp_5v_valid		# 5V to companion valid
 uint8 can1_gps1_5v_valid	# 5V for CAN1/GPS1 valid
 uint8 payload_v_valid		# payload rail voltage is valid
+uint8 publisher_id
 
 uint8 BRICK1_VALID_SHIFTS=0
 uint8 BRICK1_VALID_MASK=1
