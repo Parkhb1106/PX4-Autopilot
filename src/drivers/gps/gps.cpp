@@ -111,7 +111,6 @@ struct GPS_Sat_Info {
 
 static constexpr int TASK_STACK_SIZE = PX4_STACK_ADJUSTED(2040);
 
-
 class GPS : public ModuleBase<GPS>, public device::Device
 {
 public:
