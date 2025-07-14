@@ -1,4 +1,5 @@
 uint64 timestamp                        # time since system start (microseconds)
+uint16_t publisher_id
 
 bool torque_setpoint_achieved           # Boolean indicating whether the 3D torque setpoint was correctly allocated to actuators. 0 if not achieved, 1 if achieved.
 float32[3] unallocated_torque           # Unallocated torque. Equal to 0 if the setpoint was achieved.

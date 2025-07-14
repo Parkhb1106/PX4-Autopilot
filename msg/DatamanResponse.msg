@@ -1,4 +1,5 @@
 uint64 timestamp	# time since system start (microseconds)
+uint16_t publisher_id
 
 uint8 client_id
 uint8 request_type	# id/read/write/clear

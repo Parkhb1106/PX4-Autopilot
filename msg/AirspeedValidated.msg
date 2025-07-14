@@ -1,4 +1,5 @@
 uint64 timestamp				# time since system start (microseconds)
+uint16_t publisher_id
 
 float32 indicated_airspeed_m_s			# indicated airspeed in m/s (IAS), set to NAN if invalid
 float32 calibrated_airspeed_m_s     		# calibrated airspeed in m/s (CAS, accounts for instrumentation errors), set to NAN if invalid

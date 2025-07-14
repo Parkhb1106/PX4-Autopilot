@@ -1,4 +1,5 @@
 # A logging message, output with PX4_{WARN,ERR,INFO}
+uint16_t publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

@@ -1,5 +1,6 @@
 # Fused local position in NED.
 # The coordinate system origin is the vehicle position at the time when the EKF2-module was started.
+uint16_t publisher_id
 
 uint64 timestamp			# time since system start (microseconds)
 uint64 timestamp_sample                 # the timestamp of the raw data (microseconds)

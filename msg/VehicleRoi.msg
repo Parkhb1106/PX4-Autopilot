@@ -1,4 +1,5 @@
 # Vehicle Region Of Interest (ROI)
+uint16_t publisher_id
 
 uint64 timestamp			# time since system start (microseconds)
 

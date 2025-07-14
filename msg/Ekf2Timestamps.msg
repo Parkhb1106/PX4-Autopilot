@@ -1,5 +1,6 @@
 # this message contains the (relative) timestamps of the sensor inputs used by EKF2.
 # It can be used for reproducible replay.
+uint16_t publisher_id
 
 # the timestamp field is the ekf2 reference time and matches the timestamp of
 # the sensor_combined topic.

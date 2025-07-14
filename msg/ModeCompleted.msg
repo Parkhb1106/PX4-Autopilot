@@ -3,6 +3,7 @@
 # Note that this is not always published (e.g. when a user switches modes or on
 # failsafe activation)
 uint64 timestamp				 # time since system start (microseconds)
+uint16_t publisher_id
 
 
 uint8 RESULT_SUCCESS = 0

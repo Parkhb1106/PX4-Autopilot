@@ -1,4 +1,5 @@
 # GNSS relative positioning information in NED frame. The NED frame is defined as the local topological system at the reference station.
+uint16_t publisher_id
 
 uint64 timestamp                  # time since system start (microseconds)
 uint64 timestamp_sample           # time since system start (microseconds)

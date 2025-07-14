@@ -1,5 +1,6 @@
 # Events interface
 uint64 timestamp			# time since system start (microseconds)
+uint16_t publisher_id
 
 uint32 id                   # Event ID
 uint16 event_sequence       # Event sequence number

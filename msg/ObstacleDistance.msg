@@ -1,5 +1,6 @@
 # Obstacle distances in front of the sensor.
 uint64 timestamp		# time since system start (microseconds)
+uint16_t publisher_id
 
 uint8 frame		#Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.
 uint8 MAV_FRAME_GLOBAL = 0

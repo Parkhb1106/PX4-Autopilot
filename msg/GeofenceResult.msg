@@ -5,6 +5,7 @@ uint8 GF_ACTION_LOITER = 2              # switch to AUTO|LOITER
 uint8 GF_ACTION_RTL = 3                 # switch to AUTO|RTL
 uint8 GF_ACTION_TERMINATE = 4           # flight termination
 uint8 GF_ACTION_LAND = 5                # switch to AUTO|LAND
+uint16_t publisher_id
 
 bool geofence_max_dist_triggered	# true the check for max distance from Home is triggered
 bool geofence_max_alt_triggered		# true the check for max altitude above Home is triggered

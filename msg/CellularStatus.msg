@@ -1,4 +1,5 @@
 uint64 timestamp	# time since system start (microseconds)
+uint16_t publisher_id
 
 uint8 CELLULAR_STATUS_FLAG_UNKNOWN=0 # State unknown or not reportable
 uint8 CELLULAR_STATUS_FLAG_FAILED=1 # velocity setpoint

@@ -1,4 +1,5 @@
 uint64 timestamp                # time since system start (microseconds)
+uint16_t publisher_id
 
 float32[4] bias_x		# estimated X-bias of all the sensors
 float32[4] bias_y		# estimated Y-bias of all the sensors

@@ -1,6 +1,7 @@
 # ONBOARD_COMPUTER_STATUS message data
 uint64 timestamp # [us] time since system start (microseconds)
 uint32 uptime	 # [ms] time since system boot of the companion (milliseconds)
+uint16_t publisher_id
 
 uint8 type	 # type of onboard computer 0: Mission computer primary, 1: Mission computer backup 1, 2: Mission computer backup 2, 3: Compute node, 4-5: Compute spares, 6-9: Payload computers.
 

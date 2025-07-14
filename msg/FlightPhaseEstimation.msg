@@ -1,4 +1,5 @@
 uint64 timestamp               # time since system start (microseconds)
+uint16_t publisher_id
 
 uint8 flight_phase 		# Estimate of current flight phase
 
