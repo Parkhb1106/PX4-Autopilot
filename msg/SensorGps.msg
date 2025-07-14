@@ -2,7 +2,7 @@
 # the field 'timestamp' is for the position & velocity (microseconds)
 uint64 timestamp		# time since system start (microseconds)
 uint64 timestamp_sample
-uint16_t publisher_id
+uint8 publisher_id
 
 uint32 device_id                # unique device ID for the sensor that does not change between power cycles
 

@@ -1,5 +1,5 @@
 uint64 timestamp # time since system start (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 float32 speed # [m/s] collective roll-off speed in body x-axis
 bool closed_loop_speed_control # true if speed is controlled using estimator feedback, false if direct feed-forward

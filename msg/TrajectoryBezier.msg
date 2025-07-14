@@ -1,6 +1,6 @@
 # Bezier Trajectory description. See also Mavlink TRAJECTORY msg
 # The topic trajectory_bezier describe each waypoint defined in vehicle_trajectory_bezier
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

@@ -1,7 +1,7 @@
 uint64 timestamp # [us] time since system start
 float32 lateral_touchdown_offset # [m] lateral touchdown position offset manually commanded during landing
 bool flaring # true if the aircraft is flaring
-uint16_t publisher_id
+uint8 publisher_id
 
 # abort status is:
 # 0 if not aborted

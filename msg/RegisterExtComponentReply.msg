@@ -1,5 +1,5 @@
 uint64 timestamp # time since system start (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 request_id          # ID from the request
 char[25] name              # name from the request

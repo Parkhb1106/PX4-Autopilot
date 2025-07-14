@@ -1,5 +1,5 @@
 uint64 timestamp # time since system start (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 char[25] name                      # either the mode name, or component name
 

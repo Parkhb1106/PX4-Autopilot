@@ -1,5 +1,5 @@
 # Relative position of precision land target in navigation (body fixed, north aligned, NED) and inertial (world fixed, north aligned, NED) frames
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

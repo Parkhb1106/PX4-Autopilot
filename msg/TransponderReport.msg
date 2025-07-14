@@ -13,7 +13,7 @@ uint8 tslc 		# Time since last communication in seconds
 uint16 flags 		# Flags to indicate various statuses including valid data fields
 uint16 squawk 		# Squawk code
 uint8[18] uas_id	# Unique UAS ID
-uint16_t publisher_id
+uint8 publisher_id
 
 # ADSB flags
 uint16 PX4_ADSB_FLAGS_VALID_COORDS = 1

@@ -1,5 +1,5 @@
 uint64 timestamp                    # time since system start (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 # FailureDetector status
 bool fd_roll

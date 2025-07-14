@@ -1,5 +1,5 @@
 uint64 timestamp		# time since system start (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 char[127] text
 uint8 severity # log level (same as in the linux kernel, starting with 0)

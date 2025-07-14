@@ -1,7 +1,7 @@
 # Local position setpoint in NED frame
 # Telemetry of PID position controller to monitor tracking.
 # NaN means the state was not controlled
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 timestamp	# time since system start (microseconds)
 

@@ -1,5 +1,5 @@
 uint64 timestamp # time since system start (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 bool valid			# Flag indicating whether the time estiamtes are valid
 float32 time_estimate		# [s] Estimated time for RTL

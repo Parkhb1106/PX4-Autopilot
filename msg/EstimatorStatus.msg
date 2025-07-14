@@ -1,6 +1,6 @@
 uint64 timestamp		# time since system start (microseconds)
 uint64 timestamp_sample         # the timestamp of the raw data (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 float32[3] output_tracking_error # return a vector containing the output predictor angular, velocity and position tracking error magnitudes (rad), (m/s), (m)
 

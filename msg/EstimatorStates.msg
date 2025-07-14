@@ -1,6 +1,6 @@
 uint64 timestamp		# time since system start (microseconds)
 uint64 timestamp_sample         # the timestamp of the raw data (microseconds)
-uint16_t publisher_id
+uint8 publisher_id
 
 float32[24] states		# Internal filter states
 uint8 n_states		# Number of states effectively used

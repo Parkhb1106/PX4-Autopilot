@@ -1,6 +1,6 @@
 # Ack a previously sent ulog_stream message that had
 # the NEED_ACK flag set
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 int32 ACK_TIMEOUT = 50		# timeout waiting for an ack until we retry to send the message [ms]

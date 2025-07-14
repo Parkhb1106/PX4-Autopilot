@@ -1,7 +1,7 @@
 # Vehicle Command Ackonwledgement uORB message.
 # Used for acknowledging the vehicle command being received.
 # Follows the MAVLink COMMAND_ACK message definition
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 

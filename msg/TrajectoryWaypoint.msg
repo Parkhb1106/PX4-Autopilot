@@ -1,6 +1,6 @@
 # Waypoint Trajectory description. See also Mavlink TRAJECTORY msg
 # The topic trajectory_waypoint describe each waypoint defined in vehicle_trajectory_waypoint
-uint16_t publisher_id
+uint8 publisher_id
 
 uint64 timestamp		# time since system start (microseconds)
 
