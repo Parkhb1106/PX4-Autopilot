@@ -685,7 +685,7 @@ void GPS::dumpGpsData(uint8_t *data, size_t len, gps_dump_comm_mode_t mode, bool
 			}
 
 			dump_data->timestamp = hrt_absolute_time();
-			*dump_data.publisher_id = GPS_;
+			dump_data->publisher_id = GPS_;
 			_dump_communication_pub.publish(*dump_data);
 			dump_data->len = 0;
 		}
@@ -1217,7 +1217,7 @@ GPS::publishSatelliteInfo()
 {
 	if (_instance == Instance::Main) {
 		if (_p_report_sat_info != nullptr) {
-			*_p_report_sat_info.publisher_id = GPS_;
+			_p_report_sat_info->publisher_id = GPS_;
 			_report_sat_info_pub.publish(*_p_report_sat_info);
 		}
 
