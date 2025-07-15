@@ -284,6 +284,7 @@ void ExternalChecks::update()
 		arming_check_request_s request{};
 		request.request_id = ++_current_request_id;
 		request.timestamp = hrt_absolute_time();
+		request.publisher_id = COMMANDER;
 		_arming_check_request_pub.publish(request);
 	}
 }

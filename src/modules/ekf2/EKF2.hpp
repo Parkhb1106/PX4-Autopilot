@@ -256,6 +256,7 @@ private:
 			T status_out{status};
 			status_out.estimator_instance = _instance;
 			status_out.timestamp = hrt_absolute_time();
+			status_out.publisher_id = EKF2_;
 			pub.publish(status_out);
 
 			// record timestamp sample

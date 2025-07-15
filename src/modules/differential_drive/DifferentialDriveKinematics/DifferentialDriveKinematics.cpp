@@ -64,6 +64,7 @@ void DifferentialDriveKinematics::allocate()
 	actuator_motors.reversible_flags = _param_r_rev.get(); // should be 3 see rc.rover_differential_defaults
 	wheel_speeds.copyTo(actuator_motors.control);
 	actuator_motors.timestamp = now;
+	actuator_motors.publisher_id = DIFFERENTIAL_DRIVE;
 	_actuator_motors_pub.publish(actuator_motors);
 }
 

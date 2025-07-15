@@ -116,6 +116,7 @@ void DifferentialDriveGuidance::computeGuidance(float yaw, float angular_velocit
 	output.closed_loop_speed_control = output.closed_loop_yaw_rate_control = true;
 	output.timestamp = hrt_absolute_time();
 
+	output.publisher_id = DIFFERENTIAL_DRIVE;
 	_differential_drive_setpoint_pub.publish(output);
 
 	_current_waypoint = current_waypoint;

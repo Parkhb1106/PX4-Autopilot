@@ -94,6 +94,7 @@ bool HealthAndArmingChecks::update(bool force_reporting)
 		health_report_s health_report;
 		_reporter.getHealthReport(health_report);
 		health_report.timestamp = hrt_absolute_time();
+		health_report.publisher_id = COMMANDER;
 		_health_report_pub.publish(health_report);
 	}
 
@@ -102,6 +103,7 @@ bool HealthAndArmingChecks::update(bool force_reporting)
 
 	if ((now > _failsafe_flags.timestamp + 500_ms) || results_changed) {
 		_failsafe_flags.timestamp = hrt_absolute_time();
+		_failsafe_flags.publisher_id = COMMANDER;
 		_failsafe_flags_pub.publish(_failsafe_flags);
 	}
 

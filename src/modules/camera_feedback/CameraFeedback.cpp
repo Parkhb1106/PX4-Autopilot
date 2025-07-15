@@ -149,6 +149,7 @@ CameraFeedback::Run()
 
 		capture.result = 1;
 
+		capture.publisher_id = CAMERA_FEEDBACK;
 		_capture_pub.publish(capture);
 	}
 }

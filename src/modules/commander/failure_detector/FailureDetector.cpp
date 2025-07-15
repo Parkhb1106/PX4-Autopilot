@@ -127,6 +127,7 @@ void FailureInjector::update()
 				     vehicle_command_ack_s::VEHICLE_CMD_RESULT_ACCEPTED :
 				     vehicle_command_ack_s::VEHICLE_CMD_RESULT_UNSUPPORTED;
 			ack.timestamp = hrt_absolute_time();
+			ack.publisher_id = COMMANDER;
 			_command_ack_pub.publish(ack);
 		}
 	}

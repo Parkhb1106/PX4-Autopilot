@@ -754,6 +754,7 @@ void EKF2::Run()
 		}
 
 		// publish ekf2_timestamps
+		ekf2_timestamps.publisher_id = EKF2_;
 		_ekf2_timestamps_pub.publish(ekf2_timestamps);
 	}
 
@@ -954,12 +955,14 @@ void EKF2::PublishAttitude(const hrt_abstime &timestamp)
 
 		_ekf.get_quat_reset(&att.delta_q_reset[0], &att.quat_reset_counter);
 		att.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+		att.publisher_id = EKF2_;
 		_attitude_pub.publish(att);
 
 	}  else if (_replay_mode) {
 		// in replay mode we have to tell the replay module not to wait for an update
 		// we do this by publishing an attitude with zero timestamp
 		vehicle_attitude_s att{};
+		att.publisher_id = EKF2_;
 		_attitude_pub.publish(att);
 	}
 }
@@ -1037,6 +1040,7 @@ void EKF2::PublishEvPosBias(const hrt_abstime &timestamp)
 		if ((bias_vec - _last_ev_bias_published).longerThan(0.01f)) {
 			bias.timestamp_sample = _ekf.aid_src_ev_hgt().timestamp_sample;
 			bias.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+			bias.publisher_id = EKF2_;
 			_estimator_ev_pos_bias_pub.publish(bias);
 
 			_last_ev_bias_published = Vector3f(bias.bias);
@@ -1057,6 +1061,7 @@ estimator_bias_s EKF2::fillEstimatorBiasMsg(const BiasEstimator::status &status,
 	bias.innov_var = status.innov_var;
 	bias.innov_test_ratio = status.innov_test_ratio;
 	bias.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	bias.publisher_id = EKF2_;
 
 	return bias;
 }
@@ -1186,6 +1191,7 @@ void EKF2::PublishGlobalPosition(const hrt_abstime &timestamp)
 					    || _ekf.control_status_flags().wind_dead_reckoning;
 
 		global_pos.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+		global_pos.publisher_id = EKF2_;
 		_global_position_pub.publish(global_pos);
 	}
 }
@@ -1220,6 +1226,7 @@ void EKF2::PublishGpsStatus(const hrt_abstime &timestamp)
 	estimator_gps_status.check_fail_max_vert_spd_err = _ekf.gps_check_fail_status_flags().vspeed;
 
 	estimator_gps_status.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	estimator_gps_status.publisher_id = EKF2_;
 	_estimator_gps_status_pub.publish(estimator_gps_status);
 
 
@@ -1321,6 +1328,7 @@ void EKF2::PublishInnovations(const hrt_abstime &timestamp)
 #endif // CONFIG_EKF2_RANGE_FINDER
 
 	innovations.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	innovations.publisher_id = EKF2_;
 	_estimator_innovations_pub.publish(innovations);
 
 	// calculate noise filtered velocity innovations which are used for pre-flight checking
@@ -1455,6 +1463,7 @@ void EKF2::PublishInnovationTestRatios(const hrt_abstime &timestamp)
 #endif // CONFIG_EKF2_RANGE_FINDER
 
 	test_ratios.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	test_ratios.publisher_id = EKF2_;
 	_estimator_innovation_test_ratios_pub.publish(test_ratios);
 }
 
@@ -1552,6 +1561,7 @@ void EKF2::PublishInnovationVariances(const hrt_abstime &timestamp)
 #endif // CONFIG_EKF2_RANGE_FINDER
 
 	variances.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	variances.publisher_id = EKF2_;
 	_estimator_innovation_variances_pub.publish(variances);
 }
 
@@ -1658,6 +1668,7 @@ void EKF2::PublishLocalPosition(const hrt_abstime &timestamp)
 
 	// publish vehicle local position data
 	lpos.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	lpos.publisher_id = EKF2_;
 	_local_position_pub.publish(lpos);
 }
 
@@ -1700,6 +1711,7 @@ void EKF2::PublishOdometry(const hrt_abstime &timestamp, const imuSample &imu_sa
 
 	// publish vehicle odometry data
 	odom.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	odom.publisher_id = EKF2_;
 	_odometry_pub.publish(odom);
 }
 
@@ -1766,6 +1778,7 @@ void EKF2::PublishSensorBias(const hrt_abstime &timestamp)
 #endif // CONFIG_EKF2_MAGNETOMETER
 
 		bias.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+		bias.publisher_id = EKF2_;
 		_estimator_sensor_bias_pub.publish(bias);
 
 		_last_sensor_bias_published = bias.timestamp;
@@ -1782,6 +1795,7 @@ void EKF2::PublishStates(const hrt_abstime &timestamp)
 	states.n_states = state_vector.size();
 	_ekf.covariances_diagonal().copyTo(states.covariances);
 	states.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	states.publisher_id = EKF2_;
 	_estimator_states_pub.publish(states);
 }
 
@@ -1843,6 +1857,7 @@ void EKF2::PublishStatus(const hrt_abstime &timestamp)
 #endif // CONFIG_EKF2_MAGNETOMETER
 
 	status.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+	status.publisher_id = EKF2_;
 	_estimator_status_pub.publish(status);
 }
 
@@ -1944,6 +1959,7 @@ void EKF2::PublishStatusFlags(const hrt_abstime &timestamp)
 		status_flags.reject_optflow_y                = _ekf.innov_check_fail_status_flags().reject_optflow_Y;
 
 		status_flags.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
+		status_flags.publisher_id = EKF2_;
 		_estimator_status_flags_pub.publish(status_flags);
 
 		_last_status_flags_publish = status_flags.timestamp;
@@ -1967,6 +1983,7 @@ void EKF2::PublishYawEstimatorStatus(const hrt_abstime &timestamp)
 		yaw_est_test_data.timestamp_sample = _ekf.time_delayed_us();
 		yaw_est_test_data.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
 
+		yaw_est_test_data.publisher_id = EKF2_;
 		_yaw_est_pub.publish(yaw_est_test_data);
 	}
 }
@@ -1998,6 +2015,7 @@ void EKF2::PublishWindEstimate(const hrt_abstime &timestamp)
 		wind.variance_east = wind_vel_var(1);
 		wind.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
 
+		wind.publisher_id = EKF2_;
 		_wind_pub.publish(wind);
 	}
 }
@@ -2026,6 +2044,7 @@ void EKF2::PublishOpticalFlowVel(const hrt_abstime &timestamp)
 
 		flow_vel.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
 
+		flow_vel.publisher_id = EKF2_;
 		_estimator_optical_flow_vel_pub.publish(flow_vel);
 
 		_optical_flow_vel_pub_last = timestamp_sample;

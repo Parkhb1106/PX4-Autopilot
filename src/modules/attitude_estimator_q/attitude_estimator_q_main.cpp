@@ -325,6 +325,7 @@ void AttitudeEstimatorQ::update_vehicle_attitude()
 
 		/* the instance count is not used here */
 		vehicle_attitude.timestamp = hrt_absolute_time();
+		vehicle_attitude.publisher_id = ATTITUDE_ESTIMATOR_Q;
 		_vehicle_attitude_pub.publish(vehicle_attitude);
 	}
 }

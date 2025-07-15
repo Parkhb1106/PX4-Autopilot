@@ -120,6 +120,7 @@ void DifferentialDrive::Run()
 				}
 
 				setpoint.timestamp = now;
+				setpoint.publisher_id = DIFFERENTIAL_DRIVE;
 				_differential_drive_setpoint_pub.publish(setpoint);
 			}
 		}

@@ -88,6 +88,7 @@ static void set_motor_actuators(uORB::Publication<actuator_test_s> &publisher, f
 
 	for (int i = 0; i < actuator_test_s::MAX_NUM_MOTORS; ++i) {
 		actuator_test.function = actuator_test_s::FUNCTION_MOTOR1 + i;
+		actuator_test.publisher_id = COMMANDER;
 		publisher.publish(actuator_test);
 	}
 }

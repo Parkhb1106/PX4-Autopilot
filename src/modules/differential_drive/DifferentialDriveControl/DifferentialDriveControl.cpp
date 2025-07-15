@@ -105,5 +105,6 @@ void DifferentialDriveControl::control(float dt)
 	}
 
 	differential_drive_control_output.timestamp = hrt_absolute_time();
+	differential_drive_control_output.publisher_id = DIFFERENTIAL_DRIVE;
 	_differential_drive_control_output_pub.publish(differential_drive_control_output);
 }
