@@ -2350,6 +2350,7 @@ Mavlink::task_main(int argc, char *argv[])
 						command_ack.target_system = vehicle_cmd.source_system;
 						command_ack.target_component = vehicle_cmd.source_component;
 						command_ack.timestamp = vehicle_cmd.timestamp;
+						command_ack.publisher_id = MAVLINK;
 						_vehicle_command_ack_pub.publish(command_ack);
 					}
 				}
@@ -2681,6 +2682,7 @@ void Mavlink::publish_telemetry_status()
 
 	// telemetry_status is also updated from the receiver thread, but never the same fields
 	_tstatus.timestamp = hrt_absolute_time();
+	_tstatus.publisher_id = MAVLINK;
 	_telemetry_status_pub.publish(_tstatus);
 	_tstatus_updated = false;
 }

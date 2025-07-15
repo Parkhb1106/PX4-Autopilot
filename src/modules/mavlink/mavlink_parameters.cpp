@@ -87,6 +87,7 @@ MavlinkParametersManager::handle_message(const mavlink_message_t *msg)
 				req.node_id = req_list.target_component;
 				req.param_index = 0;
 				req.timestamp = hrt_absolute_time();
+				req.publisher_id = MAVLINK;
 				_uavcan_parameter_request_pub.publish(req);
 			}
 
@@ -160,6 +161,7 @@ MavlinkParametersManager::handle_message(const mavlink_message_t *msg)
 				}
 
 				req.timestamp = hrt_absolute_time();
+				req.publisher_id = MAVLINK;
 				_uavcan_parameter_request_pub.publish(req);
 			}
 
@@ -273,6 +275,7 @@ MavlinkParametersManager::handle_message(const mavlink_message_t *msg)
 				}
 
 				_rc_param_map.timestamp = hrt_absolute_time();
+				_rc_param_map.publisher_id = MAVLINK;
 				_rc_param_map_pub.publish(_rc_param_map);
 			}
 
@@ -611,6 +614,7 @@ void MavlinkParametersManager::request_next_uavcan_parameter()
 	if (!_uavcan_waiting_for_request_response && _uavcan_open_request_list != nullptr) {
 		uavcan_parameter_request_s req = _uavcan_open_request_list->req;
 
+		req.publisher_id = MAVLINK;
 		_uavcan_parameter_request_pub.publish(req);
 
 		_uavcan_waiting_for_request_response = true;

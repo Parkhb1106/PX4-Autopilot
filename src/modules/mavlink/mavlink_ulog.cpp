@@ -262,5 +262,6 @@ void MavlinkULog::publish_ack(uint16_t sequence)
 	ack.timestamp = hrt_absolute_time();
 	ack.msg_sequence = sequence;
 
+	ack.publisher_id = MAVLINK;
 	_ulog_stream_ack_pub.publish(ack);
 }

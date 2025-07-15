@@ -184,6 +184,7 @@ MavlinkMissionManager::update_active_mission(dm_item_t mission_dataman_id, uint1
 		}
 	}
 
+	mission.publisher_id = MAVLINK;
 	_offboard_mission_pub.publish(mission);
 }
 
