@@ -663,6 +663,7 @@ UavcanNode::handle_time_sync(const uavcan::TimerEvent &)
 	 * Publish the sync message now, even if we're not a higher priority master.
 	 * Other nodes will be able to pick the right master anyway.
 	 */
+	
 	_time_sync_master.publish();
 }
 
@@ -987,6 +988,7 @@ UavcanNode::Run()
 			ack.target_system = cmd.source_system;
 			ack.target_component = cmd.source_component;
 			ack.timestamp = hrt_absolute_time();
+			ack.publisher_id = UAVCAN;
 			_command_ack_pub.publish(ack);
 		}
 	}
@@ -1210,6 +1212,7 @@ UavcanNode::cb_getset(const uavcan::ServiceCallResult<uavcan::protocol::param::G
 				response.int_value = param.value.to<uavcan::protocol::param::Value::Tag::boolean_value>();
 			}
 
+			response.publisher_id = UAVCAN;
 			_param_response_pub.publish(response);
 
 		} else {

@@ -150,6 +150,7 @@ UavcanEscController::esc_status_sub_cb(const uavcan::ReceivedDataStructure<uavca
 		_esc_status.esc_online_flags = check_escs_status();
 		_esc_status.esc_armed_flags = (1 << _rotor_count) - 1;
 		_esc_status.timestamp = hrt_absolute_time();
+		_esc_status.publisher_id = UAVCAN;
 		_esc_status_pub.publish(_esc_status);
 	}
 }

@@ -91,6 +91,7 @@ private:
 
 		actuator_armed.prearmed = true;
 		actuator_armed.timestamp = hrt_absolute_time();
+		actuator_armed.publisher_id = UAVCANNODE;
 		_actuator_armed_pub.publish(actuator_armed);
 	}
 

@@ -203,6 +203,7 @@ void PCF8583::RunImpl()
 	msg.indicated_frequency_rpm = indicated_rpm;
 	msg.estimated_accurancy_rpm = estimated_accurancy;
 	msg.timestamp = hrt_absolute_time();
+	msg.publisher_id = PCF8583;
 	_rpm_pub.publish(msg);
 
 	//check counter range

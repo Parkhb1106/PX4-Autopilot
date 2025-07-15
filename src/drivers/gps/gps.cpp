@@ -685,6 +685,7 @@ void GPS::dumpGpsData(uint8_t *data, size_t len, gps_dump_comm_mode_t mode, bool
 			}
 
 			dump_data->timestamp = hrt_absolute_time();
+			*dump_data.publisher_id = GPS_;
 			_dump_communication_pub.publish(*dump_data);
 			dump_data->len = 0;
 		}
@@ -1183,6 +1184,7 @@ GPS::publish()
 		_report_gps_pos.selected_rtcm_instance = _selected_rtcm_instance;
 		_report_gps_pos.rtcm_injection_rate = _rate_rtcm_injection;
 
+		_report_gps_pos.publisher_id = GPS_;
 		_report_gps_pos_pub.publish(_report_gps_pos);
 		// Heading/yaw data can be updated at a lower rate than the other navigation data.
 		// The uORB message definition requires this data to be set to a NAN if no new valid data is available.
@@ -1215,6 +1217,7 @@ GPS::publishSatelliteInfo()
 {
 	if (_instance == Instance::Main) {
 		if (_p_report_sat_info != nullptr) {
+			*_p_report_sat_info.publisher_id = GPS_;
 			_report_sat_info_pub.publish(*_p_report_sat_info);
 		}
 
@@ -1252,6 +1255,7 @@ GPS::publishRTCMCorrections(uint8_t *data, size_t len)
 
 		memcpy(gps_inject_data.data, &data[written], gps_inject_data.len);
 
+		gps_inject_data.publisher_id = GPS_;
 		_gps_inject_data_pub.publish(gps_inject_data);
 
 		written = written + gps_inject_data.len;
@@ -1263,6 +1267,7 @@ GPS::publishRelativePosition(sensor_gnss_relative_s &gnss_relative)
 {
 	gnss_relative.device_id = get_device_id();
 	gnss_relative.timestamp = hrt_absolute_time();
+	gnss_relative.publisher_id = GPS_;
 	_sensor_gnss_relative_pub.publish(gnss_relative);
 }
 

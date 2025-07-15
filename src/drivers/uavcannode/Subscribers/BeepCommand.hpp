@@ -86,6 +86,7 @@ private:
 		tune_control.duration = uavcan::uint32_t(1000000 * msg.duration);
 		tune_control.volume = 0xff;
 		tune_control.timestamp = hrt_absolute_time();
+		tune_control.publisher_id = UAVCANNODE;
 		_tune_control_pub.publish(tune_control);
 	}
 

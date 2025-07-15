@@ -1054,6 +1054,7 @@ void IridiumSBD::publish_iridium_status()
 
 	// publish the status if it changed
 	if (need_to_publish) {
+		_status.publisher_id = IRIDIUMSBD;
 		_iridiumsbd_status_pub.publish(_status);
 	}
 }

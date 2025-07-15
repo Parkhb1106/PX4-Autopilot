@@ -96,6 +96,7 @@ private:
 
 		}
 
+		actuator_motors.publisher_id = UAVCANNODE;
 		_actuator_motors_pub.publish(actuator_motors);
 
 	}

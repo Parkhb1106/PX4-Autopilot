@@ -581,6 +581,7 @@ int Voxl2IO::receive_sbus()
 				}
 
 				input_rc.timestamp_last_signal = _rc_last_valid;
+				input_rc.publisher_id = VOXL2_IO;
 				_rc_pub.publish(input_rc);
 
 				_bytes_received += res;

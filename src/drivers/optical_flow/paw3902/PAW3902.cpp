@@ -449,6 +449,7 @@ void PAW3902::RunImpl()
 					if (publish || (hrt_elapsed_time(&_last_publish) >= kBackupScheduleIntervalUs)) {
 
 						sensor_optical_flow.timestamp = hrt_absolute_time();
+						sensor_optical_flow.publisher_id = PAW3902;
 						_sensor_optical_flow_pub.publish(sensor_optical_flow);
 
 						_last_publish = sensor_optical_flow.timestamp_sample;

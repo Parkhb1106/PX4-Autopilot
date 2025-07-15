@@ -455,6 +455,7 @@ void ADIS16448::RunImpl()
 						sensor_baro.temperature = temperature;
 						sensor_baro.error_count = error_count;
 						sensor_baro.timestamp = hrt_absolute_time();
+						sensor_baro.publisher_id = ADIS16448;
 						_sensor_baro_pub.publish(sensor_baro);
 					}
 

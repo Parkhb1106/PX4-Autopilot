@@ -224,6 +224,7 @@ void VectorNav::sensorCallback(VnUartPacket *packet)
 		sensor_baro.pressure = pressure;
 		sensor_baro.temperature = temperature;
 		sensor_baro.timestamp = hrt_absolute_time();
+		sensor_baro.publisher_id = VECTORNAV;
 		_sensor_baro_pub.publish(sensor_baro);
 		perf_count(_baro_pub_interval_perf);
 
@@ -239,6 +240,7 @@ void VectorNav::sensorCallback(VnUartPacket *packet)
 		attitude.q[2] = quaternion.c[1];
 		attitude.q[3] = quaternion.c[2];
 		attitude.timestamp = hrt_absolute_time();
+		attitude.publisher_id = VECTORNAV;
 		_attitude_pub.publish(attitude);
 		perf_count(_attitude_pub_interval_perf);
 
@@ -332,6 +334,7 @@ void VectorNav::sensorCallback(VnUartPacket *packet)
 
 			local_position.unaided_heading = NAN;
 			local_position.timestamp = hrt_absolute_time();
+			local_position.publisher_id = VECTORNAV;
 			_local_position_pub.publish(local_position);
 			perf_count(_local_position_pub_interval_perf);
 
@@ -348,6 +351,7 @@ void VectorNav::sensorCallback(VnUartPacket *packet)
 			global_position.epv = positionUncertaintyEstimated;
 
 			global_position.timestamp = hrt_absolute_time();
+			global_position.publisher_id = VECTORNAV;
 			_global_position_pub.publish(global_position);
 			perf_count(_global_position_pub_interval_perf);
 		}
@@ -377,6 +381,7 @@ void VectorNav::sensorCallback(VnUartPacket *packet)
 			estimator_status.gyro_device_id = _px4_gyro.get_device_id();
 
 			estimator_status.timestamp = hrt_absolute_time();
+			estimator_status.publisher_id = VECTORNAV;
 			_estimator_status_pub.publish(estimator_status);
 
 		}
@@ -455,6 +460,7 @@ void VectorNav::sensorCallback(VnUartPacket *packet)
 			sensor_gps.s_variance_m_s = velocityUncertaintyGps;
 
 			sensor_gps.timestamp = hrt_absolute_time();
+			sensor_gps.publisher_id = VECTORNAV;
 			_sensor_gps_pub.publish(sensor_gps);
 			perf_count(_gnss_pub_interval_perf);
 		}
@@ -721,6 +727,7 @@ void VectorNav::Run()
 					sensor_selection.accel_device_id = _px4_accel.get_device_id();
 					sensor_selection.gyro_device_id = _px4_gyro.get_device_id();
 					sensor_selection.timestamp = hrt_absolute_time();
+					sensor_selection.publisher_id = VECTORNAV;
 					_sensor_selection_pub.publish(sensor_selection);
 				}
 		}

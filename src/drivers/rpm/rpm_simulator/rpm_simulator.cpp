@@ -70,6 +70,7 @@ int rpm_simulator_main(int argc, char *argv[])
 	rpm.estimated_accurancy_rpm = frequency / 100.0f;
 
 	// Publish data and let the user know what was published
+	rpm.publisher_id = RPM_SIMULATOR;
 	rpm_pub.publish(rpm);
 	print_message(ORB_ID(rpm), rpm);
 

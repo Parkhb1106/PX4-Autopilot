@@ -99,6 +99,7 @@ private:
 			}
 		}
 
+		actuator_servos.publisher_id = UAVCANNODE;
 		_actuator_servos_pub.publish(actuator_servos);
 
 	}

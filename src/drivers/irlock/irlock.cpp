@@ -217,6 +217,7 @@ int IRLOCK::read_device()
 		orb_report.size_x    = report.targets[0].size_x;
 		orb_report.size_y    = report.targets[0].size_y;
 
+		orb_report.publisher_id = IRLOCK;
 		_irlock_report_topic.publish(orb_report);
 	}
 

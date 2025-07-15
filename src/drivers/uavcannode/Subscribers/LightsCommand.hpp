@@ -138,6 +138,7 @@ private:
 				}
 
 				led_control.timestamp = hrt_absolute_time();
+				led_control.publisher_id = UAVCANNODE;
 				_led_control_pub.publish(led_control);
 			}
 		}
