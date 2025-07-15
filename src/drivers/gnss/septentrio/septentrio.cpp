@@ -1540,6 +1540,7 @@ void SeptentrioDriver::publish()
 	_message_gps_state.selected_rtcm_instance = _selected_rtcm_instance;
 	_message_gps_state.rtcm_injection_rate = rtcm_injection_frequency();
 
+	_message_gps_state.publisher_id = SEPTENTRIO;
 	_sensor_gps_pub.publish(_message_gps_state);
 
 	if (_message_gps_state.spoofing_state != _spoofing_state) {
@@ -1565,6 +1566,7 @@ void SeptentrioDriver::publish()
 void SeptentrioDriver::publish_satellite_info()
 {
 	if (_message_satellite_info) {
+		*_message_satellite_info.publisher_id = SEPTENTRIO;
 		_satellite_info_pub.publish(*_message_satellite_info);
 	}
 }
@@ -1602,6 +1604,7 @@ void SeptentrioDriver::publish_rtcm_corrections(uint8_t *data, size_t len)
 
 		memcpy(gps_inject_data.data, &data[written], gps_inject_data.len);
 
+		gps_inject_data.publisher_id = SEPTENTRIO;
 		_gps_inject_data_pub.publish(gps_inject_data);
 
 		written = written + gps_inject_data.len;
@@ -1631,6 +1634,7 @@ void SeptentrioDriver::dump_gps_data(const uint8_t *data, size_t len, DataDirect
 			}
 
 			dump_data->timestamp = hrt_absolute_time();
+			*dump_data.publisher_id = SEPTENTRIO;
 			_gps_dump_pub.publish(*dump_data);
 			dump_data->len = 0;
 		}

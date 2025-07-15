@@ -166,6 +166,7 @@ int MS4515::collect()
 		differential_pressure.temperature = temperature_c;
 		differential_pressure.error_count = perf_event_count(_comms_errors);
 		differential_pressure.timestamp = hrt_absolute_time();
+		differential_pressure.publisher_id = MS4515;
 		_differential_pressure_pub.publish(differential_pressure);
 	}
 

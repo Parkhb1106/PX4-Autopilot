@@ -716,6 +716,7 @@ void SF45LaserSerial::sf45_process_replies(float *distance_m)
 
 			_previous_bin = current_bin;
 
+			_obstacle_map_msg.publisher_id = LIGHTWARE_SF45_SERIAL;
 			_obstacle_distance_pub.publish(_obstacle_map_msg);
 
 			break;

@@ -235,6 +235,7 @@ int ASP5033::collect()
 		differential_pressure.temperature = _temperature ;
 		differential_pressure.error_count = perf_event_count(_comms_errors);
 		differential_pressure.timestamp = timestamp_sample;
+		differential_pressure..publisher_id = ASP5033;
 		_differential_pressure_pub.publish(differential_pressure);
 
 	}

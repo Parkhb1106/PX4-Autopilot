@@ -582,6 +582,7 @@ void DShot::handle_vehicle_commands()
 			}
 
 			command_ack.timestamp = hrt_absolute_time();
+			command_ack.publisher_id = DSHOT;
 			_command_ack_pub.publish(command_ack);
 		}
 	}
