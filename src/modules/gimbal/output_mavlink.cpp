@@ -85,6 +85,7 @@ void OutputMavlinkV1::update(const ControlData &control_data, bool new_setpoints
 			vehicle_command.param3 = _stabilize[1] ? 1.0f : 0.0f;
 			vehicle_command.param4 = _stabilize[2] ? 1.0f : 0.0f;
 
+			vehicle_command.publisher_id = GIMBAL;
 			_gimbal_v1_command_pub.publish(vehicle_command);
 		}
 	}
@@ -104,6 +105,7 @@ void OutputMavlinkV1::update(const ControlData &control_data, bool new_setpoints
 	vehicle_command.param3 = math::degrees(_angle_outputs[2] + math::radians(_parameters.mnt_off_yaw));
 	vehicle_command.param7 = 2.0f; // MAV_MOUNT_MODE_MAVLINK_TARGETING;
 
+	vehicle_command.publisher_id = GIMBAL;
 	_gimbal_v1_command_pub.publish(vehicle_command);
 
 	_stream_device_attitude_status();
@@ -129,6 +131,7 @@ void OutputMavlinkV1::_stream_device_attitude_status()
 	q.copyTo(attitude_status.q);
 
 	attitude_status.failure_flags = 0;
+	attitude_status.publisher_id = GIMBAL;
 	_attitude_status_pub.publish(attitude_status);
 }
 
@@ -182,6 +185,7 @@ void OutputMavlinkV2::_request_gimbal_device_information()
 	vehicle_cmd.from_external = false;
 
 	uORB::Publication<vehicle_command_s> vehicle_command_pub{ORB_ID(vehicle_command)};
+	vehicle_cmd.publisher_id = GIMBAL;
 	vehicle_command_pub.publish(vehicle_cmd);
 }
 
@@ -244,6 +248,7 @@ void OutputMavlinkV2::_publish_gimbal_device_set_attitude()
 		set_attitude.flags |= gimbal_device_set_attitude_s::GIMBAL_DEVICE_FLAGS_YAW_LOCK;
 	}
 
+	set_attitude.publisher_id = GIMBAL;
 	_gimbal_device_set_attitude_pub.publish(set_attitude);
 }
 

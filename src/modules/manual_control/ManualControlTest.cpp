@@ -98,9 +98,9 @@ public:
 TEST_F(SwitchTest, KillSwitch)
 {
 	// GIVEN: valid stick input from RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	// and kill switch in off position
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .kill_switch = manual_control_switches_s::SWITCH_POS_ON});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .kill_switch = manual_control_switches_s::SWITCH_POS_ON, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: the stick input is published for use
@@ -110,7 +110,7 @@ TEST_F(SwitchTest, KillSwitch)
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// WHEN: the kill switch is switched on
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .kill_switch = manual_control_switches_s::SWITCH_POS_OFF});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .kill_switch = manual_control_switches_s::SWITCH_POS_OFF, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: a kill action request is published
@@ -118,7 +118,7 @@ TEST_F(SwitchTest, KillSwitch)
 	EXPECT_EQ(_action_request_sub.get().action, ACTION_UNKILL);
 
 	// WHEN: the kill switch is switched off again
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .kill_switch = manual_control_switches_s::SWITCH_POS_ON});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .kill_switch = manual_control_switches_s::SWITCH_POS_ON, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: an unkill action request is published
@@ -129,9 +129,9 @@ TEST_F(SwitchTest, KillSwitch)
 TEST_F(SwitchTest, TransitionSwitch)
 {
 	// GIVEN: valid stick input from RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	// and transition switch in off position
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: the stick input is published for use
@@ -141,7 +141,7 @@ TEST_F(SwitchTest, TransitionSwitch)
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// WHEN: the transition switch is switched on
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_ON});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_ON, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: a forward transition action request is published
@@ -149,7 +149,7 @@ TEST_F(SwitchTest, TransitionSwitch)
 	EXPECT_EQ(_action_request_sub.get().action, ACTION_VTOL_TRANSITION_TO_FIXEDWING);
 
 	// WHEN: the kill switch is switched off again
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: an backward transition action request is published
@@ -160,9 +160,9 @@ TEST_F(SwitchTest, TransitionSwitch)
 TEST_F(SwitchTest, TransitionSwitchStaysRcLoss)
 {
 	// GIVEN: valid stick input from the RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	// and transition switch in off position
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: the stick input is published for use
@@ -181,7 +181,7 @@ TEST_F(SwitchTest, TransitionSwitchStaysRcLoss)
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// WHEN: RC signal comes back
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: the stick input is avaialble again
@@ -194,9 +194,9 @@ TEST_F(SwitchTest, TransitionSwitchStaysRcLoss)
 TEST_F(SwitchTest, TransitionSwitchChangesRcLoss)
 {
 	// GIVEN: valid stick input from the RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	// and transition switch in off position
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_OFF, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: the stick input is published for use
@@ -215,8 +215,8 @@ TEST_F(SwitchTest, TransitionSwitchChangesRcLoss)
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// WHEN: RC signal comes back with the switch on
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_ON});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .transition_switch = manual_control_switches_s::SWITCH_POS_ON. .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 100_ms);
 
 	// THEN: the stick input is avaialble again
@@ -229,9 +229,9 @@ TEST_F(SwitchTest, TransitionSwitchChangesRcLoss)
 TEST_F(SwitchTest, ModeSwitch)
 {
 	// GIVEN: valid stick input from RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	// and mode switch in position 1
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 
 	// THEN: the stick input is published for use
@@ -243,7 +243,7 @@ TEST_F(SwitchTest, ModeSwitch)
 	EXPECT_EQ(_action_request_sub.get().mode, TestManualControl::navStateFromParam(NAVIGATION_STATE_ACRO));
 
 	// WHEN: the mode switch is switched to 2
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_2});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_2, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: action requested to switch to mode 2
 	EXPECT_TRUE(_action_request_sub.update());
@@ -251,7 +251,7 @@ TEST_F(SwitchTest, ModeSwitch)
 	EXPECT_EQ(_action_request_sub.get().mode, TestManualControl::navStateFromParam(NAVIGATION_STATE_MANUAL));
 
 	// WHEN: the mode switch is switched to 3
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_3});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_3, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: action requested to switch to mode 3
 	EXPECT_TRUE(_action_request_sub.update());
@@ -259,7 +259,7 @@ TEST_F(SwitchTest, ModeSwitch)
 	EXPECT_EQ(_action_request_sub.get().mode, TestManualControl::navStateFromParam(NAVIGATION_STATE_ALTCTL));
 
 	// WHEN: the mode switch is switched to 4
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_4});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_4, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: action requested to switch to mode 4
 	EXPECT_TRUE(_action_request_sub.update());
@@ -267,7 +267,7 @@ TEST_F(SwitchTest, ModeSwitch)
 	EXPECT_EQ(_action_request_sub.get().mode, TestManualControl::navStateFromParam(NAVIGATION_STATE_POSCTL));
 
 	// WHEN: the mode switch is switched to 5
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_5});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_5, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: action requested to switch to mode 5
 	EXPECT_TRUE(_action_request_sub.update());
@@ -275,7 +275,7 @@ TEST_F(SwitchTest, ModeSwitch)
 	EXPECT_EQ(_action_request_sub.get().mode, TestManualControl::navStateFromParam(NAVIGATION_STATE_AUTO_LOITER));
 
 	// WHEN: the mode switch is switched to 6
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_6});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_6, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: action requested to switch to mode 6
 	EXPECT_TRUE(_action_request_sub.update());
@@ -286,19 +286,19 @@ TEST_F(SwitchTest, ModeSwitch)
 TEST_F(SwitchTest, ModeSwitchInitialization)
 {
 	// GIVEN: the mode switch is already in position 1 but there's no valid RC stick input yet
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: there is no action requested
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// GIVEN: new valid stick input from RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: there is still no action requested because the switches were not updated yet
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// GIVEN: switch update with the same positions
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: the mode switch is requested
 	EXPECT_TRUE(_action_request_sub.update());
@@ -310,19 +310,19 @@ TEST_F(SwitchTest, ModeSwitchInitializationArmed)
 {
 	// GIVEN: vehicle is armed
 	uORB::Publication<vehicle_status_s> vehicle_status_pub{ORB_ID(vehicle_status)};
-	vehicle_status_pub.publish({.arming_state = vehicle_status_s::ARMING_STATE_ARMED});
+	vehicle_status_pub.publish({.arming_state = vehicle_status_s::ARMING_STATE_ARMED, .publisher_id = MANUAL_CONTROL});
 
 	// GIVEN: valid stick input from RC
-	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC});
+	_manual_control_input_pub.publish({.timestamp_sample = _timestamp, .valid = true, .data_source = manual_control_setpoint_s::SOURCE_RC, .publisher_id = MANUAL_CONTROL});
 	// and mode switch in position 1
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_1, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 
 	// THEN: no action requested because the vehicle is flying
 	EXPECT_FALSE(_action_request_sub.update());
 
 	// GIVEN: the switch changes position
-	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_2});
+	_manual_control_switches_pub.publish({.timestamp_sample = _timestamp, .mode_slot = manual_control_switches_s::MODE_SLOT_2, .publisher_id = MANUAL_CONTROL});
 	_manual_control.processInput(_timestamp += 10_ms);
 	// THEN: the mode switch is requested
 	EXPECT_TRUE(_action_request_sub.update());

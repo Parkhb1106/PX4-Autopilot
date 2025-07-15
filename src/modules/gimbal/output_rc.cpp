@@ -79,6 +79,7 @@ void OutputRC::update(const ControlData &control_data, bool new_setpoints, uint8
 				(1.0f / (math::radians(_parameters.mnt_range_yaw / 2.0f))),
 				-1.f, 1.f);
 	gimbal_controls.timestamp = hrt_absolute_time();
+	gimbal_controls.publisher_id = GIMBAL;
 	_gimbal_controls_pub.publish(gimbal_controls);
 
 	_last_update = t;

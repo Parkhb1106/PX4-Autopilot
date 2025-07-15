@@ -122,6 +122,7 @@ void ManualControl::processInput(hrt_abstime now)
 						     || (fabsf(_throttle_diff.update(_selector.setpoint().throttle, dt_s)) > minimum_stick_change);
 
 		_selector.setpoint().timestamp = now;
+		_selector.setpoint().publisher_id = MANUAL_CONTROL;
 		_manual_control_setpoint_pub.publish(_selector.setpoint());
 
 		// Attach scheduling to new samples of the chosen input
@@ -145,6 +146,7 @@ void ManualControl::processInput(hrt_abstime now)
 	} else {
 		if (!_published_invalid_once) {
 			_published_invalid_once = true;
+			_selector.setpoint().publisher_id = MANUAL_CONTROL;
 			_manual_control_setpoint_pub.publish(_selector.setpoint());
 		}
 
@@ -449,6 +451,7 @@ void ManualControl::sendActionRequest(int8_t action, int8_t source, int8_t mode)
 	action_request.source = source;
 	action_request.mode = mode;
 	action_request.timestamp = hrt_absolute_time();
+	action_request.publisher_id = MANUAL_CONTROL;
 	_action_request_pub.publish(action_request);
 }
 
@@ -457,6 +460,7 @@ void ManualControl::publishLandingGear(int8_t action)
 	landing_gear_s landing_gear{};
 	landing_gear.landing_gear = action;
 	landing_gear.timestamp = hrt_absolute_time();
+	landing_gear.publisher_id = MANUAL_CONTROL;
 	_landing_gear_pub.publish(landing_gear);
 }
 
@@ -470,6 +474,7 @@ void ManualControl::send_camera_mode_command(CameraMode camera_mode)
 
 	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
 	command.timestamp = hrt_absolute_time();
+	command.publisher_id = MANUAL_CONTROL;
 	command_pub.publish(command);
 }
 
@@ -484,6 +489,7 @@ void ManualControl::send_photo_command()
 
 	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
 	command.timestamp = hrt_absolute_time();
+	command.publisher_id = MANUAL_CONTROL;
 	command_pub.publish(command);
 }
 
@@ -504,6 +510,7 @@ void ManualControl::send_video_command()
 
 	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
 	command.timestamp = hrt_absolute_time();
+	command.publisher_id = MANUAL_CONTROL;
 	command_pub.publish(command);
 
 	_video_recording = !_video_recording;

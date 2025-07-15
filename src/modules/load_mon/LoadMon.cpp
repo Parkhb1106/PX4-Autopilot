@@ -236,6 +236,7 @@ void LoadMon::cpuload()
 	cpuload.timestamp = hrt_absolute_time();
 
 	_cpuload_pub.publish(cpuload);
+	cpuload.publisher_id = LOAD_MON;
 
 	// store for next iteration
 #if defined(__PX4_LINUX)
@@ -290,6 +291,7 @@ void LoadMon::stack_usage()
 		task_stack_info.stack_free = stack_free;
 		task_stack_info.timestamp = hrt_absolute_time();
 
+		task_stack_info.publisher_id = LOAD_MON;
 		_task_stack_info_pub.publish(task_stack_info);
 
 		// Found task low on stack, report and exit. Continue here in next cycle.

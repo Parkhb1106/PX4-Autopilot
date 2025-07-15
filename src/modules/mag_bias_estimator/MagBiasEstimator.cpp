@@ -250,6 +250,7 @@ void MagBiasEstimator::publishMagBiasEstimate()
 	}
 
 	mag_bias_est.timestamp = hrt_absolute_time();
+	mag_bias_est.publisher_id = MAG_BIAS_ESTIMATOR;
 	_magnetometer_bias_estimate_pub.publish(mag_bias_est);
 }
 

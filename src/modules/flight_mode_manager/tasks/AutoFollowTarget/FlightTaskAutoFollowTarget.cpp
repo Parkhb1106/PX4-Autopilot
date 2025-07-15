@@ -421,6 +421,7 @@ bool FlightTaskAutoFollowTarget::update()
 
 	follow_target_status.in_emergency_ascent = in_emergency_ascent;
 	follow_target_status.gimbal_pitch = gimbal_pitch;
+	follow_target_status.publisher_id = FLIGHT_MODE_MANAGER;
 	_follow_target_status_pub.publish(follow_target_status);
 
 	_constraints.want_takeoff = _checkTakeoff();
@@ -449,6 +450,7 @@ void FlightTaskAutoFollowTarget::releaseGimbalControl()
 	vehicle_command.confirmation = false;
 	vehicle_command.from_external = false;
 
+	vehicle_command.publisher_id = FLIGHT_MODE_MANAGER;
 	_vehicle_command_pub.publish(vehicle_command);
 }
 
@@ -469,6 +471,7 @@ float FlightTaskAutoFollowTarget::pointGimbalAt(const float xy_distance, const f
 	q_gimbal.copyTo(msg.q);
 
 	msg.timestamp = hrt_absolute_time();
+	msg.publisher_id = FLIGHT_MODE_MANAGER;
 	_gimbal_manager_set_attitude_pub.publish(msg);
 
 	return pitch_down_angle;

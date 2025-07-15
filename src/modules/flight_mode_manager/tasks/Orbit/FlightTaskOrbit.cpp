@@ -142,6 +142,7 @@ bool FlightTaskOrbit::sendTelemetry()
 	}
 
 	orbit_status.timestamp = hrt_absolute_time();
+	orbit_status.publisher_id = FLIGHT_MODE_MANAGER;
 	_orbit_status_pub.publish(orbit_status);
 
 	return true;

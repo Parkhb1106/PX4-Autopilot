@@ -441,6 +441,7 @@ FixedwingPositionControl::tecs_status_publish(float alt_sp, float equivalent_air
 
 	tecs_status.timestamp = hrt_absolute_time();
 
+	tecs_status.publisher_id = FW_POS_CONTROL;
 	_tecs_status_pub.publish(tecs_status);
 }
 
@@ -479,6 +480,7 @@ FixedwingPositionControl::status_publish()
 	npfg_status.can_run_factor = _npfg.canRun(_local_pos, _wind_valid);
 	npfg_status.timestamp = hrt_absolute_time();
 
+	npfg_status.publisher_id = FW_POS_CONTROL;
 	_npfg_status_pub.publish(npfg_status);
 
 	pos_ctrl_status.wp_dist = get_distance_to_next_waypoint(_current_latitude, _current_longitude,
@@ -490,6 +492,7 @@ FixedwingPositionControl::status_publish()
 
 	pos_ctrl_status.type = _position_sp_type;
 
+	pos_ctrl_status.publisher_id = FW_POS_CONTROL;
 	_pos_ctrl_status_pub.publish(pos_ctrl_status);
 }
 
@@ -503,6 +506,7 @@ FixedwingPositionControl::landing_status_publish()
 	pos_ctrl_landing_status.abort_status = _landing_abort_status;
 	pos_ctrl_landing_status.timestamp = hrt_absolute_time();
 
+	pos_ctrl_landing_status.publisher_id = FW_POS_CONTROL;
 	_pos_ctrl_landing_status_pub.publish(pos_ctrl_landing_status);
 }
 
@@ -1350,6 +1354,7 @@ void FixedwingPositionControl::publishFigureEightStatus(const position_setpoint_
 	figure_eight_status.y = static_cast<int32_t>(pos_sp.lon * 1e7);
 	figure_eight_status.z = pos_sp.alt;
 
+	figure_eight_status.publisher_id = FW_POS_CONTROL;
 	_figure_eight_status_pub.publish(figure_eight_status);
 }
 #endif // CONFIG_FIGURE_OF_EIGHT
@@ -1629,6 +1634,7 @@ FixedwingPositionControl::control_auto_takeoff(const hrt_abstime &now, const flo
 		launch_detection_status_s launch_detection_status;
 		launch_detection_status.timestamp = now;
 		launch_detection_status.launch_detection_state = _launchDetector.getLaunchDetected();
+		launch_detection_status.publisher_id = FW_POS_CONTROL;
 		_launch_detection_status_pub.publish(launch_detection_status);
 	}
 
@@ -2572,6 +2578,7 @@ FixedwingPositionControl::Run()
 				q.copyTo(_att_sp.q_d);
 
 				_att_sp.timestamp = hrt_absolute_time();
+				_att_sp.publisher_id = FW_POS_CONTROL;
 				_attitude_sp_pub.publish(_att_sp);
 
 				// only publish status in full FW mode
@@ -2597,6 +2604,7 @@ FixedwingPositionControl::Run()
 			landing_gear_s landing_gear = {};
 			landing_gear.landing_gear = _new_landing_gear_position;
 			landing_gear.timestamp = hrt_absolute_time();
+			landing_gear.publisher_id = FW_POS_CONTROL;
 			_landing_gear_pub.publish(landing_gear);
 		}
 
@@ -2606,11 +2614,13 @@ FixedwingPositionControl::Run()
 			normalized_unsigned_setpoint_s flaps_setpoint;
 			flaps_setpoint.normalized_setpoint = _flaps_setpoint;
 			flaps_setpoint.timestamp = hrt_absolute_time();
+			flaps_setpoint.publisher_id = FW_POS_CONTROL;
 			_flaps_setpoint_pub.publish(flaps_setpoint);
 
 			normalized_unsigned_setpoint_s spoilers_setpoint;
 			spoilers_setpoint.normalized_setpoint = _spoilers_setpoint;
 			spoilers_setpoint.timestamp = hrt_absolute_time();
+			spoilers_setpoint.publisher_id = FW_POS_CONTROL;
 			_spoilers_setpoint_pub.publish(spoilers_setpoint);
 		}
 
@@ -2915,6 +2925,7 @@ void FixedwingPositionControl::publishLocalPositionSetpoint(const position_setpo
 	local_position_setpoint.thrust[0] = _att_sp.thrust_body[0];
 	local_position_setpoint.thrust[1] = _att_sp.thrust_body[1];
 	local_position_setpoint.thrust[2] = _att_sp.thrust_body[2];
+	local_position_setpoint.publisher_id = FW_POS_CONTROL;
 	_local_pos_sp_pub.publish(local_position_setpoint);
 }
 
@@ -2934,6 +2945,7 @@ void FixedwingPositionControl::publishOrbitStatus(const position_setpoint_s pos_
 	orbit_status.y = static_cast<double>(pos_sp.lon);
 	orbit_status.z = pos_sp.alt;
 	orbit_status.yaw_behaviour = orbit_status_s::ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE;
+	orbit_status.publisher_id = FW_POS_CONTROL;
 	_orbit_status_pub.publish(orbit_status);
 }
 

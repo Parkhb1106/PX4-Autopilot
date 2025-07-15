@@ -351,9 +351,11 @@ void FlightModeManager::generateTrajectorySetpoint(const float dt,
 
 
 	setpoint.timestamp = hrt_absolute_time();
+	setpoint.publisher_id = FLIGHT_MODE_MANAGER;
 	_trajectory_setpoint_pub.publish(setpoint);
 
 	constraints.timestamp = hrt_absolute_time();
+	constraints.publisher_id = FLIGHT_MODE_MANAGER;
 	_vehicle_constraints_pub.publish(constraints);
 
 	// if there's any change in landing gear setpoint publish it
@@ -363,6 +365,7 @@ void FlightModeManager::generateTrajectorySetpoint(const float dt,
 	    && landing_gear.landing_gear != landing_gear_s::GEAR_KEEP) {
 
 		landing_gear.timestamp = hrt_absolute_time();
+		landing_gear.publisher_id = FLIGHT_MODE_MANAGER;
 		_landing_gear_pub.publish(landing_gear);
 	}
 

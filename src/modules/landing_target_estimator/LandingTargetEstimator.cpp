@@ -174,6 +174,7 @@ void LandingTargetEstimator::update()
 				_target_pose.abs_pos_valid = false;
 			}
 
+			_target_pose.publisher_id = LANDING_TARGET_ESTIMATOR;
 			_targetPosePub.publish(_target_pose);
 
 			_last_update = hrt_absolute_time();
@@ -190,6 +191,7 @@ void LandingTargetEstimator::update()
 		_target_innovations.innov_y = innov_y;
 		_target_innovations.innov_cov_y = innov_cov_y;
 
+		_target_innovations.publisher_id = LANDING_TARGET_ESTIMATOR;
 		_targetInnovationsPub.publish(_target_innovations);
 	}
 }
