@@ -118,6 +118,7 @@ public:
 		 */
 
 
+		bat_status.publisher_id = CYPHAL;
 		_battery_status_pub.publish(bat_status);
 		print_message(ORB_ID(battery_status), bat_status);
 	};

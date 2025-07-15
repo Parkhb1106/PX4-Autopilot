@@ -1066,6 +1066,7 @@ void Logger::publish_logger_status()
 				status.buffer_size_bytes = _writer.get_buffer_size_file(log_type);
 				status.num_messages = _num_subscriptions;
 				status.timestamp = hrt_absolute_time();
+				status.publisher_id = LOGGER;
 				_logger_status_pub[i].publish(status);
 			}
 		}
@@ -2389,6 +2390,7 @@ void Logger::ack_vehicle_command(vehicle_command_s *cmd, uint32_t result)
 	vehicle_command_ack.target_component = cmd->source_component;
 
 	uORB::Publication<vehicle_command_ack_s> cmd_ack_pub{ORB_ID(vehicle_command_ack)};
+	vehicle_command_ack.publisher_id = LOGGER;
 	cmd_ack_pub.publish(vehicle_command_ack);
 }
 

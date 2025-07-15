@@ -498,6 +498,7 @@ CameraTrigger::test()
 
 	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
 	vcmd.timestamp = hrt_absolute_time();
+	vcmd.publisher_id = CAMERA_TRIGGER;
 	vcmd_pub.publish(vcmd);
 }
 
@@ -773,6 +774,7 @@ unknown_cmd:
 		command_ack.target_system = cmd.source_system;
 		command_ack.target_component = cmd.source_component;
 		command_ack.timestamp = hrt_absolute_time();
+		command_ack.publisher_id = CAMERA_TRIGGER;
 		_cmd_ack_pub.publish(command_ack);
 	}
 
@@ -802,6 +804,7 @@ CameraTrigger::adjust_roll()
 
 	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
 	vcmd.timestamp = hrt_absolute_time();
+	vcmd.publisher_id = CAMERA_TRIGGER;
 	vcmd_pub.publish(vcmd);
 }
 

@@ -136,6 +136,7 @@ int LogWriterMavlink::publish_message()
 		_ulog_stream_data.flags = _ulog_stream_data.FLAGS_NEED_ACK;
 	}
 
+	_ulog_stream_data.publisher_id = LOGGER;
 	_ulog_stream_pub.publish(_ulog_stream_data);
 
 	if (_need_reliable_transfer) {

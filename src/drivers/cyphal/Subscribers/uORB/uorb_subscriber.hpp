@@ -82,6 +82,7 @@ public:
 			/* Data type specific conversion if necceary  */
 			convert(data);
 
+			*data.publisher_id = CYPHAL;
 			_uorb_pub.publish(*data);
 
 		} else {

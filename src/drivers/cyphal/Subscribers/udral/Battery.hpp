@@ -118,6 +118,7 @@ public:
 			bat_status.remaining = source_ts.value.energy.joule / source_ts.value.full_energy.joule;
 
 			// TODO uORB publication rate limiting
+			bat_status.publisher_id = CYPHAL;
 			_battery_status_pub.publish(bat_status);
 
 		} else if (receive.metadata.port_id == _status_sub._canard_sub.port_id) {
