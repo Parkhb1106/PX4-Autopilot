@@ -2922,13 +2922,15 @@ void MavlinkReceiver::handle_message_statustext(mavlink_message_t *msg)
 		mavlink_msg_statustext_decode(msg, &statustext);
 
 		if (_mavlink_statustext_handler.should_publish_previous(statustext)) {
-			_mavlink_statustext_handler.log_message().publisher_id = MAVLINK;
-			_log_message_pub.publish(_mavlink_statustext_handler.log_message());
+			log_message_s copy_for_pub = _mavlink_statustext_handler.log_message();
+			copy_for_pub.publisher_id = MAVLINK;
+			_log_message_pub.publish(copy_for_pub);
 		}
 
 		if (_mavlink_statustext_handler.should_publish_current(statustext, hrt_absolute_time())) {
-			_mavlink_statustext_handler.log_message().publisher_id = MAVLINK;
-			_log_message_pub.publish(_mavlink_statustext_handler.log_message());
+			log_message_s copy_for_pub = _mavlink_statustext_handler.log_message();
+			copy_for_pub.publisher_id = MAVLINK;
+			_log_message_pub.publish(copy_for_pub);
 		}
 	}
 }
