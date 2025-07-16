@@ -401,6 +401,7 @@ void Tiltrotor::fill_actuator_outputs()
 	tiltrotor_extra_controls.collective_tilt_normalized_setpoint = _tilt_control;
 	tiltrotor_extra_controls.collective_thrust_normalized_setpoint = collective_thrust_normalized_setpoint;
 	tiltrotor_extra_controls.timestamp = hrt_absolute_time();
+	tiltrotor_extra_controls.publisher_id = VTOL_ATT_CONTROL;
 	_tiltrotor_extra_controls_pub.publish(tiltrotor_extra_controls);
 }
 

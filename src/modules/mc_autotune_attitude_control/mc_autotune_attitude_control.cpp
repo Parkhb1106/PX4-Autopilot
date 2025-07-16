@@ -216,6 +216,7 @@ void McAutotuneAttitudeControl::Run()
 		status.att_p = _attitude_p;
 		rate_sp.copyTo(status.rate_sp);
 		status.state = static_cast<int>(_state);
+		status.publisher_id = MC_AUTOTUNE_ATTITUDE_CONTROL;
 		_autotune_attitude_control_status_pub.publish(status);
 
 		_last_publish = now;

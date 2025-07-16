@@ -145,7 +145,7 @@ RoverPositionControl::manual_control_setpoint_poll()
 
 					_att_sp.timestamp = hrt_absolute_time();
 
-
+					_att_sp.publisher_id = ROVER_POS_CONTROL;
 					_attitude_sp_pub.publish(_att_sp);
 
 				} else {
@@ -456,6 +456,7 @@ RoverPositionControl::Run()
 
 					pos_ctrl_status.timestamp = hrt_absolute_time();
 
+					pos_ctrl_status.publisher_id = ROVER_POS_CONTROL;
 					_pos_ctrl_status_pub.publish(pos_ctrl_status);
 				}
 
@@ -484,6 +485,7 @@ RoverPositionControl::Run()
 			v_thrust_sp.xyz[0] = _throttle_control;
 			v_thrust_sp.xyz[1] = 0.0f;
 			v_thrust_sp.xyz[2] = 0.0f;
+			v_thrust_sp.publisher_id = ROVER_POS_CONTROL;
 			_vehicle_thrust_setpoint_pub.publish(v_thrust_sp);
 
 			vehicle_torque_setpoint_s v_torque_sp{};
@@ -491,6 +493,7 @@ RoverPositionControl::Run()
 			v_torque_sp.xyz[0] = 0.f;
 			v_torque_sp.xyz[1] = 0.f;
 			v_torque_sp.xyz[2] = _yaw_control;
+			v_torque_sp.publisher_id = ROVER_POS_CONTROL;
 			_vehicle_torque_setpoint_pub.publish(v_torque_sp);
 		}
 	}

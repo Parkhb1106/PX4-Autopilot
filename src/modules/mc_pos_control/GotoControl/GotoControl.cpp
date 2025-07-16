@@ -122,6 +122,7 @@ void GotoControl::update(const float dt, const matrix::Vector3f &position, const
 	_need_smoother_reset = false;
 
 	trajectory_setpoint.timestamp = goto_setpoint.timestamp;
+	trajectory_setpoint.publisher_id = MC_POS_CONTROL;
 	_trajectory_setpoint_pub.publish(trajectory_setpoint);
 
 	vehicle_constraints_s vehicle_constraints{
@@ -130,6 +131,7 @@ void GotoControl::update(const float dt, const matrix::Vector3f &position, const
 		.speed_down = NAN,
 		.want_takeoff = false
 	};
+	vehicle_constraints.publisher_id = MC_POS_CONTROL;
 	_vehicle_constraints_pub.publish(vehicle_constraints);
 }
 

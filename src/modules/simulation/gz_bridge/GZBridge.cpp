@@ -414,6 +414,7 @@ void GZBridge::barometerCallback(const gz::msgs::FluidPressure &air_pressure)
 	sensor_baro.pressure = air_pressure.pressure();
 	sensor_baro.temperature = this->_temperature;
 	sensor_baro.timestamp = hrt_absolute_time();
+	sensor_baro.publisher_id = GZ_BRIDGE;
 	_sensor_baro_pub.publish(sensor_baro);
 
 	pthread_mutex_unlock(&_node_mutex);
@@ -439,6 +440,7 @@ void GZBridge::airspeedCallback(const gz::msgs::AirSpeedSensor &air_speed)
 	report.differential_pressure_pa = static_cast<float>(air_speed_value); // hPa to Pa;
 	report.temperature = static_cast<float>(air_speed.temperature()) + atmosphere::kAbsoluteNullCelsius; // K to C
 	report.timestamp = hrt_absolute_time();;
+	report.publisher_id = GZ_BRIDGE;
 	_differential_pressure_pub.publish(report);
 
 	this->_temperature = report.temperature;
@@ -484,6 +486,7 @@ void GZBridge::imuCallback(const gz::msgs::IMU &imu)
 	sensor_accel.z = accel_b.Z();
 	sensor_accel.temperature = NAN;
 	sensor_accel.samples = 1;
+	sensor_accel.publisher_id = GZ_BRIDGE;
 	_sensor_accel_pub.publish(sensor_accel);
 
 
@@ -507,6 +510,7 @@ void GZBridge::imuCallback(const gz::msgs::IMU &imu)
 	sensor_gyro.z = gyro_b.Z();
 	sensor_gyro.temperature = NAN;
 	sensor_gyro.samples = 1;
+	sensor_gyro.publisher_id = GZ_BRIDGE;
 	_sensor_gyro_pub.publish(sensor_gyro);
 
 	pthread_mutex_unlock(&_node_mutex);
@@ -557,6 +561,7 @@ void GZBridge::poseInfoCallback(const gz::msgs::Pose_V &pose)
 			vehicle_attitude_groundtruth.q[2] = q_nb.Y();
 			vehicle_attitude_groundtruth.q[3] = q_nb.Z();
 			vehicle_attitude_groundtruth.timestamp = hrt_absolute_time();
+			vehicle_attitude_groundtruth.publisher_id = GZ_BRIDGE;
 			_attitude_ground_truth_pub.publish(vehicle_attitude_groundtruth);
 
 			// publish angular velocity groundtruth
@@ -572,6 +577,7 @@ void GZBridge::poseInfoCallback(const gz::msgs::Pose_V &pose)
 			angular_velocity.copyTo(vehicle_angular_velocity_groundtruth.xyz);
 
 			vehicle_angular_velocity_groundtruth.timestamp = hrt_absolute_time();
+			vehicle_angular_velocity_groundtruth.publisher_id = GZ_BRIDGE;
 			_angular_velocity_ground_truth_pub.publish(vehicle_angular_velocity_groundtruth);
 
 			vehicle_local_position_s local_position_groundtruth{};
@@ -619,6 +625,7 @@ void GZBridge::poseInfoCallback(const gz::msgs::Pose_V &pose)
 			}
 
 			local_position_groundtruth.timestamp = hrt_absolute_time();
+			local_position_groundtruth.publisher_id = GZ_BRIDGE;
 			_lpos_ground_truth_pub.publish(local_position_groundtruth);
 
 			pthread_mutex_unlock(&_node_mutex);
@@ -700,6 +707,7 @@ void GZBridge::odometryCallback(const gz::msgs::OdometryWithCovariance &odometry
 	odom.velocity_variance[2] = odometry.twist_with_covariance().covariance().data(14); // Z  row 2, col 2
 
 	// odom.reset_counter = vpe.reset_counter;
+	odom.publisher_id = GZ_BRIDGE;
 	_visual_odometry_pub.publish(odom);
 
 	pthread_mutex_unlock(&_node_mutex);
@@ -735,6 +743,7 @@ void GZBridge::navSatCallback(const gz::msgs::NavSat &nav_sat)
 		global_position_groundtruth.lat = nav_sat.latitude_deg();
 		global_position_groundtruth.lon = nav_sat.longitude_deg();
 		global_position_groundtruth.alt = nav_sat.altitude();
+		global_position_groundtruth.publisher_id = GZ_BRIDGE;
 		_gpos_ground_truth_pub.publish(global_position_groundtruth);
 	}
 

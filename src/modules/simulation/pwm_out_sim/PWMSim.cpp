@@ -90,6 +90,7 @@ bool PWMSim::updateOutputs(bool stop_motors, uint16_t outputs[MAX_ACTUATORS], un
 		}
 
 		actuator_outputs.timestamp = hrt_absolute_time();
+		actuator_outputs.publisher_id = PWM_OUT_SIM;
 		_actuator_outputs_sim_pub.publish(actuator_outputs);
 		return true;
 	}

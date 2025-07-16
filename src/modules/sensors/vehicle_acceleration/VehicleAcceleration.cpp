@@ -256,6 +256,7 @@ void VehicleAcceleration::Run()
 				v_acceleration.timestamp_sample = sensor_data.timestamp_sample;
 				accel_filtered.copyTo(v_acceleration.xyz);
 				v_acceleration.timestamp = hrt_absolute_time();
+				v_acceleration.publisher_id = SENSORS;
 				_vehicle_acceleration_pub.publish(v_acceleration);
 
 				return;

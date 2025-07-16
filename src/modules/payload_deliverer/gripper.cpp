@@ -157,6 +157,7 @@ void Gripper::publish_gripper_command(const int8_t gripper_command)
 	gripper_s gripper{};
 	gripper.timestamp = hrt_absolute_time();
 	gripper.command = gripper_command;
+	gripper.publisher_id = PAYLOAD_DELIVERER;
 	_gripper_pub.publish(gripper);
 }
 

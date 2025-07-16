@@ -54,6 +54,7 @@ bool VehicleCommandSrv::process_request(ucdrBuffer *ub, const int64_t time_offse
 	vehicle_command_s data;
 
 	if (ucdr_deserialize_vehicle_command(*ub, data, time_offset_us)) {
+		data.publisher_id = UXRCE_DDS_CLIENT;
 		vehicle_command_pub_.publish(data);
 		is_reply_pending_ = true;
 		last_command_sent_ = data.command;

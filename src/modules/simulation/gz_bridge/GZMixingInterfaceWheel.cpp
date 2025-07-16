@@ -116,6 +116,7 @@ void GZMixingInterfaceWheel::wheelSpeedCallback(const gz::msgs::Actuators &actua
 
 	if (actuators.velocity_size() > 0) {
 		wheel_encoders.timestamp = hrt_absolute_time();
+		wheel_encoders.publisher_id = GZ_BRIDGE;
 		_wheel_encoders_pub.publish(wheel_encoders);
 	}
 

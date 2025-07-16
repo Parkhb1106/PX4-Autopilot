@@ -132,6 +132,7 @@ int inject_failure(const FailureUnit& unit, const FailureType& type, uint8_t ins
 	command.param2 = static_cast<float>(type.value);
 	command.param3 = static_cast<float>(instance);
 	command.timestamp = hrt_absolute_time();
+	command.publisher_id = FAILURE;
 	command_pub.publish(command);
 
 	vehicle_command_ack_s ack;

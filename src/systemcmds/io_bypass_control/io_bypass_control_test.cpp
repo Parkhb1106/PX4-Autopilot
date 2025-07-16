@@ -97,6 +97,7 @@ int ss_io_timer_test_main(int argc, char *argv[])
 
 			for (int j = 0; j < actuator_test_s::MAX_NUM_MOTORS; ++j) {
 				actuator_test.function = actuator_test_s::FUNCTION_MOTOR1 + j;
+				actuator_test.publisher_id = IO_BYPASS_CONTROL;
 				publisher.publish(actuator_test);
 				px4_usleep(100);
 			}

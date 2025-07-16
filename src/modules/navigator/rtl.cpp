@@ -238,6 +238,7 @@ void RTL::publishRemainingTimeEstimate()
 		}
 	}
 
+	estimated_time.publisher_id = NAVIGATOR;
 	_rtl_time_estimate_pub.publish(estimated_time);
 }
 

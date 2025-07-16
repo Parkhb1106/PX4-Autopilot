@@ -196,6 +196,7 @@ void VtolAttitudeControl::vehicle_cmd_poll()
 				command_ack.target_component = vehicle_command.source_component;
 
 				uORB::Publication<vehicle_command_ack_s> command_ack_pub{ORB_ID(vehicle_command_ack)};
+				command_ack.publisher_id = VTOL_ATT_CONTROL;
 				command_ack_pub.publish(command_ack);
 			}
 		}
@@ -381,6 +382,7 @@ VtolAttitudeControl::Run()
 
 			if (mc_att_sp_updated || fw_att_sp_updated) {
 				_vtol_type->update_transition_state();
+				_vehicle_attitude_sp.publisher_id = VTOL_ATT_CONTROL;
 				_vehicle_attitude_sp_pub.publish(_vehicle_attitude_sp);
 			}
 
@@ -392,6 +394,7 @@ VtolAttitudeControl::Run()
 
 			if (mc_att_sp_updated || fw_att_sp_updated) {
 				_vtol_type->update_transition_state();
+				_vehicle_attitude_sp.publisher_id = VTOL_ATT_CONTROL;
 				_vehicle_attitude_sp_pub.publish(_vehicle_attitude_sp);
 			}
 
@@ -403,6 +406,7 @@ VtolAttitudeControl::Run()
 
 			if (mc_att_sp_updated) {
 				_vtol_type->update_mc_state();
+				_vehicle_attitude_sp.publisher_id = VTOL_ATT_CONTROL;
 				_vehicle_attitude_sp_pub.publish(_vehicle_attitude_sp);
 			}
 
@@ -414,6 +418,7 @@ VtolAttitudeControl::Run()
 
 			if (fw_att_sp_updated) {
 				_vtol_type->update_fw_state();
+				_vehicle_attitude_sp.publisher_id = VTOL_ATT_CONTROL;
 				_vehicle_attitude_sp_pub.publish(_vehicle_attitude_sp);
 			}
 
@@ -422,13 +427,18 @@ VtolAttitudeControl::Run()
 
 		_vtol_type->fill_actuator_outputs();
 
+		_torque_setpoint_0.publisher_id = VTOL_ATT_CONTROL;
 		_vehicle_torque_setpoint0_pub.publish(_torque_setpoint_0);
+		_torque_setpoint_1.publisher_id = VTOL_ATT_CONTROL;
 		_vehicle_torque_setpoint1_pub.publish(_torque_setpoint_1);
+		_thrust_setpoint_0.publisher_id = VTOL_ATT_CONTROL;
 		_vehicle_thrust_setpoint0_pub.publish(_thrust_setpoint_0);
+		_thrust_setpoint_1.publisher_id = VTOL_ATT_CONTROL;
 		_vehicle_thrust_setpoint1_pub.publish(_thrust_setpoint_1);
 
 		// Advertise/Publish vtol vehicle status
 		_vtol_vehicle_status.timestamp = hrt_absolute_time();
+		_vtol_vehicle_status.publisher_id = VTOL_ATT_CONTROL;
 		_vtol_vehicle_status_pub.publish(_vtol_vehicle_status);
 
 		// Publish flaps/spoiler setpoint with configured deflection in Hover if in Auto.
@@ -440,6 +450,7 @@ VtolAttitudeControl::Run()
 			normalized_unsigned_setpoint_s flaps_setpoint;
 			flaps_setpoint.normalized_setpoint = 0.f; // for now always set flaps to 0 in transitions and hover
 			flaps_setpoint.timestamp = hrt_absolute_time();
+			flaps_setpoint.publisher_id = VTOL_ATT_CONTROL;
 			_flaps_setpoint_pub.publish(flaps_setpoint);
 
 			// spoilers
@@ -453,6 +464,7 @@ VtolAttitudeControl::Run()
 			normalized_unsigned_setpoint_s spoiler_setpoint;
 			spoiler_setpoint.normalized_setpoint = spoiler_control;
 			spoiler_setpoint.timestamp = hrt_absolute_time();
+			spoiler_setpoint.publisher_id = VTOL_ATT_CONTROL;
 			_spoilers_setpoint_pub.publish(spoiler_setpoint);
 		}
 	}

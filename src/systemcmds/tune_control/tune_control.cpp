@@ -62,6 +62,7 @@ static void publish_tune_control(tune_control_s &tune_control)
 {
 	uORB::Publication<tune_control_s> tune_control_pub{ORB_ID(tune_control)};
 	tune_control.timestamp = hrt_absolute_time();
+	tune_control.publisher_id = TUNE_CONTROL;
 	tune_control_pub.publish(tune_control);
 }
 

@@ -266,10 +266,12 @@ void UUVAttitudeControl::Run()
 
 		_vehicle_thrust_setpoint.timestamp = hrt_absolute_time();
 		_vehicle_thrust_setpoint.timestamp_sample = 0.f;
+		_vehicle_thrust_setpoint.publisher_id = UUV_ATT_CONTROL;
 		_vehicle_thrust_setpoint_pub.publish(_vehicle_thrust_setpoint);
 
 		_vehicle_torque_setpoint.timestamp = hrt_absolute_time();
 		_vehicle_torque_setpoint.timestamp_sample = 0.f;
+		_vehicle_torque_setpoint.publisher_id = UUV_ATT_CONTROL;
 		_vehicle_torque_setpoint_pub.publish(_vehicle_torque_setpoint);
 	}
 

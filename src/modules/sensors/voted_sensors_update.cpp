@@ -273,6 +273,7 @@ void VotedSensorsUpdate::imuPoll(struct sensor_combined_s &raw)
 			// don't publish until selected IDs are valid
 			if (_selection.accel_device_id > 0 && _selection.gyro_device_id > 0) {
 				_selection.timestamp = hrt_absolute_time();
+				_selection.publisher_id = SENSORS;
 				_sensor_selection_pub.publish(_selection);
 				_selection_changed = false;
 			}
@@ -430,6 +431,7 @@ void VotedSensorsUpdate::sensorsPoll(sensor_combined_s &raw)
 
 
 	status.timestamp = hrt_absolute_time();
+	status.publisher_id = SENSORS;
 	_sensors_status_imu_pub.publish(status);
 
 	if (_parameter_update) {

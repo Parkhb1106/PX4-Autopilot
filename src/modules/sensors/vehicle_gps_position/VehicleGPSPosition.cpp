@@ -136,6 +136,7 @@ void VehicleGPSPosition::Run()
 				gps_output.device_id = 0;
 			}
 
+			gps_output.publisher_id = SENSORS;
 			_vehicle_gps_position_pub.publish(gps_output);
 		}
 	}

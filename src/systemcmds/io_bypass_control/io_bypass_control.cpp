@@ -106,6 +106,7 @@ int io_bypass_control_main(int argc, char *argv[])
 				actuator_outputs.output[j] = i;
 			}
 
+			actuator_outputs.publisher_id = IO_BYPASS_CONTROL;
 			publisher.publish(actuator_outputs);
 			px4_usleep(10000);
 		}

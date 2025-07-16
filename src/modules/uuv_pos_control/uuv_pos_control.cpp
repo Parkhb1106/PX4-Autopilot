@@ -106,6 +106,7 @@ void UUVPOSControl::publish_attitude_setpoint(const float thrust_x, const float 
 	vehicle_attitude_setpoint.thrust_body[2] = thrust_z;
 
 
+	vehicle_attitude_setpoint.publisher_id = UUV_POS_CONTROL;
 	_att_sp_pub.publish(vehicle_attitude_setpoint);
 }
 

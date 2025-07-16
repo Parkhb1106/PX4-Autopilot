@@ -121,6 +121,7 @@ void GZMixingInterfaceESC::motorSpeedCallback(const gz::msgs::Actuators &actuato
 
 	if (esc_status.esc_count > 0) {
 		esc_status.timestamp = hrt_absolute_time();
+		esc_status.publisher_id = GZ_BRIDGE;
 		_esc_status_pub.publish(esc_status);
 	}
 

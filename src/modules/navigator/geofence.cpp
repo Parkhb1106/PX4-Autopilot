@@ -109,6 +109,7 @@ void Geofence::run()
 			status.geofence_id = _opaque_id;
 			status.status = geofence_status_s::GF_STATUS_LOADING;
 
+			status.publisher_id = NAVIGATOR;
 			_geofence_status_pub.publish(status);
 
 		}
@@ -164,6 +165,7 @@ void Geofence::run()
 				status.geofence_id = _opaque_id;
 				status.status = geofence_status_s::GF_STATUS_READY;
 
+				status.publisher_id = NAVIGATOR;
 				_geofence_status_pub.publish(status);
 			}
 		}
@@ -184,6 +186,7 @@ void Geofence::run()
 			status.geofence_id = _opaque_id;
 			status.status = geofence_status_s::GF_STATUS_READY;
 
+			status.publisher_id = NAVIGATOR;
 			_geofence_status_pub.publish(status);
 		}
 

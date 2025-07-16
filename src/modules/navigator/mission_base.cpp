@@ -891,6 +891,7 @@ void MissionBase::publish_navigator_mission_item()
 
 	navigator_mission_item.timestamp = hrt_absolute_time();
 
+	navigator_mission_item.publisher_id = NAVIGATOR;
 	_navigator_mission_item_pub.publish(navigator_mission_item);
 }
 
@@ -996,6 +997,7 @@ void MissionBase::setMissionIndex(int32_t index)
 	if (index != _mission.current_seq) {
 		_mission.current_seq = index;
 		_mission.timestamp = hrt_absolute_time();
+		_mission.publisher_id = NAVIGATOR;
 		_mission_pub.publish(_mission);
 	}
 }
@@ -1178,6 +1180,7 @@ void MissionBase::resetMission()
 			sizeof(mission_s));
 
 	if (success) {
+		_mission.publisher_id = NAVIGATOR;
 		_mission_pub.publish(_mission);
 
 	} else {

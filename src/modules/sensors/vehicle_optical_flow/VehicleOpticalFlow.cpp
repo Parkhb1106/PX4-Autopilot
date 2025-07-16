@@ -277,6 +277,7 @@ void VehicleOpticalFlow::Run()
 				  vehicle_optical_flow.pixel_flow[1], zeroval);
 
 			vehicle_optical_flow.timestamp = hrt_absolute_time();
+			vehicle_optical_flow.publisher_id = SENSORS;
 			_vehicle_optical_flow_pub.publish(vehicle_optical_flow);
 
 			// vehicle_optical_flow_vel if distance is available (for logging)
@@ -335,6 +336,7 @@ void VehicleOpticalFlow::Run()
 
 				flow_vel.timestamp = hrt_absolute_time();
 
+				flow_vel.publisher_id = SENSORS;
 				_vehicle_optical_flow_vel_pub.publish(flow_vel);
 			}
 

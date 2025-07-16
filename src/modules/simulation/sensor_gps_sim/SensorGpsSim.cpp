@@ -176,6 +176,7 @@ void SensorGpsSim::Run()
 		sensor_gps.satellites_used = _sim_gps_used.get();
 
 		sensor_gps.timestamp = hrt_absolute_time();
+		sensor_gps.publisher_id = SENSOR_GPS_SIM;
 		_sensor_gps_pub.publish(sensor_gps);
 	}
 
