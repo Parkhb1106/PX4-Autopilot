@@ -1566,7 +1566,7 @@ void SeptentrioDriver::publish()
 void SeptentrioDriver::publish_satellite_info()
 {
 	if (_message_satellite_info) {
-		*_message_satellite_info.publisher_id = SEPTENTRIO;
+		_message_satellite_info->publisher_id = SEPTENTRIO;
 		_satellite_info_pub.publish(*_message_satellite_info);
 	}
 }
@@ -1634,7 +1634,7 @@ void SeptentrioDriver::dump_gps_data(const uint8_t *data, size_t len, DataDirect
 			}
 
 			dump_data->timestamp = hrt_absolute_time();
-			*dump_data.publisher_id = SEPTENTRIO;
+			dump_data->publisher_id = SEPTENTRIO;
 			_gps_dump_pub.publish(*dump_data);
 			dump_data->len = 0;
 		}
