@@ -63,6 +63,7 @@ public:
 		home.valid_hpos = true;
 		home.publisher_id = NAVIGATOR;
 		orb_advert_t home_pub = orb_advertise(ORB_ID(home_position), &home);
+		home.publisher_id = NAVIGATOR;
 		orb_publish(ORB_ID(home_position), home_pub, &home);
 	}
 
@@ -76,6 +77,7 @@ public:
 		home.valid_hpos = false;
 		home.publisher_id = NAVIGATOR;
 		orb_advert_t home_pub = orb_advertise(ORB_ID(home_position), &home);
+		home.publisher_id = NAVIGATOR;
 		orb_publish(ORB_ID(home_position), home_pub, &home);
 	}
 
@@ -86,6 +88,7 @@ public:
 		gpos.lon = lon;
 		gpos.publisher_id = NAVIGATOR;
 		orb_advert_t gpos_pub = orb_advertise(ORB_ID(vehicle_global_position), &gpos);
+		gpos.publisher_id = NAVIGATOR;
 		orb_publish(ORB_ID(vehicle_global_position), gpos_pub, &gpos);
 	}
 
@@ -95,6 +98,7 @@ public:
 		land_detected.landed = true;
 		land_detected.publisher_id = NAVIGATOR;
 		orb_advert_t landed_pub = orb_advertise(ORB_ID(vehicle_land_detected), &land_detected);
+		land_detected.publisher_id = NAVIGATOR;
 		orb_publish(ORB_ID(vehicle_land_detected), landed_pub, &land_detected);
 	}
 
@@ -104,6 +108,7 @@ public:
 		status.vehicle_type = vehicle_type;
 		status.publisher_id = NAVIGATOR;
 		orb_advert_t status_pub = orb_advertise(ORB_ID(vehicle_status), &status);
+		status.publisher_id = NAVIGATOR;
 		orb_publish(ORB_ID(vehicle_status), status_pub, &status);
 	}
 

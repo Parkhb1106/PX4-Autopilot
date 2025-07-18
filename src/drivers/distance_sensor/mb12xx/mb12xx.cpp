@@ -231,6 +231,7 @@ MB12XX::collect()
 	report.variance         = 0.0f;
 
 	int instance_id;
+	report.publisher_id = MB12XX;
 	orb_publish_auto(ORB_ID(distance_sensor), &_distance_sensor_topic, &report, &instance_id);
 
 	// Begin the next measurement.

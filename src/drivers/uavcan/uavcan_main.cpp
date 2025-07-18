@@ -776,6 +776,7 @@ UavcanNode::Run()
 				_can_status_pub_handles[i] = orb_advertise_multi(ORB_ID(can_interface_status), nullptr, &instance);
 			}
 
+			status.publisher_id = UAVCAN;
 			(void)orb_publish(ORB_ID(can_interface_status), _can_status_pub_handles[i], &status);
 		}
 	}

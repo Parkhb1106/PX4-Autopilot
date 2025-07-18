@@ -219,6 +219,7 @@ void Batmon::RunImpl()
 		new_report.interface_error = perf_event_count(_interface->_interface_errors);
 
 		int instance = 0;
+		new_report.publisher_id = BATMON;
 		orb_publish_auto(ORB_ID(battery_status), &_batt_topic, &new_report, &instance);
 
 		_last_report = new_report;

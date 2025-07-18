@@ -169,6 +169,7 @@ void set_tune_override(const int tune_id)
 	tune_control.volume = tune_control_s::VOLUME_LEVEL_DEFAULT;
 	tune_control.tune_override = true;
 	tune_control.timestamp = hrt_absolute_time();
+	tune_control.publisher_id = COMMANDER;
 	orb_publish(ORB_ID(tune_control), tune_control_pub, &tune_control);
 }
 
@@ -204,6 +205,7 @@ void set_tune(const int tune_id)
 		tune_control.volume = tune_control_s::VOLUME_LEVEL_DEFAULT;
 		tune_control.tune_override = false;
 		tune_control.timestamp = current_time;
+		tune_control.publisher_id = COMMANDER;
 		orb_publish(ORB_ID(tune_control), tune_control_pub, &tune_control);
 
 		tune_current = tune_id;
@@ -390,6 +392,7 @@ void rgbled_set_color_and_mode(uint8_t color, uint8_t mode, uint8_t blinks, uint
 	led_control.num_blinks = blinks;
 	led_control.priority = prio;
 	led_control.timestamp = hrt_absolute_time();
+	led_control.publisher_id = COMMANDER;
 	orb_publish(ORB_ID(led_control), led_control_pub, &led_control);
 }
 
