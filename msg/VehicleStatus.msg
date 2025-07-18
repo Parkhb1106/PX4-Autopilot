@@ -1,5 +1,7 @@
 # Encodes the system state of the vehicle published by commander
 
+uint8 publisher_id
+
 uint64 timestamp # time since system start (microseconds)
 
 uint64 armed_time # Arming timestamp (microseconds)

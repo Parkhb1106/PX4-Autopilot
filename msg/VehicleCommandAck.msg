@@ -2,6 +2,8 @@
 # Used for acknowledging the vehicle command being received.
 # Follows the MAVLink COMMAND_ACK message definition
 
+uint8 publisher_id
+
 uint64 timestamp		# time since system start (microseconds)
 
 # Result cases. This follows the MAVLink MAV_RESULT enum definition

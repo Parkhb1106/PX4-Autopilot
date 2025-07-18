@@ -12,6 +12,8 @@ float32 time_remaining_s	# predicted time in seconds remaining until battery is 
 float32 temperature			# temperature of the battery. NaN if unknown
 uint8 cell_count			# Number of cells, 0 if unknown
 
+uint8 publisher_id
+
 uint8 BATTERY_SOURCE_POWER_MODULE = 0
 uint8 BATTERY_SOURCE_EXTERNAL = 1
 uint8 BATTERY_SOURCE_ESCS = 2

@@ -1,5 +1,7 @@
 uint64 timestamp                        # time since system start (microseconds)
 
+uint8 publisher_id
+
 uint32 geofence_id 			# loaded geofence id
 uint8 status 				# Current geofence status
 

@@ -1,5 +1,7 @@
 uint64 timestamp		# time since system start (microseconds)
 
+uint8 publisher_id
+
 float32 roll_body		# body angle in NED frame (can be NaN for FW)
 float32 pitch_body		# body angle in NED frame (can be NaN for FW)
 float32 yaw_body		# body angle in NED frame (can be NaN for FW)

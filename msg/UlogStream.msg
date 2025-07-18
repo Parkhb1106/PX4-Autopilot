@@ -1,6 +1,8 @@
 # Message to stream ULog data from the logger. Corresponds to the LOGGING_DATA
 # mavlink message
 
+uint8 publisher_id
+
 uint64 timestamp		# time since system start (microseconds)
 
 # flags bitmasks

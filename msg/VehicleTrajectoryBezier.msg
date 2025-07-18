@@ -2,6 +2,8 @@
 # The topic vehicle_trajectory_bezier is used to send a smooth flight path from the
 # companion computer / avoidance module to the position controller.
 
+uint8 publisher_id
+
 uint64 timestamp		# time since system start (microseconds)
 
 uint8 POINT_0 = 0

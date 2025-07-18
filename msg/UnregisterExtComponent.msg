@@ -1,5 +1,7 @@
 uint64 timestamp # time since system start (microseconds)
 
+uint8 publisher_id
+
 char[25] name                      # either the mode name, or component name
 
 int8 arming_check_id      # arming check registration ID (-1 if not registered)

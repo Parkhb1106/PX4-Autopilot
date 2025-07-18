@@ -1,5 +1,7 @@
 uint64 timestamp						# time since system start (microseconds)
 
+uint8 publisher_id
+
 uint8 target_system
 uint8 target_component
 uint16 device_flags

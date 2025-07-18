@@ -1,5 +1,7 @@
 uint64 timestamp # time since system start (microseconds)
 
+uint8 publisher_id
+
 # Response from PX4 with the format of a message
 
 uint16 protocol_version           # Must be set to LATEST_PROTOCOL_VERSION. Do not change this field, it must be the first field after the timestamp

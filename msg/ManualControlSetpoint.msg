@@ -1,6 +1,8 @@
 uint64 timestamp                        # time since system start (microseconds)
 uint64 timestamp_sample                 # the timestamp of the raw data (microseconds)
 
+uint8 publisher_id
+
 bool valid
 
 uint8 SOURCE_UNKNOWN   = 0

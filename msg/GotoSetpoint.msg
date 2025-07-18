@@ -5,6 +5,8 @@
 # Unset optional setpoints are not controlled
 # Unset optional constraints default to vehicle specifications
 
+uint8 publisher_id
+
 uint64 timestamp # time since system start (microseconds)
 
 # setpoints

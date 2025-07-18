@@ -4,6 +4,8 @@
 # failsafe activation)
 uint64 timestamp				 # time since system start (microseconds)
 
+uint8 publisher_id
+
 
 uint8 RESULT_SUCCESS = 0
 # [1-99]: reserved

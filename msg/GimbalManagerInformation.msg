@@ -1,5 +1,7 @@
 uint64 timestamp						# time since system start (microseconds)
 
+uint8 publisher_id
+
 uint32 cap_flags
 
 uint32 GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT = 1

@@ -1,6 +1,8 @@
 uint64 timestamp                          # time since system start (microseconds)
 uint64 timestamp_sample                   # the timestamp of the raw data (microseconds)
 
+uint8 publisher_id
+
 bool checks_passed
 
 bool check_fail_gps_fix          # 0 : insufficient fix type (no 3D solution)

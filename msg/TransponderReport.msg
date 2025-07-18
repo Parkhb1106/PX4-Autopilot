@@ -14,6 +14,8 @@ uint16 flags 		# Flags to indicate various statuses including valid data fields
 uint16 squawk 		# Squawk code
 uint8[18] uas_id	# Unique UAS ID
 
+uint8 publisher_id
+
 # ADSB flags
 uint16 PX4_ADSB_FLAGS_VALID_COORDS = 1
 uint16 PX4_ADSB_FLAGS_VALID_ALTITUDE = 2

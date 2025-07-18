@@ -1,6 +1,8 @@
 uint64 timestamp             # time since system start (microseconds)
 uint64 timestamp_sample      # the timestamp of the raw data (microseconds)
 
+uint8 publisher_id
+
 uint8 estimator_instance
 
 uint32 device_id

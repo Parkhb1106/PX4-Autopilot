@@ -1,5 +1,7 @@
 uint64 timestamp		# time since system start (microseconds)
 
+uint8 publisher_id
+
 uint8 primary_instance
 
 uint8 instances_available

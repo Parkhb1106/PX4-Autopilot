@@ -1,4 +1,6 @@
 
+uint8 publisher_id
+
 uint64 timestamp	# time since system start (microseconds)
 
 uint8 rssi				# local signal strength

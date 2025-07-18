@@ -1,5 +1,7 @@
 uint64 timestamp # time since system start (microseconds)
 
+uint8 publisher_id
+
 # Request to PX4 to get the hash of a message, to check for message compatibility
 
 uint16 LATEST_PROTOCOL_VERSION = 1 # Current version of this protocol. Increase this whenever the MessageFormatRequest or MessageFormatResponse changes.
