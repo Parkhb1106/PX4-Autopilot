@@ -937,7 +937,7 @@ bool VehicleAngularVelocity::CalibrateAndPublish(const hrt_abstime &timestamp_sa
 		_angular_acceleration.copyTo(angular_velocity.xyz_derivative);
 
 		angular_velocity.timestamp = hrt_absolute_time();
-		angular_velocity.publisher_id = SENSORS;
+		// angular_velocity.publisher_id = SENSORS;
 		_vehicle_angular_velocity_pub.publish(angular_velocity);
 
 		// shift last publish time forward, but don't let it get further behind than the interval
