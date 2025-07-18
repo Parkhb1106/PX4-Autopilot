@@ -69,6 +69,12 @@ public:
 		PublicationBase(static_cast<ORB_ID>(meta->o_id))
 	{}
 
+	// correction start
+        PublicationMulti(ORB_ID id, uint _publisher_id) : PublicationBase(id, _publisher_id) {}
+        PublicationMulti(const orb_metadata *meta, uint _publisher_id) : PublicationBase(static_cast<ORB_ID>(meta->o_id), _publisher_id) {}
+        PublicationMulti(uint _publisher_id) : PublicationBase(_publisher_id) {}
+         // corretion end
+
 	bool advertise()
 	{
 		if (!advertised()) {
@@ -89,7 +95,17 @@ public:
 			advertise();
 		}
 
-		return (orb_publish(get_topic(), _handle, &data) == PX4_OK);
+                // correction start
+                if (_module_id != 0){
+                        T copy_for_pub = data;
+                        copy_for_pub.publisher_id = _module_id;
+                        return (orb_publish(get_topic(), _handle, &copy_for_pub) == PX4_OK);
+                }
+                else{
+                        return (orb_publish(get_topic(), _handle, &data) == PX4_OK);
+                }
+                // correction end
+
 	}
 
 	int get_instance()
@@ -117,6 +133,12 @@ public:
 	 */
 	PublicationMultiData(ORB_ID id) : PublicationMulti<T>(id) {}
 	PublicationMultiData(const orb_metadata *meta) : PublicationMulti<T>(meta) {}
+
+        // correction start
+        PublicationMultiData(ORB_ID id, uint _publisher_id) : PublicationMulti<T>(id, _publisher_id) {}
+        PublicationMultiData(const orb_metadata *meta, uint _publisher_id) : PublicationMulti<T>(meta, _publisher_id) {}
+        PublicationMultiData(uint _publisher_id) : PublicationMulti<T>(_publisher_id) {}
+        // corretion end
 
 	T	&get() { return _data; }
 	void	set(const T &data) { _data = data; }
