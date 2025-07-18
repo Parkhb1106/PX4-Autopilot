@@ -60,7 +60,11 @@ public:
 
 protected:
 
-	PublicationBase(ORB_ID id) : _orb_id(id) {}
+        // correction start
+	PublicationBase(ORB_ID id) : _orb_id(id), _module_id(0) {}
+        PublicationBase(ORB_ID id, uint _publisher_id) : _orb_id(id), _module_id(_publisher_id) {}
+        PublicationBase(uint _publisher_id) : _orb_id(ORB_ID::INVALID), _module_id(_publisher_id) {}
+        // corretion end
 
 	~PublicationBase()
 	{
@@ -74,6 +78,9 @@ protected:
 
 	orb_advert_t _handle{nullptr};
 	const ORB_ID _orb_id;
+        // correction start
+	const uint _module_id;
+        // correction end
 };
 
 /**
@@ -91,6 +98,12 @@ public:
 	 */
 	Publication(ORB_ID id) : PublicationBase(id) {}
 	Publication(const orb_metadata *meta) : PublicationBase(static_cast<ORB_ID>(meta->o_id)) {}
+
+	// correction start
+	Publication(ORB_ID id, uint _publisher_id) : PublicationBase(id, _publisher_id) {}
+	Publication(const orb_metadata *meta, uint _publisher_id) : PublicationBase(static_cast<ORB_ID>(meta->o_id), _publisher_id) {}
+	Publication(uint _publisher_id) : PublicationBase(_publisher_id) {}
+	// corretion end
 
 	bool advertise()
 	{
@@ -110,8 +123,17 @@ public:
 		if (!advertised()) {
 			advertise();
 		}
-
-		return (Manager::orb_publish(get_topic(), _handle, &data) == PX4_OK);
+		
+        	// correction start
+		if (_module_id != 0){
+			T copy_for_pub = data;
+			copy_for_pub.publisher_id = _module_id;
+			return (Manager::orb_publish(get_topic(), _handle, &copy_for_pub) == PX4_OK);
+		}
+		else{
+			return (Manager::orb_publish(get_topic(), _handle, &data) == PX4_OK);
+		}
+		// correction end
 	}
 };
 
@@ -127,8 +149,14 @@ public:
 	 *
 	 * @param meta The uORB metadata (usually from the ORB_ID() macro) for the topic.
 	 */
-	PublicationData(ORB_ID id) : Publication<T>(id) {}
+	PublicationData(ORB_ID id) : Publication<T>(id) {}	
 	PublicationData(const orb_metadata *meta) : Publication<T>(meta) {}
+
+	// correction start
+        PublicationData(ORB_ID id, uint _publisher_id) : Publication<T>(id, _publisher_id) {}
+        PublicationData(const orb_metadata *meta, uint _publisher_id) : Publication<T>(meta, _publisher_id) {}
+        PublicationData(uint _publisher_id) : Publication<T>(_publisher_id) {}
+         // corretion end
 
 	T	&get() { return _data; }
 	void	set(const T &data) { _data = data; }
