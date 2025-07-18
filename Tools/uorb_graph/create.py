@@ -475,6 +475,7 @@ class Graph(object):
                 self._current_scope.append(module_scope)
                 scope_added = True
                 self._found_modules[module_name] = module_scope
+                print('    >> Found module name: ' + module_scope.name)
                 if self._in_scope():
                     log.debug('    >> Found module name: ' + module_scope.name)
 
