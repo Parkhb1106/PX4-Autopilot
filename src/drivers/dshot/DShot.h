@@ -168,7 +168,7 @@ private:
 
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 	uORB::Subscription _vehicle_command_sub{ORB_ID(vehicle_command)};
-	uORB::Publication<vehicle_command_ack_s> _command_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s> _command_ack_pub{ORB_ID(vehicle_command_ack), DSHOT};
 
 	DEFINE_PARAMETERS(
 		(ParamFloat<px4::params::DSHOT_MIN>)    _param_dshot_min,

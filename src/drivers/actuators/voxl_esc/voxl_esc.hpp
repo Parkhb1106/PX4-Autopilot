@@ -207,8 +207,8 @@ private:
 	uORB::Subscription	_led_update_sub{ORB_ID(led_control)};
 	uORB::Subscription	_voxl2_io_data_sub{ORB_ID(voxl2_io_data)};
 
-	uORB::Publication<actuator_outputs_s> _outputs_debug_pub{ORB_ID(actuator_outputs_debug)};
-	uORB::Publication<esc_status_s> _esc_status_pub{ORB_ID(esc_status)};
+	uORB::Publication<actuator_outputs_s> _outputs_debug_pub{ORB_ID(actuator_outputs_debug), VOXL_ESC};
+	uORB::Publication<esc_status_s> _esc_status_pub{ORB_ID(esc_status), VOXL_ESC};
 
 	bool _extended_rpm{false};
 	bool _need_version_info{true};

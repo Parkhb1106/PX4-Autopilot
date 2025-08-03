@@ -208,8 +208,8 @@ private:
 	const Instance 			_instance;
 
 	uORB::SubscriptionMultiArray<gps_inject_data_s, gps_inject_data_s::MAX_INSTANCES> _orb_inject_data_sub{ORB_ID::gps_inject_data};
-	uORB::Publication<gps_inject_data_s> _gps_inject_data_pub{ORB_ID(gps_inject_data)};
-	uORB::Publication<gps_dump_s>	     _dump_communication_pub{ORB_ID(gps_dump)};
+	uORB::Publication<gps_inject_data_s> _gps_inject_data_pub{ORB_ID(gps_inject_data), GPS_};
+	uORB::Publication<gps_dump_s>	     _dump_communication_pub{ORB_ID(gps_dump), GPS_};
 	gps_dump_s			     *_dump_to_device{nullptr};
 	gps_dump_s			     *_dump_from_device{nullptr};
 	gps_dump_comm_mode_t                 _dump_communication_mode{gps_dump_comm_mode_t::Disabled};

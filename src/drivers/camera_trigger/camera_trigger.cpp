@@ -193,7 +193,7 @@ private:
 
 	orb_advert_t		_trigger_pub{nullptr};
 
-	uORB::Publication<vehicle_command_ack_s>	_cmd_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s>	_cmd_ack_pub{ORB_ID(vehicle_command_ack), CAMERA_TRIGGER};
 
 	param_t			_p_mode;
 	param_t			_p_activation_time;
@@ -496,7 +496,7 @@ CameraTrigger::test()
 	vcmd.target_system = 1;
 	vcmd.target_component = 1;
 
-	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), CAMERA_TRIGGER};
 	vcmd.timestamp = hrt_absolute_time();
 	vcmd_pub.publish(vcmd);
 }
@@ -800,7 +800,7 @@ CameraTrigger::adjust_roll()
 
 	vcmd.param7 = vehicle_command_s::VEHICLE_MOUNT_MODE_MAVLINK_TARGETING;
 
-	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), CAMERA_TRIGGER};
 	vcmd.timestamp = hrt_absolute_time();
 	vcmd_pub.publish(vcmd);
 }

@@ -99,8 +99,8 @@ private:
 	int _capture_channel = 5; ///< by default, use FMU output 6
 
 	// Publishers
-	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack)};
-	uORB::Publication<camera_trigger_s>		_trigger_pub{ORB_ID(camera_trigger)};
+	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack), CAMERA_CAPTURE};
+	uORB::Publication<camera_trigger_s>		_trigger_pub{ORB_ID(camera_trigger), CAMERA_CAPTURE};
 
 	// Subscribers
 	uORB::Subscription				_command_sub{ORB_ID(vehicle_command)};

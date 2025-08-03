@@ -110,8 +110,8 @@ private:
 	const uint32_t			_base_address;
 	px4_adc_msg_t			*_samples{nullptr};	/**< sample buffer */
 
-	uORB::Publication<adc_report_s>		_to_adc_report{ORB_ID(adc_report)};
-	uORB::Publication<system_power_s>	_to_system_power{ORB_ID(system_power)};
+	uORB::Publication<adc_report_s>		_to_adc_report{ORB_ID(adc_report), BOARD_ADC};
+	uORB::Publication<system_power_s>	_to_system_power{ORB_ID(system_power), BOARD_ADC};
 
 #ifdef BOARD_GPIO_VDD_5V_COMP_VALID
 	int _5v_comp_valid_fd {-1};

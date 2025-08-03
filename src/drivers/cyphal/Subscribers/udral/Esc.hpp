@@ -105,7 +105,7 @@ public:
 
 private:
 	/// For use with PR-16808 once merged
-	// uORB::Publication<output_control_s> _output_pub{ORB_ID(output_control_mc)};
+	// uORB::Publication<output_control_s> _output_pub{ORB_ID(output_control_mc), CYPHAL};
 
 	CanardRxSubscription _canard_sub_readiness;
 };

@@ -743,8 +743,8 @@ private:
 	gps_dump_s                                     *_message_data_from_receiver {nullptr};         ///< uORB topic for dumping data from the receiver
 	satellite_info_s                               *_message_satellite_info {nullptr};             ///< uORB topic for satellite info
 	uORB::PublicationMulti<sensor_gps_s>           _sensor_gps_pub {ORB_ID(sensor_gps)};           ///< uORB publication for gps position
-	uORB::Publication<gps_dump_s>                  _gps_dump_pub {ORB_ID(gps_dump)};               ///< uORB publication for dump GPS data
-	uORB::Publication<gps_inject_data_s>           _gps_inject_data_pub {ORB_ID(gps_inject_data)}; ///< uORB publication for injected data to the receiver
+	uORB::Publication<gps_dump_s>                  _gps_dump_pub {ORB_ID(gps_dump), SEPTENTRIO};               ///< uORB publication for dump GPS data
+	uORB::Publication<gps_inject_data_s>           _gps_inject_data_pub {ORB_ID(gps_inject_data), SEPTENTRIO}; ///< uORB publication for injected data to the receiver
 	uORB::PublicationMulti<satellite_info_s>       _satellite_info_pub {ORB_ID(satellite_info)};   ///< uORB publication for satellite info
 	uORB::SubscriptionMultiArray<gps_inject_data_s, gps_inject_data_s::MAX_INSTANCES> _gps_inject_data_sub {ORB_ID::gps_inject_data}; ///< uORB subscription about data to inject to the receiver
 
