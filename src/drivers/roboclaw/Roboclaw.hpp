@@ -107,7 +107,7 @@ private:
 
 	uORB::SubscriptionData<actuator_armed_s> _actuator_armed_sub{ORB_ID(actuator_armed)};
 	uORB::Subscription _parameter_update_sub{ORB_ID(parameter_update)};
-	uORB::Publication<wheel_encoders_s> _wheel_encoders_pub{ORB_ID(wheel_encoders)};
+	uORB::Publication<wheel_encoders_s> _wheel_encoders_pub{ORB_ID(wheel_encoders), ROBOCLAW};
 
 	char _stored_device_name[256]; // Adjust size as necessary
 	char _stored_baud_rate_parameter[256]; // Adjust size as necessary

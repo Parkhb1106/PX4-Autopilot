@@ -111,7 +111,7 @@ private:
 	int  _fd{-1};
 
 	// Publications
-	uORB::Publication<transponder_report_s> _transponder_report_pub{ORB_ID(transponder_report)};
+	uORB::Publication<transponder_report_s> _transponder_report_pub{ORB_ID(transponder_report), SAGETECH_MXS};
 	orb_advert_t _mavlink_log_pub{nullptr};
 
 

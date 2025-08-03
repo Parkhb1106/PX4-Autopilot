@@ -210,7 +210,7 @@ private:
 
 	/* advertised topics */
 	uORB::PublicationMulti<input_rc_s>	_input_rc_pub{ORB_ID(input_rc)};
-	uORB::Publication<px4io_status_s>	_px4io_status_pub{ORB_ID(px4io_status)};
+	uORB::Publication<px4io_status_s>	_px4io_status_pub{ORB_ID(px4io_status), PX4IO};
 
 	ButtonPublisher	_button_publisher;
 	bool _previous_safety_off{false};
@@ -758,7 +758,7 @@ void PX4IO::update_params()
 void PX4IO::answer_command(const vehicle_command_s &cmd, uint8_t result)
 {
 	/* publish ACK */
-	uORB::Publication<vehicle_command_ack_s> vehicle_command_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s> vehicle_command_ack_pub{ORB_ID(vehicle_command_ack), PX4IO};
 	vehicle_command_ack_s command_ack{};
 	command_ack.command = cmd.command;
 	command_ack.result = result;

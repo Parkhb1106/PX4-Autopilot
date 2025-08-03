@@ -75,7 +75,7 @@ private:
 	void Run() override;
 
 	// Publications
-	uORB::Publication<orb_test_s> _orb_test_pub{ORB_ID(orb_test)};
+	uORB::Publication<orb_test_s> _orb_test_pub{ORB_ID(orb_test), WORK_ITEM_EXAMPLE};
 
 	// Subscriptions
 	uORB::SubscriptionCallbackWorkItem _sensor_accel_sub{this, ORB_ID(sensor_accel)};        // subscription that schedules WorkItemExample when updated

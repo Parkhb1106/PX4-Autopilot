@@ -102,5 +102,5 @@ private:
 	int _fd{-1};
 	bool _initialized{false};
 
-	uORB::Publication<battery_status_s> _battery_status_pub{ORB_ID::battery_status};
+	uORB::Publication<battery_status_s> _battery_status_pub{ORB_ID::battery_status, TATTU_CAN};
 };

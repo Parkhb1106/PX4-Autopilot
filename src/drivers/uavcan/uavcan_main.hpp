@@ -308,8 +308,8 @@ private:
 	uORB::Subscription _vcmd_sub{ORB_ID(vehicle_command)};
 	uORB::Subscription _param_request_sub{ORB_ID(uavcan_parameter_request)};
 
-	uORB::Publication<uavcan_parameter_value_s> _param_response_pub{ORB_ID(uavcan_parameter_value)};
-	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<uavcan_parameter_value_s> _param_response_pub{ORB_ID(uavcan_parameter_value), UAVCAN};
+	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack), UAVCAN};
 	uORB::PublicationMulti<can_interface_status_s> _can_status_pub{ORB_ID(can_interface_status)};
 
 	hrt_abstime _last_can_status_pub{0};

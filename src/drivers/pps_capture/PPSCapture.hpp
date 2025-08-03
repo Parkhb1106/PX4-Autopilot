@@ -71,7 +71,7 @@ private:
 
 	int _channel{-1};
 	uint32_t _pps_capture_gpio{0};
-	uORB::Publication<pps_capture_s>	_pps_capture_pub{ORB_ID(pps_capture)};
+	uORB::Publication<pps_capture_s>	_pps_capture_pub{ORB_ID(pps_capture), PPS_CAPTURE};
 	uORB::Subscription								_sensor_gps_sub{ORB_ID(sensor_gps)};
 	orb_advert_t											_mavlink_log_pub{nullptr};
 

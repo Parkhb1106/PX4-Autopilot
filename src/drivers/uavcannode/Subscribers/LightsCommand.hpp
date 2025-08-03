@@ -143,7 +143,7 @@ private:
 		}
 	}
 
-	uORB::Publication<led_control_s> _led_control_pub{ORB_ID(led_control)};
+	uORB::Publication<led_control_s> _led_control_pub{ORB_ID(led_control), UAVCANNODE};
 	unsigned _self_light_index{0};
 };
 } // namespace uavcannode

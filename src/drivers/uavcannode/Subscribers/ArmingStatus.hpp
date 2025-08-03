@@ -94,6 +94,6 @@ private:
 		_actuator_armed_pub.publish(actuator_armed);
 	}
 
-	uORB::Publication<actuator_armed_s> _actuator_armed_pub{ORB_ID(actuator_armed)};
+	uORB::Publication<actuator_armed_s> _actuator_armed_pub{ORB_ID(actuator_armed), UAVCANNODE};
 };
 } // namespace uavcannode

@@ -103,6 +103,6 @@ private:
 
 	}
 
-	uORB::Publication<actuator_servos_s> _actuator_servos_pub{ORB_ID(actuator_servos)};
+	uORB::Publication<actuator_servos_s> _actuator_servos_pub{ORB_ID(actuator_servos), UAVCANNODE};
 };
 } // namespace uavcannode

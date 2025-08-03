@@ -114,7 +114,7 @@ private:
 	/** internal variables **/
 	uint32_t _read_failures{0};
 
-	uORB::Publication<irlock_report_s> _irlock_report_topic{ORB_ID(irlock_report)};
+	uORB::Publication<irlock_report_s> _irlock_report_topic{ORB_ID(irlock_report), IRLOCK};
 };
 
 IRLOCK::IRLOCK(const I2CSPIDriverConfig &config) :

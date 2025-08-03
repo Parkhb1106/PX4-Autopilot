@@ -135,13 +135,13 @@ private:
 	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
 	uORB::PublicationMulti<sensor_gps_s> _sensor_gps_pub{ORB_ID(sensor_gps)};
 
-	uORB::Publication<sensor_selection_s> _sensor_selection_pub{ORB_ID(sensor_selection)};
+	uORB::Publication<sensor_selection_s> _sensor_selection_pub{ORB_ID(sensor_selection), VECTORNAV};
 
 	uORB::PublicationMulti<vehicle_attitude_s> _attitude_pub;
 	uORB::PublicationMulti<vehicle_local_position_s> _local_position_pub;
 	uORB::PublicationMulti<vehicle_global_position_s> _global_position_pub;
 
-	uORB::Publication<estimator_status_s> _estimator_status_pub{ORB_ID(estimator_status)};
+	uORB::Publication<estimator_status_s> _estimator_status_pub{ORB_ID(estimator_status), VECTORNAV};
 
 	perf_counter_t _comms_errors{perf_alloc(PC_COUNT, MODULE_NAME": com_err")};
 	perf_counter_t _sample_perf{perf_alloc(PC_ELAPSED, MODULE_NAME": read")};

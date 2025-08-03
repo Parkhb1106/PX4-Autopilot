@@ -89,6 +89,6 @@ private:
 		_tune_control_pub.publish(tune_control);
 	}
 
-	uORB::Publication<tune_control_s> _tune_control_pub{ORB_ID(tune_control)};
+	uORB::Publication<tune_control_s> _tune_control_pub{ORB_ID(tune_control), UAVCANNODE};
 };
 } // namespace uavcannode

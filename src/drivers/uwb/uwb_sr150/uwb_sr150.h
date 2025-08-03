@@ -120,7 +120,7 @@ private:
 	void Run() override;
 
 	// Publications
-	uORB::Publication<sensor_uwb_s> _sensor_uwb_pub{ORB_ID(sensor_uwb)};
+	uORB::Publication<sensor_uwb_s> _sensor_uwb_pub{ORB_ID(sensor_uwb), UWB_SR150};
 
 	// Subscriptions
 	uORB::SubscriptionCallbackWorkItem _sensor_uwb_sub{this, ORB_ID(sensor_uwb)};

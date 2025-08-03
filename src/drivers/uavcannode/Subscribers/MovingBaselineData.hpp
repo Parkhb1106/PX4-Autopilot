@@ -103,6 +103,6 @@ private:
 		}
 	}
 
-	uORB::Publication<gps_inject_data_s> _gps_inject_data_pub{ORB_ID(gps_inject_data)};
+	uORB::Publication<gps_inject_data_s> _gps_inject_data_pub{ORB_ID(gps_inject_data), UAVCANNODE};
 };
 } // namespace uavcannode

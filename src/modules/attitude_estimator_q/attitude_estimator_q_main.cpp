@@ -130,7 +130,7 @@ private:
 	uORB::Subscription _vehicle_mocap_odometry_sub{ORB_ID(vehicle_mocap_odometry)};
 	uORB::Subscription _vehicle_visual_odometry_sub{ORB_ID(vehicle_visual_odometry)};
 
-	uORB::Publication<vehicle_attitude_s> _vehicle_attitude_pub{ORB_ID(vehicle_attitude)};
+	uORB::Publication<vehicle_attitude_s> _vehicle_attitude_pub{ORB_ID(vehicle_attitude), ATTITUDE_ESTIMATOR_Q};
 
 	Vector3f    _accel{};
 	Vector3f    _gyro{};

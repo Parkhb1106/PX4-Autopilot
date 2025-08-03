@@ -106,7 +106,7 @@ private:
 		THIRD_SENSOR_INDEX
 	};
 
-	uORB::Publication<airspeed_validated_s> _airspeed_validated_pub {ORB_ID(airspeed_validated)};			/**< airspeed validated topic*/
+	uORB::Publication<airspeed_validated_s> _airspeed_validated_pub {ORB_ID(airspeed_validated), AIRSPEED_SELECTOR};			/**< airspeed validated topic*/
 	uORB::PublicationMulti<airspeed_wind_s> _wind_est_pub[MAX_NUM_AIRSPEED_SENSORS + 1] {{ORB_ID(airspeed_wind)}, {ORB_ID(airspeed_wind)}, {ORB_ID(airspeed_wind)}, {ORB_ID(airspeed_wind)}}; /**< wind estimate topic (for each airspeed validator + purely sideslip fusion) */
 	orb_advert_t 	_mavlink_log_pub {nullptr}; 						/**< mavlink log topic*/
 

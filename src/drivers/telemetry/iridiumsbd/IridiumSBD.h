@@ -295,7 +295,7 @@ private:
 	bool _writing_mavlink_packet = false;
 	uint16_t _packet_length = 0;
 
-	uORB::Publication<iridiumsbd_status_s> _iridiumsbd_status_pub{ORB_ID(iridiumsbd_status)};
+	uORB::Publication<iridiumsbd_status_s> _iridiumsbd_status_pub{ORB_ID(iridiumsbd_status), IRIDIUMSBD};
 
 	px4::atomic_bool _test_pending{false};
 	char _test_command[32];
