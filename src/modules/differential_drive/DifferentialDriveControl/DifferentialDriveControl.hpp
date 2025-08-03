@@ -68,7 +68,7 @@ private:
 	uORB::Subscription _vehicle_attitude_sub{ORB_ID(vehicle_attitude)};
 	uORB::Subscription _vehicle_local_position_sub{ORB_ID(vehicle_local_position)};
 
-	uORB::Publication<differential_drive_setpoint_s> _differential_drive_control_output_pub{ORB_ID(differential_drive_control_output)};
+	uORB::Publication<differential_drive_setpoint_s> _differential_drive_control_output_pub{ORB_ID(differential_drive_control_output), DIFFERENTIAL_DRIVE};
 
 	differential_drive_setpoint_s _differential_drive_setpoint{};
 

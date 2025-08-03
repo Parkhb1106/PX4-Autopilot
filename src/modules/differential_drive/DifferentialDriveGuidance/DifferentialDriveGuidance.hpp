@@ -112,7 +112,7 @@ private:
 	uORB::Subscription _position_setpoint_triplet_sub{ORB_ID(position_setpoint_triplet)};
 	uORB::Subscription _vehicle_global_position_sub{ORB_ID(vehicle_global_position)};
 
-	uORB::Publication<differential_drive_setpoint_s> _differential_drive_setpoint_pub{ORB_ID(differential_drive_setpoint)};
+	uORB::Publication<differential_drive_setpoint_s> _differential_drive_setpoint_pub{ORB_ID(differential_drive_setpoint), DIFFERENTIAL_DRIVE};
 
 	position_setpoint_triplet_s _position_setpoint_triplet{};
 	vehicle_global_position_s _vehicle_global_position{};

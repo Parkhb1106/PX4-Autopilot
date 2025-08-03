@@ -170,8 +170,8 @@ private:
 	uORB::Subscription _config_control_setpoints_sub{ORB_ID(config_control_setpoints)};
 	uORB::Subscription _register_ext_component_request_sub{ORB_ID(register_ext_component_request)};
 	uORB::Subscription _unregister_ext_component_sub{ORB_ID(unregister_ext_component)};
-	uORB::Publication<register_ext_component_reply_s> _register_ext_component_reply_pub{ORB_ID(register_ext_component_reply)};
-	uORB::Publication<config_overrides_s> _config_overrides_pub{ORB_ID(config_overrides)};
+	uORB::Publication<register_ext_component_reply_s> _register_ext_component_reply_pub{ORB_ID(register_ext_component_reply), COMMANDER};
+	uORB::Publication<config_overrides_s> _config_overrides_pub{ORB_ID(config_overrides), COMMANDER};
 	uORB::Subscription _config_overrides_request_sub{ORB_ID(config_overrides_request)};
 
 	ExternalChecks &_external_checks;

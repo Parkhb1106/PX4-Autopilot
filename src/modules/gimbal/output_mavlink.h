@@ -57,8 +57,8 @@ public:
 
 private:
 	void _stream_device_attitude_status();
-	uORB::Publication<vehicle_command_s> _gimbal_v1_command_pub{ORB_ID(gimbal_v1_command)};
-	uORB::Publication <gimbal_device_attitude_status_s>	_attitude_status_pub{ORB_ID(gimbal_device_attitude_status)};
+	uORB::Publication<vehicle_command_s> _gimbal_v1_command_pub{ORB_ID(gimbal_v1_command), GIMBAL};
+	uORB::Publication <gimbal_device_attitude_status_s>	_attitude_status_pub{ORB_ID(gimbal_device_attitude_status), GIMBAL};
 
 	ControlData::Type _previous_control_data_type {ControlData::Type::Neutral};
 };
@@ -78,7 +78,7 @@ private:
 	void _request_gimbal_device_information();
 	void _check_for_gimbal_device_information();
 
-	uORB::Publication<gimbal_device_set_attitude_s> _gimbal_device_set_attitude_pub{ORB_ID(gimbal_device_set_attitude)};
+	uORB::Publication<gimbal_device_set_attitude_s> _gimbal_device_set_attitude_pub{ORB_ID(gimbal_device_set_attitude), GIMBAL};
 	uORB::Subscription _gimbal_device_information_sub{ORB_ID(gimbal_device_information)};
 
 	uint8_t _gimbal_device_compid{0};

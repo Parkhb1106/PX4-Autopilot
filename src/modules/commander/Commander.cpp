@@ -181,7 +181,7 @@ static bool send_vehicle_command(const uint32_t cmd, const float param1 = NAN, c
 	vcmd.source_component = vehicle_status_sub.get().component_id;
 	vcmd.target_component = vehicle_status_sub.get().component_id;
 
-	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), COMMANDER};
 	vcmd.timestamp = hrt_absolute_time();
 	return vcmd_pub.publish(vcmd);
 }
@@ -224,7 +224,7 @@ static bool broadcast_vehicle_command(const uint32_t cmd, const float param1 = N
 	vcmd.source_component = vehicle_status_sub.get().component_id;
 	vcmd.target_component = 0;
 
-	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), COMMANDER};
 	vcmd.timestamp = hrt_absolute_time();
 	return vcmd_pub.publish(vcmd);
 }
@@ -2968,7 +2968,7 @@ void Commander::send_parachute_command()
 	vcmd.source_component = _vehicle_status.component_id;
 	vcmd.target_component = 161; // MAV_COMP_ID_PARACHUTE
 
-	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), COMMANDER};
 	vcmd.timestamp = hrt_absolute_time();
 	vcmd_pub.publish(vcmd);
 

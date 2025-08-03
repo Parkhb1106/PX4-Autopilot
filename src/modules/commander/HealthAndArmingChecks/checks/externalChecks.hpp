@@ -104,5 +104,5 @@ private:
 
 	uORB::Subscription _arming_check_reply_sub{ORB_ID(arming_check_reply)};
 
-	uORB::Publication<arming_check_request_s> _arming_check_request_pub{ORB_ID(arming_check_request)};
+	uORB::Publication<arming_check_request_s> _arming_check_request_pub{ORB_ID(arming_check_request), COMMANDER};
 };

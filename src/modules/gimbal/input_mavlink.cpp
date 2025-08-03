@@ -368,7 +368,7 @@ void InputMavlinkCmdMount::_ack_vehicle_command(const vehicle_command_s &cmd)
 	vehicle_command_ack.target_system = cmd.source_system;
 	vehicle_command_ack.target_component = cmd.source_component;
 
-	uORB::Publication<vehicle_command_ack_s> cmd_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s> cmd_ack_pub{ORB_ID(vehicle_command_ack), GIMBAL};
 	cmd_ack_pub.publish(vehicle_command_ack);
 }
 
@@ -976,7 +976,7 @@ void InputMavlinkGimbalV2::_ack_vehicle_command(const vehicle_command_s &cmd, ui
 	vehicle_command_ack.target_system = cmd.source_system;
 	vehicle_command_ack.target_component = cmd.source_component;
 
-	uORB::Publication<vehicle_command_ack_s> cmd_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s> cmd_ack_pub{ORB_ID(vehicle_command_ack), GIMBAL};
 	cmd_ack_pub.publish(vehicle_command_ack);
 }
 

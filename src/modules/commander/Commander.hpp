@@ -309,13 +309,13 @@ private:
 	uORB::SubscriptionData<offboard_control_mode_s>		_offboard_control_mode_sub{ORB_ID(offboard_control_mode)};
 
 	// Publications
-	uORB::Publication<actuator_armed_s>			_actuator_armed_pub{ORB_ID(actuator_armed)};
-	uORB::Publication<actuator_test_s>			_actuator_test_pub{ORB_ID(actuator_test)};
-	uORB::Publication<failure_detector_status_s>		_failure_detector_status_pub{ORB_ID(failure_detector_status)};
-	uORB::Publication<vehicle_command_ack_s>		_vehicle_command_ack_pub{ORB_ID(vehicle_command_ack)};
-	uORB::Publication<vehicle_command_s>			_vehicle_command_pub{ORB_ID(vehicle_command)};
-	uORB::Publication<vehicle_control_mode_s>		_vehicle_control_mode_pub{ORB_ID(vehicle_control_mode)};
-	uORB::Publication<vehicle_status_s>			_vehicle_status_pub{ORB_ID(vehicle_status)};
+	uORB::Publication<actuator_armed_s>			_actuator_armed_pub{ORB_ID(actuator_armed), COMMANDER};
+	uORB::Publication<actuator_test_s>			_actuator_test_pub{ORB_ID(actuator_test), COMMANDER};
+	uORB::Publication<failure_detector_status_s>		_failure_detector_status_pub{ORB_ID(failure_detector_status), COMMANDER};
+	uORB::Publication<vehicle_command_ack_s>		_vehicle_command_ack_pub{ORB_ID(vehicle_command_ack), COMMANDER};
+	uORB::Publication<vehicle_command_s>			_vehicle_command_pub{ORB_ID(vehicle_command), COMMANDER};
+	uORB::Publication<vehicle_control_mode_s>		_vehicle_control_mode_pub{ORB_ID(vehicle_control_mode), COMMANDER};
+	uORB::Publication<vehicle_status_s>			_vehicle_status_pub{ORB_ID(vehicle_status), COMMANDER};
 
 	orb_advert_t _mavlink_log_pub{nullptr};
 

@@ -215,18 +215,18 @@ private:
 	uORB::Subscription _vehicle_land_detected_sub{ORB_ID(vehicle_land_detected)};
 	uORB::Subscription _vehicle_status_sub{ORB_ID(vehicle_status)};
 
-	uORB::Publication<vehicle_attitude_setpoint_s> _attitude_sp_pub;
-	uORB::Publication<vehicle_local_position_setpoint_s> _local_pos_sp_pub{ORB_ID(vehicle_local_position_setpoint)};
-	uORB::Publication<npfg_status_s> _npfg_status_pub{ORB_ID(npfg_status)};
-	uORB::Publication<position_controller_status_s>	_pos_ctrl_status_pub{ORB_ID(position_controller_status)};
-	uORB::Publication<position_controller_landing_status_s>	_pos_ctrl_landing_status_pub{ORB_ID(position_controller_landing_status)};
-	uORB::Publication<tecs_status_s> _tecs_status_pub{ORB_ID(tecs_status)};
-	uORB::Publication<launch_detection_status_s> _launch_detection_status_pub{ORB_ID(launch_detection_status)};
-	uORB::PublicationMulti<orbit_status_s> _orbit_status_pub{ORB_ID(orbit_status)};
-	uORB::Publication<landing_gear_s> _landing_gear_pub {ORB_ID(landing_gear)};
-	uORB::Publication<normalized_unsigned_setpoint_s> _flaps_setpoint_pub{ORB_ID(flaps_setpoint)};
-	uORB::Publication<normalized_unsigned_setpoint_s> _spoilers_setpoint_pub{ORB_ID(spoilers_setpoint)};
-	uORB::PublicationData<flight_phase_estimation_s> _flight_phase_estimation_pub{ORB_ID(flight_phase_estimation)};
+	uORB::Publication<vehicle_attitude_setpoint_s> _attitude_sp_pub{FW_POS_CONTROL};
+	uORB::Publication<vehicle_local_position_setpoint_s> _local_pos_sp_pub{ORB_ID(vehicle_local_position_setpoint), FW_POS_CONTROL};
+	uORB::Publication<npfg_status_s> _npfg_status_pub{ORB_ID(npfg_status), FW_POS_CONTROL};
+	uORB::Publication<position_controller_status_s>	_pos_ctrl_status_pub{ORB_ID(position_controller_status), FW_POS_CONTROL};
+	uORB::Publication<position_controller_landing_status_s>	_pos_ctrl_landing_status_pub{ORB_ID(position_controller_landing_status), FW_POS_CONTROL};
+	uORB::Publication<tecs_status_s> _tecs_status_pub{ORB_ID(tecs_status), FW_POS_CONTROL};
+	uORB::Publication<launch_detection_status_s> _launch_detection_status_pub{ORB_ID(launch_detection_status), FW_POS_CONTROL};
+	uORB::PublicationMulti<orbit_status_s> _orbit_status_pub{ORB_ID(orbit_status), FW_POS_CONTROL};
+	uORB::Publication<landing_gear_s> _landing_gear_pub {ORB_ID(landing_gear), FW_POS_CONTROL};
+	uORB::Publication<normalized_unsigned_setpoint_s> _flaps_setpoint_pub{ORB_ID(flaps_setpoint), FW_POS_CONTROL};
+	uORB::Publication<normalized_unsigned_setpoint_s> _spoilers_setpoint_pub{ORB_ID(spoilers_setpoint), FW_POS_CONTROL};
+	uORB::PublicationData<flight_phase_estimation_s> _flight_phase_estimation_pub{ORB_ID(flight_phase_estimation), FW_POS_CONTROL};
 
 	manual_control_setpoint_s _manual_control_setpoint{};
 	position_setpoint_triplet_s _pos_sp_triplet{};
@@ -440,7 +440,7 @@ private:
 #ifdef CONFIG_FIGURE_OF_EIGHT
 	/* Loitering */
 	FigureEight _figure_eight;
-	uORB::Publication<figure_eight_status_s> _figure_eight_status_pub {ORB_ID(figure_eight_status)};
+	uORB::Publication<figure_eight_status_s> _figure_eight_status_pub {ORB_ID(figure_eight_status), FW_POS_CONTROL};
 	/**
 	 * Vehicle control for the autonomous figure 8 mode.
 	 *

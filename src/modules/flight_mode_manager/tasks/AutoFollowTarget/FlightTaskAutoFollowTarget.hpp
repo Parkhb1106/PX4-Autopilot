@@ -304,7 +304,7 @@ protected:
 
 	uORB::Subscription _follow_target_estimator_sub{ORB_ID(follow_target_estimator)};
 
-	uORB::Publication<follow_target_status_s> _follow_target_status_pub{ORB_ID(follow_target_status)};
-	uORB::Publication<gimbal_manager_set_attitude_s> _gimbal_manager_set_attitude_pub{ORB_ID(gimbal_manager_set_attitude)};
-	uORB::Publication<vehicle_command_s> _vehicle_command_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<follow_target_status_s> _follow_target_status_pub{ORB_ID(follow_target_status), FLIGHT_MODE_MANAGER};
+	uORB::Publication<gimbal_manager_set_attitude_s> _gimbal_manager_set_attitude_pub{ORB_ID(gimbal_manager_set_attitude), FLIGHT_MODE_MANAGER};
+	uORB::Publication<vehicle_command_s> _vehicle_command_pub{ORB_ID(vehicle_command), FLIGHT_MODE_MANAGER};
 };

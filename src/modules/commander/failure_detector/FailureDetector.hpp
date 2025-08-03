@@ -88,7 +88,7 @@ public:
 	void manipulateEscStatus(esc_status_s &status);
 private:
 	uORB::Subscription _vehicle_command_sub{ORB_ID(vehicle_command)};
-	uORB::Publication<vehicle_command_ack_s> _command_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s> _command_ack_pub{ORB_ID(vehicle_command_ack), COMMANDER};
 
 	uint32_t _esc_blocked{};
 	uint32_t _esc_wrong{};

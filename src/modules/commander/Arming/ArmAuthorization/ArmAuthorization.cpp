@@ -98,7 +98,7 @@ static void arm_auth_request_msg_send()
 	vcmd.command = vehicle_command_s::VEHICLE_CMD_ARM_AUTHORIZATION_REQUEST;
 	vcmd.target_system = _param_com_arm_auth_id;
 
-	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), COMMANDER};
 	vcmd_pub.publish(vcmd);
 }
 

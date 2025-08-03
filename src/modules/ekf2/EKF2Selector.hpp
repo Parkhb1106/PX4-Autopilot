@@ -232,13 +232,13 @@ private:
 	uORB::Subscription _sensors_status_imu{ORB_ID(sensors_status_imu)};
 
 	// Publications
-	uORB::Publication<estimator_selector_status_s> _estimator_selector_status_pub{ORB_ID(estimator_selector_status)};
-	uORB::Publication<sensor_selection_s>          _sensor_selection_pub{ORB_ID(sensor_selection)};
-	uORB::Publication<vehicle_attitude_s>          _vehicle_attitude_pub{ORB_ID(vehicle_attitude)};
-	uORB::Publication<vehicle_global_position_s>   _vehicle_global_position_pub{ORB_ID(vehicle_global_position)};
-	uORB::Publication<vehicle_local_position_s>    _vehicle_local_position_pub{ORB_ID(vehicle_local_position)};
-	uORB::Publication<vehicle_odometry_s>          _vehicle_odometry_pub{ORB_ID(vehicle_odometry)};
-	uORB::Publication<wind_s>             _wind_pub{ORB_ID(wind)};
+	uORB::Publication<estimator_selector_status_s> _estimator_selector_status_pub{ORB_ID(estimator_selector_status), EKF2_};
+	uORB::Publication<sensor_selection_s>          _sensor_selection_pub{ORB_ID(sensor_selection), EKF2_};
+	uORB::Publication<vehicle_attitude_s>          _vehicle_attitude_pub{ORB_ID(vehicle_attitude), EKF2_};
+	uORB::Publication<vehicle_global_position_s>   _vehicle_global_position_pub{ORB_ID(vehicle_global_position), EKF2_};
+	uORB::Publication<vehicle_local_position_s>    _vehicle_local_position_pub{ORB_ID(vehicle_local_position), EKF2_};
+	uORB::Publication<vehicle_odometry_s>          _vehicle_odometry_pub{ORB_ID(vehicle_odometry), EKF2_};
+	uORB::Publication<wind_s>             _wind_pub{ORB_ID(wind), EKF2_};
 
 	DEFINE_PARAMETERS(
 		(ParamFloat<px4::params::EKF2_SEL_ERR_RED>) _param_ekf2_sel_err_red,

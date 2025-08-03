@@ -149,9 +149,9 @@ private:
 
 	uORB::SubscriptionData<vehicle_status_s> _vehicle_status_sub{ORB_ID(vehicle_status)};
 
-	uORB::Publication<landing_gear_s> _landing_gear_pub{ORB_ID(landing_gear)};
-	uORB::Publication<trajectory_setpoint_s> _trajectory_setpoint_pub{ORB_ID(trajectory_setpoint)};
-	uORB::Publication<vehicle_constraints_s> _vehicle_constraints_pub{ORB_ID(vehicle_constraints)};
+	uORB::Publication<landing_gear_s> _landing_gear_pub{ORB_ID(landing_gear), FLIGHT_MODE_MANAGER};
+	uORB::Publication<trajectory_setpoint_s> _trajectory_setpoint_pub{ORB_ID(trajectory_setpoint), FLIGHT_MODE_MANAGER};
+	uORB::Publication<vehicle_constraints_s> _vehicle_constraints_pub{ORB_ID(vehicle_constraints), FLIGHT_MODE_MANAGER};
 
 	DEFINE_PARAMETERS(
 		(ParamInt<px4::params::MPC_POS_MODE>) _param_mpc_pos_mode

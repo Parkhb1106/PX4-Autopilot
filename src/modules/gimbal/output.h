@@ -96,7 +96,7 @@ private:
 	uORB::Subscription _vehicle_global_position_sub{ORB_ID(vehicle_global_position)};
 	uORB::Subscription _vehicle_land_detected_sub{ORB_ID(vehicle_land_detected)};
 
-	uORB::Publication<mount_orientation_s> _mount_orientation_pub{ORB_ID(mount_orientation)};
+	uORB::Publication<mount_orientation_s> _mount_orientation_pub{ORB_ID(mount_orientation), GIMBAL};
 
 	bool _landed{true};
 };

@@ -97,7 +97,7 @@ int do_esc_calibration(orb_advert_t *mavlink_log_pub)
 	// 1 Initialization
 	bool calibration_failed = false;
 
-	uORB::Publication<actuator_test_s> actuator_test_pub{ORB_ID(actuator_test)};
+	uORB::Publication<actuator_test_s> actuator_test_pub{ORB_ID(actuator_test), COMMANDER};
 	// since we publish multiple at once, make sure the output driver subscribes before we publish
 	actuator_test_pub.advertise();
 
