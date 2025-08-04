@@ -192,10 +192,10 @@ private:
 	uint8_t                         _spoofing_state{0};                             ///< spoofing state
 	uint8_t                         _jamming_state{0};                              ///< jamming state
 
-	uORB::PublicationMulti<sensor_gps_s>	_report_gps_pos_pub{ORB_ID(sensor_gps)};	///< uORB pub for gps position
-	uORB::PublicationMulti<sensor_gnss_relative_s> _sensor_gnss_relative_pub{ORB_ID(sensor_gnss_relative)};
+	uORB::PublicationMulti<sensor_gps_s>	_report_gps_pos_pub{ORB_ID(sensor_gps), GPS_};	///< uORB pub for gps position
+	uORB::PublicationMulti<sensor_gnss_relative_s> _sensor_gnss_relative_pub{ORB_ID(sensor_gnss_relative), GPS_};
 
-	uORB::PublicationMulti<satellite_info_s>	_report_sat_info_pub{ORB_ID(satellite_info)};		///< uORB pub for satellite info
+	uORB::PublicationMulti<satellite_info_s>	_report_sat_info_pub{ORB_ID(satellite_info), GPS_};		///< uORB pub for satellite info
 
 	float				_rate{0.0f};					///< position update rate
 	float				_rate_rtcm_injection{0.0f};			///< RTCM message injection rate

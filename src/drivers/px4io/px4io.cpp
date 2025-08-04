@@ -209,7 +209,7 @@ private:
 	bool			_timer_rates_configured{false};
 
 	/* advertised topics */
-	uORB::PublicationMulti<input_rc_s>	_input_rc_pub{ORB_ID(input_rc)};
+	uORB::PublicationMulti<input_rc_s>	_input_rc_pub{ORB_ID(input_rc), PX4IO};
 	uORB::Publication<px4io_status_s>	_px4io_status_pub{ORB_ID(px4io_status), PX4IO};
 
 	ButtonPublisher	_button_publisher;

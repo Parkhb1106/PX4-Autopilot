@@ -102,7 +102,7 @@ private:
 	PX4Gyroscope _px4_gyro;
 	PX4Magnetometer _px4_mag;
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), ADIS16448};
 
 	perf_counter_t _reset_perf{perf_alloc(PC_COUNT, MODULE_NAME": reset")};
 	perf_counter_t _bad_register_perf{perf_alloc(PC_COUNT, MODULE_NAME": bad register")};

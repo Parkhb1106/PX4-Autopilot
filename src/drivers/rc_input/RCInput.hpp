@@ -142,7 +142,7 @@ private:
 	uORB::Subscription	_vehicle_cmd_sub{ORB_ID(vehicle_command)};
 	uORB::Subscription	_vehicle_status_sub{ORB_ID(vehicle_status)};
 
-	uORB::PublicationMulti<input_rc_s> _input_rc_pub{ORB_ID(input_rc)};
+	uORB::PublicationMulti<input_rc_s> _input_rc_pub{ORB_ID(input_rc), RC_INPUT};
 
 	float		_analog_rc_rssi_volt{-1.0f};
 	bool		_analog_rc_rssi_stable{false};

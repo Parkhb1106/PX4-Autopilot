@@ -132,14 +132,14 @@ private:
 	MapProjection _pos_ref{};
 	float _gps_alt_ref{NAN};		///< WGS-84 height (m)
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
-	uORB::PublicationMulti<sensor_gps_s> _sensor_gps_pub{ORB_ID(sensor_gps)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), VECTORNAV};
+	uORB::PublicationMulti<sensor_gps_s> _sensor_gps_pub{ORB_ID(sensor_gps), VECTORNAV};
 
 	uORB::Publication<sensor_selection_s> _sensor_selection_pub{ORB_ID(sensor_selection), VECTORNAV};
 
-	uORB::PublicationMulti<vehicle_attitude_s> _attitude_pub;
-	uORB::PublicationMulti<vehicle_local_position_s> _local_position_pub;
-	uORB::PublicationMulti<vehicle_global_position_s> _global_position_pub;
+	uORB::PublicationMulti<vehicle_attitude_s> _attitude_pub{VECTORNAV};
+	uORB::PublicationMulti<vehicle_local_position_s> _local_position_pub{VECTORNAV};
+	uORB::PublicationMulti<vehicle_global_position_s> _global_position_pub{VECTORNAV};
 
 	uORB::Publication<estimator_status_s> _estimator_status_pub{ORB_ID(estimator_status), VECTORNAV};
 

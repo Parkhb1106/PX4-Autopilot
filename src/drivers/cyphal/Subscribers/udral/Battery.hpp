@@ -174,7 +174,7 @@ public:
 private:
 	float _nominal_voltage = NAN;
 
-	uORB::PublicationMulti<battery_status_s> _battery_status_pub{ORB_ID(battery_status)};
+	uORB::PublicationMulti<battery_status_s> _battery_status_pub{ORB_ID(battery_status), CYPHAL};
 
 	SubjectSubscription _status_sub;
 	SubjectSubscription _parameters_sub;

@@ -81,7 +81,7 @@ private:
 
 	hrt_abstime              _last_read{0};
 
-	uORB::PublicationMulti<sensor_optical_flow_s> _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow)};
+	uORB::PublicationMulti<sensor_optical_flow_s> _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow), THONEFLOW};
 
 	perf_counter_t _sample_perf{perf_alloc(PC_ELAPSED, MODULE_NAME": read")};
 	perf_counter_t _comms_errors{perf_alloc(PC_COUNT, MODULE_NAME": com err")};

@@ -97,7 +97,7 @@ private:
 		READ,
 	} _state{STATE::RESET};
 
-	uORB::PublicationMulti<sensor_optical_flow_s> _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow)};
+	uORB::PublicationMulti<sensor_optical_flow_s> _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow), PAA3905};
 
 	const spi_drdy_gpio_t _drdy_gpio;
 

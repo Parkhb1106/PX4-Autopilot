@@ -93,7 +93,7 @@ private:
 	bool				_sensor_ok{false};
 	bool				_collect_phase{false};
 
-	uORB::PublicationMulti<sensor_optical_flow_s> _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow)};
+	uORB::PublicationMulti<sensor_optical_flow_s> _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow), PX4FLOW};
 
 	perf_counter_t		_sample_perf;
 	perf_counter_t		_comms_errors;

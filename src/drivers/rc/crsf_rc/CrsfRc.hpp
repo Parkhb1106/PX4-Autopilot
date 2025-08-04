@@ -77,7 +77,7 @@ public:
 private:
 	void Run() override;
 
-	uORB::PublicationMulti<input_rc_s> _input_rc_pub{ORB_ID(input_rc)};
+	uORB::PublicationMulti<input_rc_s> _input_rc_pub{ORB_ID(input_rc), CRSF_RC};
 
 	input_rc_s _input_rc{};
 

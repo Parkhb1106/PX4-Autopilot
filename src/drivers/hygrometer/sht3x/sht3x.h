@@ -118,7 +118,7 @@ private:
 	int _last_state = sht3x_state::INIT;
 	uint32_t _time_in_state = hrt_absolute_time();
 	uint16_t _last_command = 0;
-	uORB::PublicationMulti<sensor_hygrometer_s> _sensor_hygrometer_pub{ORB_ID(sensor_hygrometer)};
+	uORB::PublicationMulti<sensor_hygrometer_s> _sensor_hygrometer_pub{ORB_ID(sensor_hygrometer), SHT3X};
 
 	DEFINE_PARAMETERS(
 		(ParamInt<px4::params::SENS_EN_SHT3X>) _param_sens_en_sht3x

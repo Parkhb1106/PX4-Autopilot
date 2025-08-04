@@ -89,7 +89,7 @@ private:
 	int            _tranfer_fail_count{0};
 	uint8_t        _last_config_register_content{0x00};
 
-	uORB::PublicationMulti<rpm_s> _rpm_pub{ORB_ID(rpm)};
+	uORB::PublicationMulti<rpm_s> _rpm_pub{ORB_ID(rpm), PCF8583};
 
 	DEFINE_PARAMETERS(
 		(ParamInt<px4::params::PCF8583_POOL>) _param_pcf8583_pool,

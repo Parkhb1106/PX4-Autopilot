@@ -120,7 +120,7 @@ private:
 	const uint8_t _device_mux_map[TAP_ESC_MAX_MOTOR_NUM] = ESC_POS;
 	const uint8_t _device_dir_map[TAP_ESC_MAX_MOTOR_NUM] = ESC_DIR;
 
-	uORB::PublicationMulti<esc_status_s> _esc_feedback_pub{ORB_ID(esc_status)};
+	uORB::PublicationMulti<esc_status_s> _esc_feedback_pub{ORB_ID(esc_status)}, TAP_ESC;
 	esc_status_s      _esc_feedback{};
 	uint8_t    	  _channels_count{0}; 		///< number of ESC channels
 	uint8_t 	  _responding_esc{0};
