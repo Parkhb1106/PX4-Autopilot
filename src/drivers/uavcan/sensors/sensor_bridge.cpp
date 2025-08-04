@@ -281,6 +281,7 @@ UavcanSensorBridgeBase::publish(const int node_id, const void *report)
 		_device_id.devid_s.bus_type = DeviceBusType::DeviceBusType_UAVCAN;
 
 		// Publish to the appropriate topic, abort on failure
+		report.publisher_id = UAVCAN;
 		channel->orb_advert = orb_advertise_multi(_orb_topic, report, &channel->instance);
 
 		channel->node_id = node_id;

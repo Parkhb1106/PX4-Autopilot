@@ -418,6 +418,7 @@ static calibrate_return mag_calibration_worker(detect_orientation_return orienta
 				}
 
 				if (worker_data->mag_worker_data_pub == nullptr) {
+					status.publisher_id = COMMANDER;
 					worker_data->mag_worker_data_pub = orb_advertise(ORB_ID(mag_worker_data), &status);
 
 				} else {

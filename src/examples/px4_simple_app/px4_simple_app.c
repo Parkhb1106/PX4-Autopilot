@@ -66,6 +66,7 @@ int px4_simple_app_main(int argc, char *argv[])
 	/* advertise attitude topic */
 	struct vehicle_attitude_s att;
 	memset(&att, 0, sizeof(att));
+	att.publisher_id = PX4_SIMPLE_APP;
 	orb_advert_t att_pub = orb_advertise(ORB_ID(vehicle_attitude), &att);
 
 	/* one could wait for multiple topics with this technique, just using one here */

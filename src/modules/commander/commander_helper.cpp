@@ -153,6 +153,7 @@ int buzzer_init()
 	tune_durations[tune_control_s::TUNE_ID_BATTERY_WARNING_SLOW] = 800000;
 	tune_durations[tune_control_s::TUNE_ID_SINGLE_BEEP] = 300000;
 
+	tune_control.publisher_id = COMMANDER;
 	tune_control_pub = orb_advertise(ORB_ID(tune_control), &tune_control);
 
 	return PX4_OK;
@@ -332,6 +333,7 @@ int led_init()
 	led_control.mode = led_control_s::MODE_OFF;
 	led_control.priority = 0;
 	led_control.timestamp = hrt_absolute_time();
+	led_control.publisher_id = COMMANDER;
 	led_control_pub = orb_advertise(ORB_ID(led_control), &led_control);
 
 	/* first open normal LEDs */

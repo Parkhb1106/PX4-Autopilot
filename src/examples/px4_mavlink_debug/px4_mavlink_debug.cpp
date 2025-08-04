@@ -63,12 +63,14 @@ int px4_mavlink_debug_main(int argc, char *argv[])
 	struct debug_key_value_s dbg_key;
 	strncpy(dbg_key.key, "velx", 10);
 	dbg_key.value = 0.0f;
+	dbg_key.publisher_id = PX4_MAVLINK_DEBUG;
 	orb_advert_t pub_dbg_key = orb_advertise(ORB_ID(debug_key_value), &dbg_key);
 
 	/* advertise indexed debug value */
 	struct debug_value_s dbg_ind;
 	dbg_ind.ind = 42;
 	dbg_ind.value = 0.5f;
+	dbg_ind.publisher_id = PX4_MAVLINK_DEBUG;
 	orb_advert_t pub_dbg_ind = orb_advertise(ORB_ID(debug_value), &dbg_ind);
 
 	/* advertise debug vect */
@@ -77,12 +79,14 @@ int px4_mavlink_debug_main(int argc, char *argv[])
 	dbg_vect.x = 1.0f;
 	dbg_vect.y = 2.0f;
 	dbg_vect.z = 3.0f;
+	dbg_vect.publisher_id = PX4_MAVLINK_DEBUG;
 	orb_advert_t pub_dbg_vect = orb_advertise(ORB_ID(debug_vect), &dbg_vect);
 
 	/* advertise debug array */
 	struct debug_array_s dbg_array;
 	dbg_array.id = 1;
 	strncpy(dbg_array.name, "dbg_array", 10);
+	dbg_array.publisher_id = PX4_MAVLINK_DEBUG;
 	orb_advert_t pub_dbg_array = orb_advertise(ORB_ID(debug_array), &dbg_array);
 
 	int value_counter = 0;

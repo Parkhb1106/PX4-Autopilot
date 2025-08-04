@@ -693,6 +693,7 @@ void PGA460::run()
 	}
 
 	struct distance_sensor_s report = {};
+	report.publisher_id = PGA460;
 	_distance_sensor_topic = orb_advertise(ORB_ID(distance_sensor), &report);
 
 	if (_distance_sensor_topic == nullptr) {
