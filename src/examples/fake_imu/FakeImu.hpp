@@ -81,6 +81,6 @@ private:
 	uint32_t _sensor_interval_us{1250};
 
 #if defined(FAKE_IMU_FAKE_ESC_STATUS)
-	uORB::PublicationData<esc_status_s> _esc_status_pub {ORB_ID(esc_status)};
+	uORB::PublicationData<esc_status_s> _esc_status_pub {ORB_ID(esc_status), FAKE_IMU};
 #endif // FAKE_IMU_FAKE_ESC_STATUS
 };

@@ -75,7 +75,7 @@ private:
 	uORB::SubscriptionData<vehicle_global_position_s>	_global_position_sub{ORB_ID(vehicle_global_position)};
 	uORB::SubscriptionData<vehicle_local_position_s>	_local_position_sub{ORB_ID(vehicle_local_position)};
 
-	uORB::PublicationData<home_position_s>			_home_position_pub{ORB_ID(home_position)};
+	uORB::PublicationData<home_position_s>			_home_position_pub{ORB_ID(home_position), COMMANDER};
 
 	uint8_t							_heading_reset_counter{0};
 	bool							_valid{false};
