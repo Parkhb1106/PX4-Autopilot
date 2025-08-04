@@ -209,7 +209,7 @@ protected:
 	// Subscriptions
 	uORB::SubscriptionCallbackWorkItem _follow_target_sub{this, ORB_ID(follow_target)};
 	uORB::SubscriptionCallbackWorkItem _vehicle_local_position_sub{this, ORB_ID(vehicle_local_position)};
-	uORB::PublicationMulti<follow_target_estimator_s> _follow_target_estimator_pub{ORB_ID(follow_target_estimator)};
+	uORB::PublicationMulti<follow_target_estimator_s> _follow_target_estimator_pub{ORB_ID(follow_target_estimator), FLIGHT_MODE_MANAGER};
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 
 	// Debugging

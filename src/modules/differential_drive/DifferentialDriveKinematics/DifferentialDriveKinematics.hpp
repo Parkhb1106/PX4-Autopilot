@@ -88,7 +88,7 @@ public:
 
 private:
 	uORB::Subscription _differential_drive_control_output_sub{ORB_ID(differential_drive_control_output)};
-	uORB::PublicationMulti<actuator_motors_s> _actuator_motors_pub{ORB_ID(actuator_motors)};
+	uORB::PublicationMulti<actuator_motors_s> _actuator_motors_pub{ORB_ID(actuator_motors), DIFFERENTIAL_DRIVE};
 
 	differential_drive_setpoint_s _differential_drive_control_output{};
 	bool _armed = false;

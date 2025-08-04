@@ -310,7 +310,7 @@ private:
 
 	uORB::Publication<uavcan_parameter_value_s> _param_response_pub{ORB_ID(uavcan_parameter_value), UAVCAN};
 	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack), UAVCAN};
-	uORB::PublicationMulti<can_interface_status_s> _can_status_pub{ORB_ID(can_interface_status)};
+	uORB::PublicationMulti<can_interface_status_s> _can_status_pub{ORB_ID(can_interface_status), UAVCAN};
 
 	hrt_abstime _last_can_status_pub{0};
 	orb_advert_t _can_status_pub_handles[UAVCAN_NUM_IFACES] = {nullptr};

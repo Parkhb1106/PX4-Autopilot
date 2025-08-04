@@ -128,7 +128,7 @@ private:
 	SlewRateYaw<float> _slew_rate_yaw;
 
 	orb_advert_t _mavlink_log_pub{nullptr};
-	uORB::PublicationMulti<orbit_status_s> _orbit_status_pub{ORB_ID(orbit_status)};
+	uORB::PublicationMulti<orbit_status_s> _orbit_status_pub{ORB_ID(orbit_status), FLIGHT_MODE_MANAGER};
 
 	DEFINE_PARAMETERS(
 		(ParamFloat<px4::params::MC_ORBIT_RAD_MAX>) _param_mc_orbit_rad_max,

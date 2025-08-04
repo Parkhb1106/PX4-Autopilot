@@ -65,7 +65,7 @@ private:
 
 	void Run() override;
 
-	uORB::PublicationMulti<sensor_gps_s> _sensor_gps_pub{ORB_ID(sensor_gps)};
+	uORB::PublicationMulti<sensor_gps_s> _sensor_gps_pub{ORB_ID(sensor_gps), FAKE_GPS};
 
 	double _latitude{29.6603018};   // Latitude in degrees
 	double _longitude{-82.3160500}; // Longitude in degrees

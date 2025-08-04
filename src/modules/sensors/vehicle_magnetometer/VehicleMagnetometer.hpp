@@ -102,10 +102,10 @@ private:
 	uORB::Publication<sensor_preflight_mag_s> _sensor_preflight_mag_pub{ORB_ID(sensor_preflight_mag), SENSORS};
 
 	uORB::PublicationMulti<vehicle_magnetometer_s> _vehicle_magnetometer_pub[MAX_SENSOR_COUNT] {
-		{ORB_ID(vehicle_magnetometer)},
-		{ORB_ID(vehicle_magnetometer)},
-		{ORB_ID(vehicle_magnetometer)},
-		{ORB_ID(vehicle_magnetometer)},
+		{ORB_ID(vehicle_magnetometer), SENSORS},
+		{ORB_ID(vehicle_magnetometer), SENSORS},
+		{ORB_ID(vehicle_magnetometer), SENSORS},
+		{ORB_ID(vehicle_magnetometer), SENSORS},
 	};
 
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};

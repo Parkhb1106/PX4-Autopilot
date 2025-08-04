@@ -195,7 +195,7 @@ private:
 	bool	 _new_packet{false};
 
 	/* Publications */
-	uORB::PublicationMulti<input_rc_s> _rc_pub{ORB_ID(input_rc)};
+	uORB::PublicationMulti<input_rc_s> _rc_pub{ORB_ID(input_rc), VOXL2_IO};
 
 	/* Subscriptions */
 	uORB::Subscription 	_parameter_update_sub{ORB_ID(parameter_update)};

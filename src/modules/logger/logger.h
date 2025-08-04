@@ -377,7 +377,7 @@ private:
 	hrt_abstime					_next_load_print{0}; ///< timestamp when to print the process load
 	PrintLoadReason					_print_load_reason {PrintLoadReason::Preflight};
 
-	uORB::PublicationMulti<logger_status_s>		_logger_status_pub[(int)LogType::Count] { ORB_ID(logger_status), ORB_ID(logger_status) };
+	uORB::PublicationMulti<logger_status_s>		_logger_status_pub[(int)LogType::Count] { {ORB_ID(logger_status), LOGGER}, {ORB_ID(logger_status), LOGGER} };
 
 	hrt_abstime					_logger_status_last {0};
 	int						_lockstep_component{-1};

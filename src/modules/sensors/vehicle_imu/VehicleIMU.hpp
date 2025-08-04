@@ -96,8 +96,8 @@ private:
 	// return the square of two floating point numbers
 	static constexpr float sq(float var) { return var * var; }
 
-	uORB::PublicationMulti<vehicle_imu_s> _vehicle_imu_pub{ORB_ID(vehicle_imu)};
-	uORB::PublicationMulti<vehicle_imu_status_s> _vehicle_imu_status_pub{ORB_ID(vehicle_imu_status)};
+	uORB::PublicationMulti<vehicle_imu_s> _vehicle_imu_pub{ORB_ID(vehicle_imu), SENSORS};
+	uORB::PublicationMulti<vehicle_imu_status_s> _vehicle_imu_status_pub{ORB_ID(vehicle_imu_status), SENSORS};
 
 	static constexpr hrt_abstime kIMUStatusPublishingInterval{100_ms};
 

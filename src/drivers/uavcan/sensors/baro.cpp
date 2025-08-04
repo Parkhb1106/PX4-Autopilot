@@ -99,7 +99,7 @@ void UavcanBarometerBridge::air_pressure_sub_cb(const
 	}
 
 	// Cast our generic CDev pointer to the sensor-specific driver class
-	uORB::PublicationMulti<sensor_baro_s> *baro = static_cast<uORB::PublicationMulti<sensor_baro_s> *>(channel->h_driver);
+	uORB::PublicationMulti<sensor_baro_s> *baro = static_cast<uORB::PublicationMulti<sensor_baro_s> *>(channel->h_driver, UAVCAN);
 
 	if (baro == nullptr) {
 		return;
@@ -132,13 +132,13 @@ void UavcanBarometerBridge::air_pressure_sub_cb(const
 
 int UavcanBarometerBridge::init_driver(uavcan_bridge::Channel *channel)
 {
-	channel->h_driver = new uORB::PublicationMulti<sensor_baro_s>(ORB_ID(sensor_baro));
+	channel->h_driver = new uORB::PublicationMulti<sensor_baro_s>(ORB_ID(sensor_baro), UAVCAN);
 
 	if (channel->h_driver == nullptr) {
 		return PX4_ERROR;
 	}
 
-	uORB::PublicationMulti<sensor_baro_s> *baro = static_cast<uORB::PublicationMulti<sensor_baro_s> *>(channel->h_driver);
+	uORB::PublicationMulti<sensor_baro_s> *baro = static_cast<uORB::PublicationMulti<sensor_baro_s> *>(channel->h_driver, UAVCAN);
 
 	channel->instance = baro->get_instance();
 
