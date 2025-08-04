@@ -87,7 +87,7 @@ protected:
 	led_control_s _led_control{};
 
 private:
-	uORB::Publication<led_control_s> _led_control_pub{ORB_ID(led_control)};
+	uORB::Publication<led_control_s> _led_control_pub{ORB_ID(led_control), SEND_EVENT};
 
 	bool _old_gps_lock_valid{false};
 	bool _old_home_position_valid{false};

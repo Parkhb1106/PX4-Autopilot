@@ -73,7 +73,7 @@ private:
 	bool 				checksum(char *buf, uint32_t checksum);
 	uint8_t				hex2int(char ch);
 
-	uORB::Publication<sensor_airflow_s> _sensor_airflow_pub{ORB_ID(sensor_airflow)};
+	uORB::Publication<sensor_airflow_s> _sensor_airflow_pub{ORB_ID(sensor_airflow), FT7_TECHNOLOGIES};
 
 	char 				_port[20] {};
 	char 				_readbuf[30] {};

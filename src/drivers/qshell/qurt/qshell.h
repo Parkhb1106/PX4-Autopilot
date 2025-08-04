@@ -55,7 +55,7 @@ public:
 
 private:
 
-	uORB::Publication<qshell_retval_s>	_qshell_retval_pub{ORB_ID(qshell_retval)};
+	uORB::Publication<qshell_retval_s>	_qshell_retval_pub{ORB_ID(qshell_retval), QSHELL};
 
 	qshell_req_s m_qshell_req{};
 

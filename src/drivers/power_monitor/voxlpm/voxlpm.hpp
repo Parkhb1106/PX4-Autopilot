@@ -250,7 +250,7 @@ private:
 	perf_counter_t		_sample_perf;
 	perf_counter_t		_comms_errors;
 
-	uORB::PublicationMulti<power_monitor_s>		_pm_pub_topic{ORB_ID(power_monitor)};
+	uORB::PublicationMulti<power_monitor_s>		_pm_pub_topic{ORB_ID(power_monitor), VOXLPM};
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 
 	power_monitor_s 	_pm_status{};

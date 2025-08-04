@@ -93,7 +93,7 @@ private:
 	uORB::SubscriptionCallbackWorkItem _gpio_request_sub{this, ORB_ID(gpio_request)};
 	uORB::SubscriptionCallbackWorkItem _gpio_config_sub{this, ORB_ID(gpio_config)};
 
-	uORB::Publication<gpio_in_s> _to_gpio_in{ORB_ID(gpio_in)};
+	uORB::Publication<gpio_in_s> _to_gpio_in{ORB_ID(gpio_in), MCP23009};
 
 	perf_counter_t _cycle_perf;
 

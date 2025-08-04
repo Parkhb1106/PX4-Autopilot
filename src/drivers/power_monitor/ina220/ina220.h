@@ -201,7 +201,7 @@ private:
 
 
 	Battery 		  _battery;
-	uORB::PublicationMulti<power_monitor_s>		_pm_pub_topic{ORB_ID(power_monitor)};
+	uORB::PublicationMulti<power_monitor_s>		_pm_pub_topic{ORB_ID(power_monitor), INA220};
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 
 	power_monitor_s 	_pm_status{};

@@ -69,7 +69,7 @@ public:
 	float                           sf45_wrap_360(float f);
 protected:
 	obstacle_distance_s                       _obstacle_map_msg{};
-	uORB::Publication<obstacle_distance_s>		_obstacle_distance_pub{ORB_ID(obstacle_distance)};	/**< obstacle_distance publication */
+	uORB::Publication<obstacle_distance_s>		_obstacle_distance_pub{ORB_ID(obstacle_distance), LIGHTWARE_SF45_SERIAL};	/**< obstacle_distance publication */
 
 private:
 

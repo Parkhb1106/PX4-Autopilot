@@ -56,7 +56,7 @@ private:
 	int _send_cmd(std::vector<std::string> &argList);
 	int _wait_for_retval();
 
-	uORB::Publication<qshell_req_s>	_qshell_req_pub{ORB_ID(qshell_req)};
+	uORB::Publication<qshell_req_s>	_qshell_req_pub{ORB_ID(qshell_req), QSHELL};
 
 	static uORB::Subscription	*_qshell_retval_sub;
 

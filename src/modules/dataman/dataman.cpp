@@ -662,7 +662,7 @@ task_main(int argc, char *argv[])
 
 	g_task_should_exit = false;
 
-	uORB::Publication<dataman_response_s> dataman_response_pub{ORB_ID(dataman_response)};
+	uORB::Publication<dataman_response_s> dataman_response_pub{ORB_ID(dataman_response), DATAMAN};
 	const int dataman_request_sub = orb_subscribe(ORB_ID(dataman_request));
 
 	if (dataman_request_sub < 0) {
