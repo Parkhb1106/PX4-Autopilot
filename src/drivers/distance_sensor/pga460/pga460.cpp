@@ -819,6 +819,7 @@ void PGA460::uORB_publish_results(const float object_distance)
 	if (data_is_valid) {
 		report.signal_quality = 1;
 		_previous_valid_report_distance = report.current_distance;
+		report.publisher_id = PGA460;
 		orb_publish(ORB_ID(distance_sensor), _distance_sensor_topic, &report);
 	}
 }

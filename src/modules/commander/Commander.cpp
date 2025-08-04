@@ -113,6 +113,7 @@ static void stop_tune()
 	tune_control_s tune_control{};
 	tune_control.tune_override = true;
 	tune_control.timestamp = hrt_absolute_time();
+	tune_control.publisher_id = COMMANDER;
 	orb_publish(ORB_ID(tune_control), tune_control_pub, &tune_control);
 }
 
@@ -150,6 +151,7 @@ static int power_button_state_notification_cb(board_power_button_state_notificat
 	}
 
 	if (power_button_state_pub != nullptr) {
+		button_state.publisher_id = COMMANDER;
 		orb_publish(ORB_ID(power_button_state), power_button_state_pub, &button_state);
 
 	} else {

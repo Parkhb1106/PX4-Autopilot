@@ -298,6 +298,7 @@ UavcanSensorBridgeBase::publish(const int node_id, const void *report)
 
 	assert(channel != nullptr);
 
+	report.publisher_id = UAVCAN;
 	(void)orb_publish(_orb_topic, channel->orb_advert, report);
 }
 

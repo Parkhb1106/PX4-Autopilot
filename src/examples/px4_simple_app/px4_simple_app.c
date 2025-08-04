@@ -115,6 +115,7 @@ int px4_simple_app_main(int argc, char *argv[])
 				att.q[1] = accel.xyz[1];
 				att.q[2] = accel.xyz[2];
 
+				att.publisher_id = PX4_SIMPLE_APP;
 				orb_publish(ORB_ID(vehicle_attitude), att_pub, &att);
 			}
 
