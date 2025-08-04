@@ -122,7 +122,7 @@ private:
 
 	struct Telemetry {
 		DShotTelemetry handler{};
-		uORB::PublicationMultiData<esc_status_s> esc_status_pub{ORB_ID(esc_status)};
+		uORB::PublicationMultiData<esc_status_s> esc_status_pub{ORB_ID(esc_status), DSHOT};
 		int last_telemetry_index{-1};
 		uint8_t actuator_functions[esc_status_s::CONNECTED_ESC_MAX] {};
 	};
