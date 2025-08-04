@@ -56,7 +56,7 @@ public:
 				    uint8_t instance = 0) :
 		UavcanDynamicPortSubscriber(handle, pmgr, "uorb.", meta->o_name, instance),
 		_uorb_meta{meta},
-		_uorb_pub(meta)
+		_uorb_pub(meta, CYPHAL)
 	{};
 
 	~uORB_over_UAVCAN_Subscriber() override = default;
