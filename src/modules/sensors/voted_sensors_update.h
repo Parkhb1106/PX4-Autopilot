@@ -152,8 +152,8 @@ private:
 	hrt_abstime _last_error_message{0};
 	orb_advert_t _mavlink_log_pub{nullptr};
 
-	uORB::Publication<sensor_selection_s> _sensor_selection_pub{ORB_ID(sensor_selection)};	/**< handle to the sensor selection uORB topic */
-	uORB::Publication<sensors_status_imu_s> _sensors_status_imu_pub{ORB_ID(sensors_status_imu)};
+	uORB::Publication<sensor_selection_s> _sensor_selection_pub{ORB_ID(sensor_selection), SENSORS};	/**< handle to the sensor selection uORB topic */
+	uORB::Publication<sensors_status_imu_s> _sensors_status_imu_pub{ORB_ID(sensors_status_imu), SENSORS};
 
 	uORB::SubscriptionCallbackWorkItem(&_vehicle_imu_sub)[MAX_SENSOR_COUNT];
 	uORB::SubscriptionMultiArray<vehicle_imu_status_s, MAX_SENSOR_COUNT> _vehicle_imu_status_subs{ORB_ID::vehicle_imu_status};

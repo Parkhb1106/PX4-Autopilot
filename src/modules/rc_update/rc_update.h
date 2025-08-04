@@ -165,9 +165,9 @@ protected:
 
 	uORB::Subscription _rc_parameter_map_sub{ORB_ID(rc_parameter_map)};
 
-	uORB::Publication<rc_channels_s> _rc_channels_pub{ORB_ID(rc_channels)};
-	uORB::PublicationMulti<manual_control_setpoint_s> _manual_control_input_pub{ORB_ID(manual_control_input)};
-	uORB::Publication<manual_control_switches_s> _manual_control_switches_pub{ORB_ID(manual_control_switches)};
+	uORB::Publication<rc_channels_s> _rc_channels_pub{ORB_ID(rc_channels), RC_UPDATE};
+	uORB::PublicationMulti<manual_control_setpoint_s> _manual_control_input_pub{ORB_ID(manual_control_input), RC_UPDATE};
+	uORB::Publication<manual_control_switches_s> _manual_control_switches_pub{ORB_ID(manual_control_switches), RC_UPDATE};
 
 	manual_control_switches_s _manual_switches_previous{};
 	manual_control_switches_s _manual_switches_last_publish{};

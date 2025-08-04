@@ -85,8 +85,8 @@ public:
 		param_set(param_find("COM_FLTMODE6"), &mode);
 	}
 
-	uORB::Publication<manual_control_switches_s> _manual_control_switches_pub{ORB_ID(manual_control_switches)};
-	uORB::Publication<manual_control_setpoint_s> _manual_control_input_pub{ORB_ID(manual_control_input)};
+	uORB::Publication<manual_control_switches_s> _manual_control_switches_pub{ORB_ID(manual_control_switches), MANUAL_CONTROL};
+	uORB::Publication<manual_control_setpoint_s> _manual_control_input_pub{ORB_ID(manual_control_input), MANUAL_CONTROL};
 	uORB::SubscriptionData<manual_control_setpoint_s> _manual_control_setpoint_sub{ORB_ID(manual_control_setpoint)};
 	uORB::SubscriptionData<action_request_s> _action_request_sub{ORB_ID(action_request)};
 
@@ -309,7 +309,7 @@ TEST_F(SwitchTest, ModeSwitchInitialization)
 TEST_F(SwitchTest, ModeSwitchInitializationArmed)
 {
 	// GIVEN: vehicle is armed
-	uORB::Publication<vehicle_status_s> vehicle_status_pub{ORB_ID(vehicle_status)};
+	uORB::Publication<vehicle_status_s> vehicle_status_pub{ORB_ID(vehicle_status), MANUAL_CONTROL};
 	vehicle_status_pub.publish({.arming_state = vehicle_status_s::ARMING_STATE_ARMED});
 
 	// GIVEN: valid stick input from RC

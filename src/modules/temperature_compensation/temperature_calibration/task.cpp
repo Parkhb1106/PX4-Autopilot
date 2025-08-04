@@ -89,7 +89,7 @@ public:
 private:
 	void publish_led_control(led_control_s &led_control);
 
-	uORB::Publication<led_control_s> _led_control_pub{ORB_ID(led_control)};
+	uORB::Publication<led_control_s> _led_control_pub{ORB_ID(led_control), TEMPERATURE_COMPENSATION};
 
 	bool	_force_task_exit = false;
 	int	_control_task = -1;		// task handle for task

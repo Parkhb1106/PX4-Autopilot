@@ -83,6 +83,6 @@ private:
 
 	gz::transport::Node::Publisher _actuators_pub;
 
-	uORB::Publication<esc_status_s> _esc_status_pub{ORB_ID(esc_status)};
+	uORB::Publication<esc_status_s> _esc_status_pub{ORB_ID(esc_status), GZ_BRIDGE};
 
 };

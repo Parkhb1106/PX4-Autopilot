@@ -139,7 +139,7 @@ private:
 	uORB::Subscription	_mission_result_sub{ORB_ID(mission_result)};
 	uORB::SubscriptionData<mission_s> 	_mission_sub{ORB_ID(mission)};
 
-	uORB::Publication<mission_s>	_offboard_mission_pub{ORB_ID(mission)};
+	uORB::Publication<mission_s>	_offboard_mission_pub{ORB_ID(mission), MAVLINK};
 
 	int32_t 		_land_start_marker{-1}; 	///< index of loaded land start mission item (if unavailable, index of land mission item, -1 otherwise)
 	int32_t 		_land_marker{-1}; 		///< index of loaded land mission item (-1 if unavailable)

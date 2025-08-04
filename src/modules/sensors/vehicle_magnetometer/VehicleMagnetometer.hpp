@@ -97,9 +97,9 @@ private:
 
 	static constexpr int MAX_SENSOR_COUNT = 4;
 
-	uORB::Publication<sensors_status_s> _sensors_status_mag_pub{ORB_ID(sensors_status_mag)};
+	uORB::Publication<sensors_status_s> _sensors_status_mag_pub{ORB_ID(sensors_status_mag), SENSORS};
 
-	uORB::Publication<sensor_preflight_mag_s> _sensor_preflight_mag_pub{ORB_ID(sensor_preflight_mag)};
+	uORB::Publication<sensor_preflight_mag_s> _sensor_preflight_mag_pub{ORB_ID(sensor_preflight_mag), SENSORS};
 
 	uORB::PublicationMulti<vehicle_magnetometer_s> _vehicle_magnetometer_pub[MAX_SENSOR_COUNT] {
 		{ORB_ID(vehicle_magnetometer)},

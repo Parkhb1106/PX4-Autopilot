@@ -170,14 +170,14 @@ private:
 	uORB::Subscription _vehicle_cmd_sub{ORB_ID(vehicle_command)};
 	uORB::Subscription _vehicle_status_sub{ORB_ID(vehicle_status)};
 
-	uORB::Publication<normalized_unsigned_setpoint_s>	_flaps_setpoint_pub{ORB_ID(flaps_setpoint)};
-	uORB::Publication<normalized_unsigned_setpoint_s>	_spoilers_setpoint_pub{ORB_ID(spoilers_setpoint)};
-	uORB::Publication<vehicle_attitude_setpoint_s>		_vehicle_attitude_sp_pub{ORB_ID(vehicle_attitude_setpoint)};
-	uORB::PublicationMulti<vehicle_thrust_setpoint_s>	_vehicle_thrust_setpoint0_pub{ORB_ID(vehicle_thrust_setpoint)};
-	uORB::PublicationMulti<vehicle_thrust_setpoint_s>	_vehicle_thrust_setpoint1_pub{ORB_ID(vehicle_thrust_setpoint)};
-	uORB::PublicationMulti<vehicle_torque_setpoint_s>	_vehicle_torque_setpoint0_pub{ORB_ID(vehicle_torque_setpoint)};
-	uORB::PublicationMulti<vehicle_torque_setpoint_s>	_vehicle_torque_setpoint1_pub{ORB_ID(vehicle_torque_setpoint)};
-	uORB::Publication<vtol_vehicle_status_s>		_vtol_vehicle_status_pub{ORB_ID(vtol_vehicle_status)};
+	uORB::Publication<normalized_unsigned_setpoint_s>	_flaps_setpoint_pub{ORB_ID(flaps_setpoint), VTOL_ATT_CONTROL};
+	uORB::Publication<normalized_unsigned_setpoint_s>	_spoilers_setpoint_pub{ORB_ID(spoilers_setpoint), VTOL_ATT_CONTROL};
+	uORB::Publication<vehicle_attitude_setpoint_s>		_vehicle_attitude_sp_pub{ORB_ID(vehicle_attitude_setpoint), VTOL_ATT_CONTROL};
+	uORB::PublicationMulti<vehicle_thrust_setpoint_s>	_vehicle_thrust_setpoint0_pub{ORB_ID(vehicle_thrust_setpoint), VTOL_ATT_CONTROL};
+	uORB::PublicationMulti<vehicle_thrust_setpoint_s>	_vehicle_thrust_setpoint1_pub{ORB_ID(vehicle_thrust_setpoint), VTOL_ATT_CONTROL};
+	uORB::PublicationMulti<vehicle_torque_setpoint_s>	_vehicle_torque_setpoint0_pub{ORB_ID(vehicle_torque_setpoint), VTOL_ATT_CONTROL};
+	uORB::PublicationMulti<vehicle_torque_setpoint_s>	_vehicle_torque_setpoint1_pub{ORB_ID(vehicle_torque_setpoint), VTOL_ATT_CONTROL};
+	uORB::Publication<vtol_vehicle_status_s>		_vtol_vehicle_status_pub{ORB_ID(vtol_vehicle_status), VTOL_ATT_CONTROL};
 
 	orb_advert_t	_mavlink_log_pub{nullptr};	// mavlink log uORB handle
 

@@ -85,8 +85,8 @@ private:
 
 	static constexpr int MAX_SENSOR_COUNT = 3;
 
-	uORB::Publication<vehicle_optical_flow_s> _vehicle_optical_flow_pub{ORB_ID(vehicle_optical_flow)};
-	uORB::Publication<vehicle_optical_flow_vel_s> _vehicle_optical_flow_vel_pub{ORB_ID(vehicle_optical_flow_vel)};
+	uORB::Publication<vehicle_optical_flow_s> _vehicle_optical_flow_pub{ORB_ID(vehicle_optical_flow), SENSORS};
+	uORB::Publication<vehicle_optical_flow_vel_s> _vehicle_optical_flow_vel_pub{ORB_ID(vehicle_optical_flow_vel), SENSORS};
 
 	uORB::Subscription _params_sub{ORB_ID(parameter_update)};
 

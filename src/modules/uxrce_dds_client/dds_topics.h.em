@@ -125,11 +125,11 @@ void SendTopicsSubs::update(uxrSession *session, uxrStreamId reliable_out_stream
 // Publishers for received messages
 struct RcvTopicsPubs {
 @[    for sub in subscriptions]@
-	uORB::Publication<@(sub['simple_base_type'])_s> @(sub['topic_simple'])_pub{ORB_ID(@(sub['topic_simple']))};
+	uORB::Publication<@(sub['simple_base_type'])_s> @(sub['topic_simple'])_pub{ORB_ID(@(sub['topic_simple'])), UXRCE_DDS_CLIENT};
 @[    end for]@
 
 @[    for sub in subscriptions_multi]@
-	uORB::PublicationMulti<@(sub['simple_base_type'])_s> @(sub['topic_simple'])_pub{ORB_ID(@(sub['topic_simple']))};
+	uORB::PublicationMulti<@(sub['simple_base_type'])_s> @(sub['topic_simple'])_pub{ORB_ID(@(sub['topic_simple'])), UXRCE_DDS_CLIENT};
 @[    end for]@
 
 	uint32_t num_payload_received{};

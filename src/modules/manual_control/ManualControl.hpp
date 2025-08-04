@@ -108,9 +108,9 @@ private:
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 	uORB::Subscription _vehicle_status_sub{ORB_ID(vehicle_status)};
 
-	uORB::Publication<action_request_s> _action_request_pub{ORB_ID(action_request)};
-	uORB::Publication<landing_gear_s> _landing_gear_pub{ORB_ID(landing_gear)};
-	uORB::Publication<manual_control_setpoint_s> _manual_control_setpoint_pub{ORB_ID(manual_control_setpoint)};
+	uORB::Publication<action_request_s> _action_request_pub{ORB_ID(action_request), MANUAL_CONTROL};
+	uORB::Publication<landing_gear_s> _landing_gear_pub{ORB_ID(landing_gear), MANUAL_CONTROL};
+	uORB::Publication<manual_control_setpoint_s> _manual_control_setpoint_pub{ORB_ID(manual_control_setpoint), MANUAL_CONTROL};
 
 	ManualControlSelector _selector;
 

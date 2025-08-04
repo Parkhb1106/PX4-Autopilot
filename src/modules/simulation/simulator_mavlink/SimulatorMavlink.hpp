@@ -184,7 +184,7 @@ private:
 		{197644, ROTATION_NONE},
 	};
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pubs[2] {{ORB_ID(sensor_baro)}, {ORB_ID(sensor_baro)}};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pubs[2] {{ORB_ID(sensor_baro), SIMULATOR_MAVLINK}, {ORB_ID(sensor_baro), SIMULATOR_MAVLINK}};
 
 	float _sensors_temperature{0};
 
@@ -192,14 +192,14 @@ private:
 	perf_counter_t _perf_sim_interval{perf_alloc(PC_INTERVAL, MODULE_NAME": network interval")};
 
 	// uORB publisher handlers
-	uORB::Publication<differential_pressure_s>	_differential_pressure_pub{ORB_ID(differential_pressure)};
-	uORB::PublicationMulti<sensor_optical_flow_s>	_sensor_optical_flow_pub{ORB_ID(sensor_optical_flow)};
-	uORB::Publication<irlock_report_s>		_irlock_report_pub{ORB_ID(irlock_report)};
-	uORB::Publication<esc_status_s>			_esc_status_pub{ORB_ID(esc_status)};
-	uORB::Publication<vehicle_odometry_s>		_visual_odometry_pub{ORB_ID(vehicle_visual_odometry)};
-	uORB::Publication<vehicle_odometry_s>		_mocap_odometry_pub{ORB_ID(vehicle_mocap_odometry)};
+	uORB::Publication<differential_pressure_s>	_differential_pressure_pub{ORB_ID(differential_pressure), SIMULATOR_MAVLINK};
+	uORB::PublicationMulti<sensor_optical_flow_s>	_sensor_optical_flow_pub{ORB_ID(sensor_optical_flow), SIMULATOR_MAVLINK};
+	uORB::Publication<irlock_report_s>		_irlock_report_pub{ORB_ID(irlock_report), SIMULATOR_MAVLINK};
+	uORB::Publication<esc_status_s>			_esc_status_pub{ORB_ID(esc_status), SIMULATOR_MAVLINK};
+	uORB::Publication<vehicle_odometry_s>		_visual_odometry_pub{ORB_ID(vehicle_visual_odometry), SIMULATOR_MAVLINK};
+	uORB::Publication<vehicle_odometry_s>		_mocap_odometry_pub{ORB_ID(vehicle_mocap_odometry), SIMULATOR_MAVLINK};
 
-	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<vehicle_command_ack_s>	_command_ack_pub{ORB_ID(vehicle_command_ack), SIMULATOR_MAVLINK};
 
 	uORB::PublicationMulti<distance_sensor_s>	*_dist_pubs[ORB_MULTI_MAX_INSTANCES] {};
 	uint32_t _dist_sensor_ids[ORB_MULTI_MAX_INSTANCES] {};
@@ -247,14 +247,14 @@ private:
 	void actuator_controls_from_outputs(mavlink_hil_actuator_controls_t *msg);
 
 	// uORB publisher handlers
-	uORB::Publication<vehicle_angular_velocity_s>	_vehicle_angular_velocity_ground_truth_pub{ORB_ID(vehicle_angular_velocity_groundtruth)};
-	uORB::Publication<vehicle_attitude_s>		_attitude_ground_truth_pub{ORB_ID(vehicle_attitude_groundtruth)};
-	uORB::Publication<vehicle_global_position_s>	_gpos_ground_truth_pub{ORB_ID(vehicle_global_position_groundtruth)};
-	uORB::Publication<vehicle_local_position_s>	_lpos_ground_truth_pub{ORB_ID(vehicle_local_position_groundtruth)};
-	uORB::Publication<input_rc_s>			_input_rc_pub{ORB_ID(input_rc)};
+	uORB::Publication<vehicle_angular_velocity_s>	_vehicle_angular_velocity_ground_truth_pub{ORB_ID(vehicle_angular_velocity_groundtruth), SIMULATOR_MAVLINK};
+	uORB::Publication<vehicle_attitude_s>		_attitude_ground_truth_pub{ORB_ID(vehicle_attitude_groundtruth), SIMULATOR_MAVLINK};
+	uORB::Publication<vehicle_global_position_s>	_gpos_ground_truth_pub{ORB_ID(vehicle_global_position_groundtruth), SIMULATOR_MAVLINK};
+	uORB::Publication<vehicle_local_position_s>	_lpos_ground_truth_pub{ORB_ID(vehicle_local_position_groundtruth), SIMULATOR_MAVLINK};
+	uORB::Publication<input_rc_s>			_input_rc_pub{ORB_ID(input_rc), SIMULATOR_MAVLINK};
 
 	//rpm
-	uORB::Publication<rpm_s>			_rpm_pub{ORB_ID(rpm)};
+	uORB::Publication<rpm_s>			_rpm_pub{ORB_ID(rpm), SIMULATOR_MAVLINK};
 
 	// HIL GPS
 	static constexpr int MAX_GPS = 3;

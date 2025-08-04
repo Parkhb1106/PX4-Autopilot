@@ -468,7 +468,7 @@ void ManualControl::send_camera_mode_command(CameraMode camera_mode)
 	command.target_system = _system_id;
 	command.target_component = 100; // any camera
 
-	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command), MANUAL_CONTROL};
 	command.timestamp = hrt_absolute_time();
 	command_pub.publish(command);
 }
@@ -482,7 +482,7 @@ void ManualControl::send_photo_command()
 	command.target_system = _system_id;
 	command.target_component = 100; // any camera
 
-	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command), MANUAL_CONTROL};
 	command.timestamp = hrt_absolute_time();
 	command_pub.publish(command);
 }
@@ -502,7 +502,7 @@ void ManualControl::send_video_command()
 	command.target_system = _system_id;
 	command.target_component = 100; // any camera
 
-	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command), MANUAL_CONTROL};
 	command.timestamp = hrt_absolute_time();
 	command_pub.publish(command);
 

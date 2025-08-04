@@ -332,8 +332,8 @@ protected:
 	uORB::SubscriptionData<vehicle_land_detected_s> _land_detected_sub{ORB_ID(vehicle_land_detected)};	/**< vehicle land detected subscription */
 	uORB::SubscriptionData<vehicle_status_s> _vehicle_status_sub{ORB_ID(vehicle_status)};	/**< vehicle status subscription */
 	uORB::SubscriptionData<vehicle_global_position_s> _global_pos_sub{ORB_ID(vehicle_global_position)};	/**< global position subscription */
-	uORB::Publication<navigator_mission_item_s> _navigator_mission_item_pub{ORB_ID::navigator_mission_item}; /**< Navigator mission item publication*/
-	uORB::Publication<mission_s> _mission_pub{ORB_ID(mission)}; /**< Mission publication*/
+	uORB::Publication<navigator_mission_item_s> _navigator_mission_item_pub{ORB_ID::navigator_mission_item, NAVIGATOR}; /**< Navigator mission item publication*/
+	uORB::Publication<mission_s> _mission_pub{ORB_ID(mission), NAVIGATOR}; /**< Mission publication*/
 private:
 	/**
 	 * @brief Maximum number of jump mission items iterations

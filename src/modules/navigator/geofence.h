@@ -186,7 +186,7 @@ private:
 	bool _fence_updated{true};  ///< flag indicating if fence are updated to dataman cache
 	bool _initiate_fence_updated{true}; ///< flag indicating if fence updated is needed
 
-	uORB::Publication<geofence_status_s> _geofence_status_pub{ORB_ID(geofence_status)};
+	uORB::Publication<geofence_status_s> _geofence_status_pub{ORB_ID(geofence_status), NAVIGATOR};
 
 	/**
 	 * implementation of updateFence()

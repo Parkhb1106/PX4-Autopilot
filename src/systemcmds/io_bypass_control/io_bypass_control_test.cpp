@@ -85,7 +85,7 @@ int ss_io_timer_test_main(int argc, char *argv[])
 	}
 
 	if (!strcmp(argv[1], "test")) {
-		uORB::Publication<actuator_test_s> publisher{ORB_ID(actuator_test)};
+		uORB::Publication<actuator_test_s> publisher{ORB_ID(actuator_test), IO_BYPASS_CONTROL};
 		publisher.advertise();
 
 		for (int i = 0; i < 1500; i++) {

@@ -93,10 +93,10 @@ protected:
 	/* timeout after which filter is reset if target not seen */
 	static constexpr uint32_t landing_target_estimator_TIMEOUT_US = 2000000;
 
-	uORB::Publication<landing_target_pose_s> _targetPosePub{ORB_ID(landing_target_pose)};
+	uORB::Publication<landing_target_pose_s> _targetPosePub{ORB_ID(landing_target_pose), LANDING_TARGET_ESTIMATOR};
 	landing_target_pose_s _target_pose{};
 
-	uORB::Publication<landing_target_innovations_s> _targetInnovationsPub{ORB_ID(landing_target_innovations)};
+	uORB::Publication<landing_target_innovations_s> _targetInnovationsPub{ORB_ID(landing_target_innovations), LANDING_TARGET_ESTIMATOR};
 	landing_target_innovations_s _target_innovations{};
 
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};

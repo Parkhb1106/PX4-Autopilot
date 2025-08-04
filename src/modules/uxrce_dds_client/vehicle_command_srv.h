@@ -48,7 +48,7 @@
 class VehicleCommandSrv : public SrvBase
 {
 private:
-	uORB::Publication<vehicle_command_s> vehicle_command_pub_{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> vehicle_command_pub_{ORB_ID(vehicle_command), UXRCE_DDS_CLIENT};
 	uORB::Subscription vehicle_command_ack_sub_{ORB_ID(vehicle_command_ack)};
 	uint32_t last_command_sent_{0};
 	hrt_abstime last_command_sent_timestamp_{0};

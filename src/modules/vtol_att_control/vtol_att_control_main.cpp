@@ -195,7 +195,7 @@ void VtolAttitudeControl::vehicle_cmd_poll()
 				command_ack.target_system = vehicle_command.source_system;
 				command_ack.target_component = vehicle_command.source_component;
 
-				uORB::Publication<vehicle_command_ack_s> command_ack_pub{ORB_ID(vehicle_command_ack)};
+				uORB::Publication<vehicle_command_ack_s> command_ack_pub{ORB_ID(vehicle_command_ack), VTOL_ATT_CONTROL};
 				command_ack_pub.publish(command_ack);
 			}
 		}

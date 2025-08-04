@@ -59,7 +59,7 @@ void actuator_test(int function, float value, int timeout_ms, bool release_contr
 	actuator_test.action = release_control ? actuator_test_s::ACTION_RELEASE_CONTROL : actuator_test_s::ACTION_DO_CONTROL;
 	actuator_test.timeout_ms = timeout_ms;
 
-	uORB::Publication<actuator_test_s> actuator_test_pub{ORB_ID(actuator_test)};
+	uORB::Publication<actuator_test_s> actuator_test_pub{ORB_ID(actuator_test), ACTUATOR_TEST};
 	actuator_test_pub.publish(actuator_test);
 }
 

@@ -238,6 +238,6 @@ private:
 	uORB::SubscriptionData<home_position_s> _home_pos_sub{ORB_ID(home_position)};
 	uORB::SubscriptionData<wind_s>		_wind_sub{ORB_ID(wind)};
 
-	uORB::Publication<rtl_time_estimate_s> _rtl_time_estimate_pub{ORB_ID(rtl_time_estimate)};
-	uORB::PublicationData<rtl_status_s> _rtl_status_pub{ORB_ID(rtl_status)};
+	uORB::Publication<rtl_time_estimate_s> _rtl_time_estimate_pub{ORB_ID(rtl_time_estimate), NAVIGATOR};
+	uORB::PublicationData<rtl_status_s> _rtl_status_pub{ORB_ID(rtl_status), NAVIGATOR};
 };

@@ -160,7 +160,7 @@ private:
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 	uORB::Subscription _vcontrol_mode_sub{ORB_ID(vehicle_control_mode)};
 
-	uORB::Publication<sensor_combined_s> _sensor_pub{ORB_ID(sensor_combined)};
+	uORB::Publication<sensor_combined_s> _sensor_pub{ORB_ID(sensor_combined), SENSORS};
 
 #if defined(CONFIG_SENSORS_VEHICLE_AIRSPEED)
 	/**
@@ -182,7 +182,7 @@ private:
 	uORB::Subscription _diff_pres_sub {ORB_ID(differential_pressure)};
 	uORB::Subscription _vehicle_air_data_sub{ORB_ID(vehicle_air_data)};
 
-	uORB::Publication<airspeed_s>             _airspeed_pub{ORB_ID(airspeed)};
+	uORB::Publication<airspeed_s>             _airspeed_pub{ORB_ID(airspeed), SENSORS};
 
 	DataValidator	_airspeed_validator;		/**< data validator to monitor airspeed */
 
@@ -197,7 +197,7 @@ private:
 
 # ifdef ADC_AIRSPEED_VOLTAGE_CHANNEL
 	uORB::Subscription _adc_report_sub {ORB_ID(adc_report)};
-	uORB::PublicationMulti<differential_pressure_s> _diff_pres_pub{ORB_ID(differential_pressure)};
+	uORB::PublicationMulti<differential_pressure_s> _diff_pres_pub{ORB_ID(differential_pressure), SENSORS};
 # endif // ADC_AIRSPEED_VOLTAGE_CHANNEL
 
 	struct Parameters {

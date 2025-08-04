@@ -302,13 +302,13 @@ private:
 	uORB::Subscription _traffic_sub{ORB_ID(transponder_report)};		/**< traffic subscription */
 	uORB::Subscription _vehicle_command_sub{ORB_ID(vehicle_command)};	/**< vehicle commands (onboard and offboard) */
 
-	uORB::Publication<geofence_result_s>		_geofence_result_pub{ORB_ID(geofence_result)};
-	uORB::Publication<mission_result_s>		_mission_result_pub{ORB_ID(mission_result)};
-	uORB::Publication<position_setpoint_triplet_s>	_pos_sp_triplet_pub{ORB_ID(position_setpoint_triplet)};
-	uORB::Publication<vehicle_command_ack_s>	_vehicle_cmd_ack_pub{ORB_ID(vehicle_command_ack)};
-	uORB::Publication<vehicle_command_s>		_vehicle_cmd_pub{ORB_ID(vehicle_command)};
-	uORB::Publication<vehicle_roi_s>		_vehicle_roi_pub{ORB_ID(vehicle_roi)};
-	uORB::Publication<mode_completed_s> _mode_completed_pub{ORB_ID(mode_completed)};
+	uORB::Publication<geofence_result_s>		_geofence_result_pub{ORB_ID(geofence_result), NAVIGATOR};
+	uORB::Publication<mission_result_s>		_mission_result_pub{ORB_ID(mission_result), NAVIGATOR};
+	uORB::Publication<position_setpoint_triplet_s>	_pos_sp_triplet_pub{ORB_ID(position_setpoint_triplet), NAVIGATOR};
+	uORB::Publication<vehicle_command_ack_s>	_vehicle_cmd_ack_pub{ORB_ID(vehicle_command_ack), NAVIGATOR};
+	uORB::Publication<vehicle_command_s>		_vehicle_cmd_pub{ORB_ID(vehicle_command), NAVIGATOR};
+	uORB::Publication<vehicle_roi_s>		_vehicle_roi_pub{ORB_ID(vehicle_roi), NAVIGATOR};
+	uORB::Publication<mode_completed_s> _mode_completed_pub{ORB_ID(mode_completed), NAVIGATOR};
 
 	orb_advert_t	_mavlink_log_pub{nullptr};	/**< the uORB advert to send messages over mavlink */
 

@@ -154,8 +154,8 @@ private:
 	uORB::SubscriptionInterval         _parameter_update_sub{ORB_ID(parameter_update), 1_s}; // subscription limited to 1 Hz updates
 
 	// Publications
-	uORB::Publication<vehicle_command_ack_s> _vehicle_command_ack_pub{ORB_ID(vehicle_command_ack)};
-	uORB::Publication<vehicle_command_s> _vehicle_command_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_ack_s> _vehicle_command_ack_pub{ORB_ID(vehicle_command_ack), PAYLOAD_DELIVERER};
+	uORB::Publication<vehicle_command_s> _vehicle_command_pub{ORB_ID(vehicle_command), PAYLOAD_DELIVERER};
 
 	DEFINE_PARAMETERS(
 		(ParamFloat<px4::params::PD_GRIPPER_TO>)	_param_gripper_timeout_s,

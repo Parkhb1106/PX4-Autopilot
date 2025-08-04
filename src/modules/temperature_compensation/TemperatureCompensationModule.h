@@ -147,7 +147,7 @@ private:
 	TemperatureCompensation _temperature_compensation;
 
 	sensor_correction_s _corrections{}; /**< struct containing the sensor corrections to be published to the uORB*/
-	uORB::Publication<sensor_correction_s> _sensor_correction_pub{ORB_ID(sensor_correction)};
+	uORB::Publication<sensor_correction_s> _sensor_correction_pub{ORB_ID(sensor_correction), TEMPERATURE_COMPENSATION};
 
 	bool _corrections_changed{true};
 };

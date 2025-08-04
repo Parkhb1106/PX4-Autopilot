@@ -292,61 +292,61 @@ private:
 	uint16_t _mavlink_status_last_packet_rx_drop_count{0};
 
 	// ORB publications
-	uORB::Publication<airspeed_s>				_airspeed_pub{ORB_ID(airspeed)};
-	uORB::Publication<battery_status_s>			_battery_pub{ORB_ID(battery_status)};
-	uORB::Publication<camera_status_s>			_camera_status_pub{ORB_ID(camera_status)};
-	uORB::Publication<cellular_status_s>			_cellular_status_pub{ORB_ID(cellular_status)};
-	uORB::Publication<collision_report_s>			_collision_report_pub{ORB_ID(collision_report)};
-	uORB::Publication<differential_pressure_s>		_differential_pressure_pub{ORB_ID(differential_pressure)};
-	uORB::Publication<follow_target_s>			_follow_target_pub{ORB_ID(follow_target)};
-	uORB::Publication<gimbal_manager_set_attitude_s>	_gimbal_manager_set_attitude_pub{ORB_ID(gimbal_manager_set_attitude)};
-	uORB::Publication<gimbal_manager_set_manual_control_s>	_gimbal_manager_set_manual_control_pub{ORB_ID(gimbal_manager_set_manual_control)};
-	uORB::Publication<gimbal_device_information_s>		_gimbal_device_information_pub{ORB_ID(gimbal_device_information)};
-	uORB::Publication<gimbal_device_attitude_status_s>	_gimbal_device_attitude_status_pub{ORB_ID(gimbal_device_attitude_status)};
-	uORB::Publication<irlock_report_s>			_irlock_report_pub{ORB_ID(irlock_report)};
-	uORB::Publication<landing_target_pose_s>		_landing_target_pose_pub{ORB_ID(landing_target_pose)};
-	uORB::Publication<log_message_s>			_log_message_pub{ORB_ID(log_message)};
-	uORB::Publication<mavlink_tunnel_s>			_mavlink_tunnel_pub{ORB_ID(mavlink_tunnel)};
-	uORB::Publication<obstacle_distance_s>			_obstacle_distance_pub{ORB_ID(obstacle_distance)};
-	uORB::Publication<offboard_control_mode_s>		_offboard_control_mode_pub{ORB_ID(offboard_control_mode)};
-	uORB::Publication<onboard_computer_status_s>		_onboard_computer_status_pub{ORB_ID(onboard_computer_status)};
-	uORB::Publication<velocity_limits_s>			_velocity_limits_pub{ORB_ID(velocity_limits)};
-	uORB::Publication<generator_status_s>			_generator_status_pub{ORB_ID(generator_status)};
-	uORB::Publication<vehicle_attitude_s>			_attitude_pub{ORB_ID(vehicle_attitude)};
-	uORB::Publication<vehicle_attitude_setpoint_s>		_att_sp_pub{ORB_ID(vehicle_attitude_setpoint)};
-	uORB::Publication<vehicle_attitude_setpoint_s>		_mc_virtual_att_sp_pub{ORB_ID(mc_virtual_attitude_setpoint)};
-	uORB::Publication<vehicle_attitude_setpoint_s>		_fw_virtual_att_sp_pub{ORB_ID(fw_virtual_attitude_setpoint)};
-	uORB::Publication<vehicle_global_position_s>		_global_pos_pub{ORB_ID(vehicle_global_position)};
-	uORB::Publication<vehicle_local_position_s>		_local_pos_pub{ORB_ID(vehicle_local_position)};
-	uORB::Publication<trajectory_setpoint_s>		_trajectory_setpoint_pub{ORB_ID(trajectory_setpoint)};
-	uORB::Publication<vehicle_odometry_s>			_mocap_odometry_pub{ORB_ID(vehicle_mocap_odometry)};
-	uORB::Publication<vehicle_odometry_s>			_visual_odometry_pub{ORB_ID(vehicle_visual_odometry)};
-	uORB::Publication<vehicle_rates_setpoint_s>		_rates_sp_pub{ORB_ID(vehicle_rates_setpoint)};
-	uORB::Publication<vehicle_trajectory_bezier_s>		_trajectory_bezier_pub{ORB_ID(vehicle_trajectory_bezier)};
-	uORB::Publication<vehicle_trajectory_waypoint_s>	_trajectory_waypoint_pub{ORB_ID(vehicle_trajectory_waypoint)};
+	uORB::Publication<airspeed_s>				_airspeed_pub{ORB_ID(airspeed), MAVLINK};
+	uORB::Publication<battery_status_s>			_battery_pub{ORB_ID(battery_status), MAVLINK};
+	uORB::Publication<camera_status_s>			_camera_status_pub{ORB_ID(camera_status), MAVLINK};
+	uORB::Publication<cellular_status_s>			_cellular_status_pub{ORB_ID(cellular_status), MAVLINK};
+	uORB::Publication<collision_report_s>			_collision_report_pub{ORB_ID(collision_report), MAVLINK};
+	uORB::Publication<differential_pressure_s>		_differential_pressure_pub{ORB_ID(differential_pressure), MAVLINK};
+	uORB::Publication<follow_target_s>			_follow_target_pub{ORB_ID(follow_target), MAVLINK};
+	uORB::Publication<gimbal_manager_set_attitude_s>	_gimbal_manager_set_attitude_pub{ORB_ID(gimbal_manager_set_attitude), MAVLINK};
+	uORB::Publication<gimbal_manager_set_manual_control_s>	_gimbal_manager_set_manual_control_pub{ORB_ID(gimbal_manager_set_manual_control), MAVLINK};
+	uORB::Publication<gimbal_device_information_s>		_gimbal_device_information_pub{ORB_ID(gimbal_device_information), MAVLINK};
+	uORB::Publication<gimbal_device_attitude_status_s>	_gimbal_device_attitude_status_pub{ORB_ID(gimbal_device_attitude_status), MAVLINK};
+	uORB::Publication<irlock_report_s>			_irlock_report_pub{ORB_ID(irlock_report), MAVLINK};
+	uORB::Publication<landing_target_pose_s>		_landing_target_pose_pub{ORB_ID(landing_target_pose), MAVLINK};
+	uORB::Publication<log_message_s>			_log_message_pub{ORB_ID(log_message), MAVLINK};
+	uORB::Publication<mavlink_tunnel_s>			_mavlink_tunnel_pub{ORB_ID(mavlink_tunnel), MAVLINK};
+	uORB::Publication<obstacle_distance_s>			_obstacle_distance_pub{ORB_ID(obstacle_distance), MAVLINK};
+	uORB::Publication<offboard_control_mode_s>		_offboard_control_mode_pub{ORB_ID(offboard_control_mode), MAVLINK};
+	uORB::Publication<onboard_computer_status_s>		_onboard_computer_status_pub{ORB_ID(onboard_computer_status), MAVLINK};
+	uORB::Publication<velocity_limits_s>			_velocity_limits_pub{ORB_ID(velocity_limits), MAVLINK};
+	uORB::Publication<generator_status_s>			_generator_status_pub{ORB_ID(generator_status), MAVLINK};
+	uORB::Publication<vehicle_attitude_s>			_attitude_pub{ORB_ID(vehicle_attitude), MAVLINK};
+	uORB::Publication<vehicle_attitude_setpoint_s>		_att_sp_pub{ORB_ID(vehicle_attitude_setpoint), MAVLINK};
+	uORB::Publication<vehicle_attitude_setpoint_s>		_mc_virtual_att_sp_pub{ORB_ID(mc_virtual_attitude_setpoint), MAVLINK};
+	uORB::Publication<vehicle_attitude_setpoint_s>		_fw_virtual_att_sp_pub{ORB_ID(fw_virtual_attitude_setpoint), MAVLINK};
+	uORB::Publication<vehicle_global_position_s>		_global_pos_pub{ORB_ID(vehicle_global_position), MAVLINK};
+	uORB::Publication<vehicle_local_position_s>		_local_pos_pub{ORB_ID(vehicle_local_position), MAVLINK};
+	uORB::Publication<trajectory_setpoint_s>		_trajectory_setpoint_pub{ORB_ID(trajectory_setpoint), MAVLINK};
+	uORB::Publication<vehicle_odometry_s>			_mocap_odometry_pub{ORB_ID(vehicle_mocap_odometry), MAVLINK};
+	uORB::Publication<vehicle_odometry_s>			_visual_odometry_pub{ORB_ID(vehicle_visual_odometry), MAVLINK};
+	uORB::Publication<vehicle_rates_setpoint_s>		_rates_sp_pub{ORB_ID(vehicle_rates_setpoint), MAVLINK};
+	uORB::Publication<vehicle_trajectory_bezier_s>		_trajectory_bezier_pub{ORB_ID(vehicle_trajectory_bezier), MAVLINK};
+	uORB::Publication<vehicle_trajectory_waypoint_s>	_trajectory_waypoint_pub{ORB_ID(vehicle_trajectory_waypoint), MAVLINK};
 
 #if !defined(CONSTRAINED_FLASH)
-	uORB::Publication<debug_array_s>			_debug_array_pub {ORB_ID(debug_array)};
-	uORB::Publication<debug_key_value_s>			_debug_key_value_pub{ORB_ID(debug_key_value)};
-	uORB::Publication<debug_value_s>			_debug_value_pub{ORB_ID(debug_value)};
-	uORB::Publication<debug_vect_s>				_debug_vect_pub{ORB_ID(debug_vect)};
+	uORB::Publication<debug_array_s>			_debug_array_pub {ORB_ID(debug_array), MAVLINK};
+	uORB::Publication<debug_key_value_s>			_debug_key_value_pub{ORB_ID(debug_key_value), MAVLINK};
+	uORB::Publication<debug_value_s>			_debug_value_pub{ORB_ID(debug_value), MAVLINK};
+	uORB::Publication<debug_vect_s>				_debug_vect_pub{ORB_ID(debug_vect), MAVLINK};
 #endif // !CONSTRAINED_FLASH
 
 	// ORB publications (multi)
-	uORB::PublicationMulti<distance_sensor_s>		_distance_sensor_pub{ORB_ID(distance_sensor)};
-	uORB::PublicationMulti<gps_inject_data_s>		_gps_inject_data_pub{ORB_ID(gps_inject_data)};
-	uORB::PublicationMulti<input_rc_s>			_rc_pub{ORB_ID(input_rc)};
-	uORB::PublicationMulti<manual_control_setpoint_s>	_manual_control_input_pub{ORB_ID(manual_control_input)};
-	uORB::PublicationMulti<ping_s>				_ping_pub{ORB_ID(ping)};
-	uORB::PublicationMulti<radio_status_s>			_radio_status_pub{ORB_ID(radio_status)};
-	uORB::PublicationMulti<sensor_baro_s>			_sensor_baro_pub{ORB_ID(sensor_baro)};
-	uORB::PublicationMulti<sensor_gps_s>			_sensor_gps_pub{ORB_ID(sensor_gps)};
-	uORB::PublicationMulti<sensor_optical_flow_s>           _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow)};
+	uORB::PublicationMulti<distance_sensor_s>		_distance_sensor_pub{ORB_ID(distance_sensor), MAVLINK};
+	uORB::PublicationMulti<gps_inject_data_s>		_gps_inject_data_pub{ORB_ID(gps_inject_data), MAVLINK};
+	uORB::PublicationMulti<input_rc_s>			_rc_pub{ORB_ID(input_rc), MAVLINK};
+	uORB::PublicationMulti<manual_control_setpoint_s>	_manual_control_input_pub{ORB_ID(manual_control_input), MAVLINK};
+	uORB::PublicationMulti<ping_s>				_ping_pub{ORB_ID(ping), MAVLINK};
+	uORB::PublicationMulti<radio_status_s>			_radio_status_pub{ORB_ID(radio_status), MAVLINK};
+	uORB::PublicationMulti<sensor_baro_s>			_sensor_baro_pub{ORB_ID(sensor_baro), MAVLINK};
+	uORB::PublicationMulti<sensor_gps_s>			_sensor_gps_pub{ORB_ID(sensor_gps), MAVLINK};
+	uORB::PublicationMulti<sensor_optical_flow_s>           _sensor_optical_flow_pub{ORB_ID(sensor_optical_flow), MAVLINK};
 
 	// ORB publications (queue length > 1)
-	uORB::Publication<transponder_report_s>  _transponder_report_pub{ORB_ID(transponder_report)};
-	uORB::Publication<vehicle_command_s>     _cmd_pub{ORB_ID(vehicle_command)};
-	uORB::Publication<vehicle_command_ack_s> _cmd_ack_pub{ORB_ID(vehicle_command_ack)};
+	uORB::Publication<transponder_report_s>  _transponder_report_pub{ORB_ID(transponder_report), MAVLINK};
+	uORB::Publication<vehicle_command_s>     _cmd_pub{ORB_ID(vehicle_command), MAVLINK};
+	uORB::Publication<vehicle_command_ack_s> _cmd_ack_pub{ORB_ID(vehicle_command_ack), MAVLINK};
 
 	// ORB subscriptions
 	uORB::Subscription	_actuator_armed_sub{ORB_ID(actuator_armed)};

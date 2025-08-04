@@ -122,7 +122,7 @@ private:
 
 	void handleMessageFormatRequest();
 
-	uORB::Publication<message_format_response_s> _message_format_response_pub{ORB_ID(message_format_response)};
+	uORB::Publication<message_format_response_s> _message_format_response_pub{ORB_ID(message_format_response), UXRCE_DDS_CLIENT};
 	uORB::Subscription _message_format_request_sub{ORB_ID(message_format_request)};
 
 	/** Synchronizes the system clock if the time is off by more than 5 seconds */

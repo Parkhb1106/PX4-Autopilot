@@ -323,7 +323,7 @@ void TemperatureCompensationModule::Run()
 					command_ack.target_system = cmd.source_system;
 					command_ack.target_component = cmd.source_component;
 
-					uORB::Publication<vehicle_command_ack_s> command_ack_pub{ORB_ID(vehicle_command_ack)};
+					uORB::Publication<vehicle_command_ack_s> command_ack_pub{ORB_ID(vehicle_command_ack), TEMPERATURE_COMPENSATION};
 					command_ack_pub.publish(command_ack);
 				}
 			}
@@ -451,7 +451,7 @@ int TemperatureCompensationModule::custom_command(int argc, char *argv[])
 				       || calib_all) ? vehicle_command_s::PREFLIGHT_CALIBRATION_TEMPERATURE_CALIBRATION : NAN);
 		vcmd.command = vehicle_command_s::VEHICLE_CMD_PREFLIGHT_CALIBRATION;
 
-		uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command)};
+		uORB::Publication<vehicle_command_s> vcmd_pub{ORB_ID(vehicle_command), TEMPERATURE_COMPENSATION};
 		vcmd_pub.publish(vcmd);
 
 		return PX4_OK;

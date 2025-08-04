@@ -84,5 +84,5 @@ private:
 
 	gz::transport::Node::Publisher _actuators_pub;
 
-	uORB::Publication<wheel_encoders_s> _wheel_encoders_pub{ORB_ID(wheel_encoders)};
+	uORB::Publication<wheel_encoders_s> _wheel_encoders_pub{ORB_ID(wheel_encoders), GZ_BRIDGE};
 };

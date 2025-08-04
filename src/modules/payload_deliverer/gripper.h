@@ -158,5 +158,5 @@ private:
 	bool _released_state_cache{false};
 	bool _grabbed_state_cache{false};
 
-	uORB::Publication<gripper_s> _gripper_pub{ORB_ID(gripper)};
+	uORB::Publication<gripper_s> _gripper_pub{ORB_ID(gripper), PAYLOAD_DELIVERER};
 };

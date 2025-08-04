@@ -132,7 +132,7 @@ protected:
 	bool _uavcan_waiting_for_request_response{false}; ///< We have reqested a parameter and wait for the response
 	uint16_t _uavcan_queued_request_items{0};	///< Number of stored parameter requests currently in the list
 
-	uORB::Publication<uavcan_parameter_request_s> _uavcan_parameter_request_pub{ORB_ID(uavcan_parameter_request)};
+	uORB::Publication<uavcan_parameter_request_s> _uavcan_parameter_request_pub{ORB_ID(uavcan_parameter_request), MAVLINK};
 	// enforce ORB_ID(uavcan_parameter_request) constants that map to MAVLINK defines
 	static_assert(uavcan_parameter_request_s::MESSAGE_TYPE_PARAM_REQUEST_READ == MAVLINK_MSG_ID_PARAM_REQUEST_READ,
 		      "uavcan_parameter_request_s MAVLINK_MSG_ID_PARAM_REQUEST_READ constant mismatch");
@@ -152,7 +152,7 @@ protected:
 	uORB::Subscription _uavcan_parameter_value_sub{ORB_ID(uavcan_parameter_value)};
 #endif // CONFIG_MAVLINK_UAVCAN_PARAMETERS
 
-	uORB::Publication<rc_parameter_map_s>	_rc_param_map_pub{ORB_ID(rc_parameter_map)};
+	uORB::Publication<rc_parameter_map_s>	_rc_param_map_pub{ORB_ID(rc_parameter_map), MAVLINK};
 	rc_parameter_map_s _rc_param_map{};
 
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};

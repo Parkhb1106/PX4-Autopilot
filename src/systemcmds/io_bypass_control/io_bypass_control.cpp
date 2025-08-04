@@ -94,7 +94,7 @@ int io_bypass_control_main(int argc, char *argv[])
 	}
 
 	if (!strcmp(argv[1], "test")) {
-		uORB::Publication<actuator_outputs_s> publisher{ORB_ID(actuator_outputs)};
+		uORB::Publication<actuator_outputs_s> publisher{ORB_ID(actuator_outputs), IO_BYPASS_CONTROL};
 		publisher.advertise();
 
 		for (float i = -1; i < 1; i = i + 0.01f) {

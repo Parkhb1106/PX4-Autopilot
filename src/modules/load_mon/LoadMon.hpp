@@ -88,9 +88,9 @@ private:
 
 	int _stack_task_index{0};
 
-	uORB::Publication<task_stack_info_s> _task_stack_info_pub{ORB_ID(task_stack_info)};
+	uORB::Publication<task_stack_info_s> _task_stack_info_pub{ORB_ID(task_stack_info), LOAD_MON};
 #endif
-	uORB::Publication<cpuload_s> _cpuload_pub {ORB_ID(cpuload)};
+	uORB::Publication<cpuload_s> _cpuload_pub {ORB_ID(cpuload), LOAD_MON};
 
 #if defined(__PX4_LINUX)
 	FILE *_proc_fd = nullptr;

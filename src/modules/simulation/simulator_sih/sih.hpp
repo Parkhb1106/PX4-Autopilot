@@ -119,14 +119,14 @@ private:
 	// simulated sensors
 	PX4Accelerometer _px4_accel{1310988}; // 1310988: DRV_IMU_DEVTYPE_SIM, BUS: 1, ADDR: 1, TYPE: SIMULATION
 	PX4Gyroscope     _px4_gyro{1310988};  // 1310988: DRV_IMU_DEVTYPE_SIM, BUS: 1, ADDR: 1, TYPE: SIMULATION
-	uORB::Publication<distance_sensor_s>  _distance_snsr_pub{ORB_ID(distance_sensor)};
-	uORB::Publication<airspeed_s>         _airspeed_pub{ORB_ID(airspeed)};
+	uORB::Publication<distance_sensor_s>  _distance_snsr_pub{ORB_ID(distance_sensor), SIMULATOR_SIH};
+	uORB::Publication<airspeed_s>         _airspeed_pub{ORB_ID(airspeed), SIMULATOR_SIH};
 
 	// groundtruth
-	uORB::Publication<vehicle_angular_velocity_s> _angular_velocity_ground_truth_pub{ORB_ID(vehicle_angular_velocity_groundtruth)};
-	uORB::Publication<vehicle_attitude_s>         _attitude_ground_truth_pub{ORB_ID(vehicle_attitude_groundtruth)};
-	uORB::Publication<vehicle_local_position_s>   _local_position_ground_truth_pub{ORB_ID(vehicle_local_position_groundtruth)};
-	uORB::Publication<vehicle_global_position_s>  _global_position_ground_truth_pub{ORB_ID(vehicle_global_position_groundtruth)};
+	uORB::Publication<vehicle_angular_velocity_s> _angular_velocity_ground_truth_pub{ORB_ID(vehicle_angular_velocity_groundtruth), SIMULATOR_SIH};
+	uORB::Publication<vehicle_attitude_s>         _attitude_ground_truth_pub{ORB_ID(vehicle_attitude_groundtruth), SIMULATOR_SIH};
+	uORB::Publication<vehicle_local_position_s>   _local_position_ground_truth_pub{ORB_ID(vehicle_local_position_groundtruth), SIMULATOR_SIH};
+	uORB::Publication<vehicle_global_position_s>  _global_position_ground_truth_pub{ORB_ID(vehicle_global_position_groundtruth), SIMULATOR_SIH};
 
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 	uORB::Subscription _actuator_out_sub{ORB_ID(actuator_outputs)};

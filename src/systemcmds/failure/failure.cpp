@@ -124,7 +124,7 @@ int inject_failure(const FailureUnit& unit, const FailureType& type, uint8_t ins
 
 	uORB::Subscription command_ack_sub{ORB_ID(vehicle_command_ack)};
 
-	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command)};
+	uORB::Publication<vehicle_command_s> command_pub{ORB_ID(vehicle_command), FAILURE};
 	vehicle_command_s command{};
 
 	command.command = vehicle_command_s::VEHICLE_CMD_INJECT_FAILURE;

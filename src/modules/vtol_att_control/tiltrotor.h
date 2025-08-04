@@ -80,7 +80,7 @@ private:
 
 	vtol_mode _vtol_mode{vtol_mode::MC_MODE};			/**< vtol flight mode, defined by enum vtol_mode */
 
-	uORB::Publication<tiltrotor_extra_controls_s>	_tiltrotor_extra_controls_pub{ORB_ID(tiltrotor_extra_controls)};
+	uORB::Publication<tiltrotor_extra_controls_s>	_tiltrotor_extra_controls_pub{ORB_ID(tiltrotor_extra_controls), VTOL_ATT_CONTROL};
 
 	float _tilt_control{0.0f};		/**< actuator value for the tilt servo */
 
