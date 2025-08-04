@@ -77,7 +77,7 @@ private:
 	void RegisterWrite(Register reg, uint8_t value);
 	void RegisterSetAndClearBits(Register reg, uint8_t setbits, uint8_t clearbits);
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), MPC2520};
 
 	perf_counter_t _bad_register_perf{perf_alloc(PC_COUNT, MODULE_NAME": bad register")};
 	perf_counter_t _bad_transfer_perf{perf_alloc(PC_COUNT, MODULE_NAME": bad transfer")};

@@ -114,7 +114,7 @@ public:
 protected:
 	void print_status() override;
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), MS5611};
 
 	device::Device		*_interface;
 

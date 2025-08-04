@@ -64,7 +64,7 @@ private:
 	int			measure(); //start measure
 	int			collect(); //get results and publish
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), TCBP001TA};
 
 	tcbp001ta::ITCBP001TA	*_interface;
 

@@ -77,7 +77,7 @@ private:
 	int RegisterRead(uint8_t reg, void *data, unsigned count = 1);
 	int RegisterWrite(uint8_t reg, uint8_t data);
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), MPL3115A2};
 
 	bool _collect_phase{false};
 

@@ -330,7 +330,7 @@ private:
 	static constexpr uint8_t			odr{BMP3_ODR_50_HZ};			// output data rate (not used)
 	static constexpr uint8_t			iir_coef{BMP3_IIR_FILTER_DISABLE};	// IIR coefficient
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), BMP388};
 	IBMP388			*_interface{nullptr};
 
 	unsigned		_measure_interval{0};			// interval in microseconds needed to measure

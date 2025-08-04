@@ -177,7 +177,7 @@ private:
 	int			measure();
 	int			collect();
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), LPS25H};
 
 	device::Device		*_interface;
 

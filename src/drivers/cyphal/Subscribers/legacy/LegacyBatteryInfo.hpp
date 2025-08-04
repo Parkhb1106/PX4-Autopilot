@@ -123,6 +123,6 @@ public:
 	};
 
 private:
-	uORB::PublicationMulti<battery_status_s> _battery_status_pub{ORB_ID(battery_status)};
+	uORB::PublicationMulti<battery_status_s> _battery_status_pub{ORB_ID(battery_status), CYPHAL};
 
 };

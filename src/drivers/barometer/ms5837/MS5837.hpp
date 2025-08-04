@@ -80,7 +80,7 @@ public:
 private:
 	int			probe() override;
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), MS5837};
 
 	ms5837::prom_u	   	_prom{};
 

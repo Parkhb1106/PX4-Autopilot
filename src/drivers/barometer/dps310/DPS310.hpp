@@ -80,7 +80,7 @@ private:
 
 	static constexpr uint32_t SAMPLE_RATE{32};
 
-	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro)};
+	uORB::PublicationMulti<sensor_baro_s> _sensor_baro_pub{ORB_ID(sensor_baro), DPS310};
 
 	device::Device		*_interface;
 
