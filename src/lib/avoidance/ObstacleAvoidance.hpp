@@ -71,7 +71,10 @@ const vehicle_trajectory_waypoint_s empty_trajectory_waypoint = {0, 0, 0, {0, 0,
 class ObstacleAvoidance : public ModuleParams
 {
 public:
-	ObstacleAvoidance(ModuleParams *parent);
+	// correction start
+	ObstacleAvoidance(ModuleParams *parent) : _module_id(0) {}
+	ObstacleAvoidance(ModuleParams *parent, uint _publisher_id) : _module_id(_publisher_id) {}
+	// correction end
 	~ObstacleAvoidance() = default;
 
 	/**
@@ -122,9 +125,11 @@ protected:
 
 	vehicle_trajectory_waypoint_s _desired_waypoint{};  /**< desired vehicle trajectory waypoint to be sent to OA */
 
-	uORB::Publication<vehicle_trajectory_waypoint_s> _pub_traj_wp_avoidance_desired{ORB_ID(vehicle_trajectory_waypoint_desired)};	/**< trajectory waypoint desired publication */
-	uORB::Publication<position_controller_status_s> _pub_pos_control_status{ORB_ID(position_controller_status)};	/**< position controller status publication */
-	uORB::Publication<vehicle_command_s> _pub_vehicle_command{ORB_ID(vehicle_command)};	/**< vehicle command do publication */
+	// correction start
+	uORB::Publication<vehicle_trajectory_waypoint_s> _pub_traj_wp_avoidance_desired{ORB_ID(vehicle_trajectory_waypoint_desired), _module_id};	/**< trajectory waypoint desired publication */
+	uORB::Publication<position_controller_status_s> _pub_pos_control_status{ORB_ID(position_controller_status), _module_id};	/**< position controller status publication */
+	uORB::Publication<vehicle_command_s> _pub_vehicle_command{ORB_ID(vehicle_command), _module_id};	/**< vehicle command do publication */
+	// correction end
 
 	matrix::Vector3f _curr_wp = {}; /**< current position triplet */
 	matrix::Vector3f _position = {}; /**< current vehicle position */
@@ -148,5 +153,9 @@ protected:
 	DEFINE_PARAMETERS(
 		(ParamFloat<px4::params::NAV_MC_ALT_RAD>) _param_nav_mc_alt_rad    /**< Acceptance radius for multicopter altitude */
 	);
+
+	// correction start
+	const uint _module_id;
+        // correction end
 
 };
