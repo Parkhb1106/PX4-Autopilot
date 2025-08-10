@@ -71,9 +71,9 @@ const vehicle_trajectory_waypoint_s empty_trajectory_waypoint = {0, 0, 0, {0, 0,
 class ObstacleAvoidance : public ModuleParams
 {
 public:
+	ObstacleAvoidance(ModuleParams *parent);
 	// correction start
-	ObstacleAvoidance(ModuleParams *parent) : _module_id(0) {}
-	ObstacleAvoidance(ModuleParams *parent, uint _publisher_id) : _module_id(_publisher_id) {}
+	ObstacleAvoidance(ModuleParams *parent, uint _publisher_id);
 	// correction end
 	~ObstacleAvoidance() = default;
 
