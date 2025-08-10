@@ -54,6 +54,22 @@ ObstacleAvoidance::ObstacleAvoidance(ModuleParams *parent) :
 	_failsafe_position.setNaN();
 	_avoidance_point_not_valid_hysteresis.set_hysteresis_time_from(false, TIME_BEFORE_FAILSAFE);
 	_no_progress_z_hysteresis.set_hysteresis_time_from(false, Z_PROGRESS_TIMEOUT_US);
+	// correction start
+	_module_id = 0;
+	// correction end
+
+}
+
+ObstacleAvoidance::ObstacleAvoidance(ModuleParams *parent, uint _publisher_id) :
+	ModuleParams(parent)
+{
+	_desired_waypoint = empty_trajectory_waypoint;
+	_failsafe_position.setNaN();
+	_avoidance_point_not_valid_hysteresis.set_hysteresis_time_from(false, TIME_BEFORE_FAILSAFE);
+	_no_progress_z_hysteresis.set_hysteresis_time_from(false, Z_PROGRESS_TIMEOUT_US);
+	// correction start
+	_module_id = _publisher_id;
+	// correction end
 
 }
 
